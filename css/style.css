@@ -107,5 +107,61 @@ footer{
     text-align: center;
     padding: 20px;
     color: White;
-    bottom: 0px;
+   
+}
+.Mobile{
+    display: none;
+}
+@media screen and (max-width:500px){
+
+    #body{
+        display: block;
+    }
+    .perfil{
+    position: absolute;
+    top: 8%;
+    right: 40%;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background-color: rgba(34, 255, 52, 0.233);
+}
+h3{
+    display: none;
+}
+.NoMobile{
+    display: none;
+    /* width: 100%; */
+}
+main{
+    padding: 0;
+    width: 100%;
+    text-align: center;
+        background:radial-gradient(transparent,rgba(37, 89, 109, 0.699) 0%,rgb(1, 6, 46));
+
+}
+.descricao{
+    padding: 10px;
+    width: 90%;
+    text-align: center;
+}
+.descricao p{
+    padding: 5px;
+}
+.Mobile{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+.logo img{
+    position: relative;
+    width: 100%;
+}
+.logo h3{
+    display: block;
+    text-align: left;
+    position: absolute;
+    top: -13%;
+    color: #2e3;
+}
 }

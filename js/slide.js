@@ -7,8 +7,10 @@ img[2]='./img/TME.jpg'
 img[3]='./img/Apec.jpg'
 img[4]='img/IIM.jpg'
 img[5]='./img/music.jpg'
+
 function slide(){
     document.certificados.src=img[i];
+    document.certificadosM.src=img[i];
         if(i<img.length-1){
             i++
         }
