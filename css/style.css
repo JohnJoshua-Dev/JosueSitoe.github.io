@@ -109,6 +109,9 @@ footer{
     color: White;
    
 }
+#Mobile{
+    display: none;
+}
 .Mobile{
     display: none;
 }
@@ -152,6 +155,9 @@ main{
     display: block;
     width: 100%;
     height: auto;
+}
+#Mobile{
+    display: block;
 }
 .logo img{
     position: relative;
