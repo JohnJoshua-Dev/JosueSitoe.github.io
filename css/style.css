@@ -16,6 +16,19 @@ header{
     text-align: center;
     /* padding: 10px 0; */
 }
+.slide{
+    position: absolute;
+    top: 5px;
+    left: 0;
+    background-color: black;
+    height: 200px;
+}
+
+    .logo img{
+    width: 264px;
+
+}
+
 header nav{
     width: 100%;
     /* margin-top: 50px; */
@@ -58,13 +71,18 @@ main{
     padding: 0 20px;
     color: white;
 }
-.certify{
+.perfil{
     position: absolute;
     right: 30%;
     width: 300px;
     height: 290px;
     border-radius: 100%;
     background-color: rgba(34, 255, 52, 0.233);
+}
+main h3 {
+    color: #2e3;
+    font-size: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 main h1{
