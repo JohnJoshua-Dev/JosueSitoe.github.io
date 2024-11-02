@@ -1,0 +1,93 @@
+*{
+    padding: 0;
+    /* border: 0; */
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#body{
+    display: flex;
+}
+header{
+    width: 20%;
+    height: 89vh;
+    border-right: solid 1px #fff;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: rgb(243, 234, 186);
+    text-align: center;
+    /* padding: 10px 0; */
+}
+header nav{
+    width: 100%;
+    /* margin-top: 50px; */
+    
+}
+.logo{
+    background-color: black;
+    height: 200px;
+}
+.logo h1{
+    padding: 20px;
+}
+
+h4{
+    font-weight: bold;
+    padding: 15px;
+    background-color: rgb(163, 163, 226);
+}
+h4:hover{
+
+    text-transform: uppercase;
+}
+
+
+.icon{
+    width: 40px;
+    cursor: pointer;
+    padding: 5px;
+}
+header nav ul li{
+    padding: 5px;
+    /* background-color: aquamarine; */
+}
+main{
+    width: 80%;
+    height: 89vh;
+    background:radial-gradient(transparent,rgba(37, 89, 109, 0.699) 20%,rgb(1, 6, 46));
+    /* background-color: rgba(0, 0, 0, 0.74); */
+    /* padding: 10px; */
+    padding: 0 20px;
+    color: white;
+}
+.certify{
+    position: absolute;
+    right: 30%;
+    width: 300px;
+    height: 290px;
+    border-radius: 100%;
+    background-color: rgba(34, 255, 52, 0.233);
+}
+
+main h1{
+    /* margin-top: auto; */
+    margin-top: 28%;
+    text-align: center;
+}
+h1 span{
+   color: rgb(62, 102, 231);
+}
+.descricao{
+    width: 100%;
+    margin-top: 5%;
+    text-align: left;
+    font-size: 18px;
+    /* letter-spacing: 1px; */
+    text-indent: 3px;
+}
+footer{
+    background-color: black;
+    /* height: 30px; */
+    text-align: center;
+    padding: 20px;
+    color: White;
+    bottom: 0px;
+}
