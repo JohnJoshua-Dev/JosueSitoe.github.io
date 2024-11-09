@@ -1,0 +1,25 @@
+body{
+    background: url(../img/fundo.jpg);
+    background-size: cover;
+}
+main{
+   height: 100%;
+}
+header{
+    height: 100%
+}
+
+main h1{
+    margin-top: 0;
+    padding: 20px 0;
+}
+#certificados{
+    text-align: center;
+    color: #fff;
+}
+#certificados img{
+    width: 100%;
+}
+#certificados h1{
+    padding: 20px 0;
+}
