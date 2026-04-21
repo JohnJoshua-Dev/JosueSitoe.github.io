@@ -137,31 +137,38 @@ window.addEventListener("resize", () => {
   canvas.height = window.innerHeight
 })
 
+// Toast Notification
+function showToast(msg, type = "success") {
+  const t = document.getElementById("toast")
+  const icon = type === "success" ? "✅" : "❌"
+  t.textContent = icon + "  " + msg
+  t.className = "toast show " + type
+  clearTimeout(t._timer)
+  t._timer = setTimeout(() => t.classList.remove("show"), 4000)
+}
+
 // Form Validation and Submission
 const contactForm = document.getElementById("contact-form")
 
 contactForm.addEventListener("submit", (e) => {
   e.preventDefault()
 
-  const name = document.getElementById("name").value.trim()
-  const email = document.getElementById("email").value.trim()
+  const name    = document.getElementById("name").value.trim()
+  const email   = document.getElementById("email").value.trim()
   const message = document.getElementById("message").value.trim()
 
-  // Basic validation
-  if (name === "" || email === "" || message === "") {
-    alert("Por favor, preencha todos os campos.")
+  if (!name || !email || !message) {
+    showToast("Por favor, preencha todos os campos.", "error")
     return
   }
 
-  // Email validation
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   if (!emailRegex.test(email)) {
-    alert("Por favor, insira um email válido.")
+    showToast("Por favor, insira um email válido.", "error")
     return
   }
 
-  // Success message
-  alert("Mensagem enviada com sucesso! Entrarei em contacto em breve.")
+  showToast("Mensagem enviada! Entrarei em contacto em breve 🙏")
   contactForm.reset()
 })
 
@@ -195,10 +202,71 @@ const observer = new IntersectionObserver((entries) => {
   })
 }, observerOptions)
 
-// Observe all sections
 document.querySelectorAll("section").forEach((section) => {
   section.style.opacity = "0"
   section.style.transform = "translateY(30px)"
   section.style.transition = "opacity 0.6s ease, transform 0.6s ease"
   observer.observe(section)
 })
+
+// Scroll Progress Bar
+const progressBar = document.getElementById("progress-bar")
+window.addEventListener("scroll", () => {
+  const scrollTop    = window.scrollY
+  const docHeight    = document.documentElement.scrollHeight - window.innerHeight
+  const pct          = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0
+  progressBar.style.width = pct + "%"
+})
+
+// Active Nav Link on Scroll
+const sections  = document.querySelectorAll("section[id]")
+const navLinks  = document.querySelectorAll(".nav-link")
+
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      navLinks.forEach((l) => l.classList.remove("active"))
+      const active = document.querySelector(`.nav-link[href="#${entry.target.id}"]`)
+      if (active) active.classList.add("active")
+    }
+  })
+}, { threshold: 0.45 })
+
+sections.forEach((s) => navObserver.observe(s))
+
+// Counter Animation
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target, 10)
+  const suffix = el.dataset.suffix || ""
+  const duration = 1800
+  const step     = 16
+  const steps    = duration / step
+  const inc      = target / steps
+  let current    = 0
+
+  const timer = setInterval(() => {
+    current += inc
+    if (current >= target) {
+      el.textContent = target + suffix
+      clearInterval(timer)
+    } else {
+      el.textContent = Math.floor(current) + suffix
+    }
+  }, step)
+}
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll(".counter").forEach(animateCounter)
+      counterObserver.unobserve(entry.target)
+    }
+  })
+}, { threshold: 0.3 })
+
+document.querySelectorAll(".stat-card").forEach((card) => {
+  counterObserver.observe(card.closest("section") || card)
+})
+// also observe hero section directly
+const heroSection = document.getElementById("inicio")
+if (heroSection) counterObserver.observe(heroSection)

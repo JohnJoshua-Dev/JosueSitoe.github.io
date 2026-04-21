@@ -15,6 +15,12 @@
 
 <body class="text-white font-inter overflow-x-hidden">
 
+    <!-- Scroll progress bar -->
+    <div id="progress-bar"></div>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast"></div>
+
     <!-- particles canvas moved to cover whole page -->
     <canvas id="particles-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
 
@@ -50,79 +56,85 @@
         </nav>
 
         <!-- Hero Section -->
-        <section id="inicio" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-            <div class="container mx-auto px-6 text-center relative z-10">
-                <!-- substituído: conteúdo do bloco animate-fade-in -->
-                <div class="animate-fade-in">
-                    <h1 class="text-5xl md:text-7xl font-orbitron font-bold mb-4 glow-text">
-                        Olá, eu sou <span class="text-[#FFD700]">Josué Sitoe</span>
-                    </h1>
+        <section id="inicio" class="min-h-screen flex items-center relative overflow-hidden pt-20">
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="animate-fade-in flex flex-col lg:flex-row items-center gap-12">
 
-                    <!-- mini-apresentação -->
-                    <!-- <p class="text-lg md:text-xl text-gray-300 mb-3">
-                        Desenvolvedor Fullstack Júnior | Estudante de Engenharia Informática | Maputo, Moçambique
-                    </p> -->
-
-                    <p class="text-xl md:text-2xl text-gray-300 mb-6">
-                        Desenvolvedor Fullstack apaixonado por tecnologia e inovação.
-                    </p>
-
-                    <div class="text-2xl md:text-3xl font-orbitron text-[#A37FFF] mb-8 h-12">
-                        <span id="typing-text"></span>
-                        <span class="typing-cursor">|</span>
-                    </div>
-
-                    <!-- botões sociais / CV -->
-                    <div class="flex flex-wrap justify-center gap-4 mb-8">
-                        <a href="https://github.com/JohnJoshua-Dev" target="_blank" class="inline-flex items-center gap-3 px-6 py-3 rounded-lg text-white font-medium shadow-lg
-                                  bg-gradient-to-r from-[#4F46E5] to-[#A37FFF] hover:opacity-95 transition">
-                            <i class="fab fa-github"></i> GitHub
-                        </a>
-
-                        <a href="http://www.linkedin.com/in/josué-sitoe-programmer" target="_blank" class="inline-flex items-center gap-3 px-6 py-3 rounded-lg text-white font-medium shadow-lg
-                                  bg-gradient-to-r from-[#8B5CF6] to-[#EC4899] hover:opacity-95 transition">
-                            <i class="fab fa-linkedin"></i> LinkedIn
-                        </a>
-
-                        <a href="https://www.upwork.com/freelancers/~016591da5a7b26dc12?viewMode=1" target="_blank" class="inline-flex items-center gap-3 px-6 py-3 rounded-lg text-white font-medium shadow-lg
-                                  bg-gradient-to-r from-[#07B59E] to-[#00A67A] hover:opacity-95 transition">
-                            <img src="https://cdn.simpleicons.org/upwork/ffffff" alt="UpWork" class="w-5 h-5">
-                            UpWork
-                        </a>
-                    </div>
-
-                    <!-- botões: Ver Projetos + Download CV -->
-                    <div class="flex flex-wrap justify-center gap-4 mb-8">
-                        <a href="#projetos" class="inline-flex items-center gap-3 px-6 py-3 rounded-lg text-white font-medium shadow-lg
-                                  bg-gradient-to-r from-[#06b6d4] to-[#3b82f6] hover:opacity-95 transition">
-                            <i class="fas fa-folder-open"></i> Ver Projetos
-                        </a>
-
-                        <a href="/assets/joshua-cv.pdf" download class="inline-flex items-center gap-3 px-6 py-3 rounded-lg text-white font-medium shadow-lg
-                                  bg-gradient-to-r from-[#FB7185] to-[#FB923C] hover:opacity-95 transition">
-                            <i class="fas fa-download"></i> Download CV
-                        </a>
-                    </div>
-
-                    <!-- cards de estatísticas -->
-                    <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6">
-                        <div class="bg-[#0F1115]/70 border border-[#FFD700]/10 rounded-lg p-8 text-center shadow-md">
-                            <div class="text-4xl md:text-5xl font-orbitron text-[#A37FFF] font-bold mb-2">2+</div>
-                            <div class="text-gray-300">Anos de Experiência</div>
+                    <!-- TEXT SIDE -->
+                    <div class="flex-1 text-center lg:text-left">
+                        <div class="flex flex-wrap justify-center lg:justify-start gap-3 mb-6">
+                            <span class="avail-badge available">🟢 Disponível para Freelance</span>
+                            <span class="avail-badge location">📍 Maputo, Moçambique</span>
                         </div>
 
-                        <div class="bg-[#0F1115]/70 border border-[#FFD700]/10 rounded-lg p-8 text-center shadow-md">
-                            <div class="text-4xl md:text-5xl font-orbitron text-[#A37FFF] font-bold mb-2">8+</div>
-                            <div class="text-gray-300">Projetos Entregues</div>
+                        <h1 class="text-4xl md:text-6xl font-orbitron font-bold mb-3 glow-text leading-tight">
+                            Olá, eu sou<br><span class="text-[#FFD700]">Josué Sitoe</span>
+                        </h1>
+
+                        <p class="text-lg md:text-xl text-gray-300 mb-4">
+                            Desenvolvedor Fullstack apaixonado por tecnologia e inovação.
+                        </p>
+
+                        <div class="text-xl md:text-2xl font-orbitron text-[#A37FFF] mb-8 h-10">
+                            <span id="typing-text"></span>
+                            <span class="typing-cursor">|</span>
                         </div>
 
-                        <div class="bg-[#0F1115]/70 border border-[#FFD700]/10 rounded-lg p-8 text-center shadow-md">
-                            <div class="text-4xl md:text-5xl font-orbitron text-[#A37FFF] font-bold mb-2">3</div>
-                            <div class="text-gray-300">Idiomas Falados</div>
+                        <!-- Social buttons -->
+                        <div class="flex flex-wrap justify-center lg:justify-start gap-3 mb-5">
+                            <a href="https://github.com/JohnJoshua-Dev" target="_blank"
+                               class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-white font-medium shadow-lg bg-gradient-to-r from-[#4F46E5] to-[#A37FFF] hover:opacity-90 transition text-sm">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="http://www.linkedin.com/in/josué-sitoe-programmer" target="_blank"
+                               class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-white font-medium shadow-lg bg-gradient-to-r from-[#8B5CF6] to-[#EC4899] hover:opacity-90 transition text-sm">
+                                <i class="fab fa-linkedin"></i> LinkedIn
+                            </a>
+                            <a href="https://www.upwork.com/freelancers/~016591da5a7b26dc12?viewMode=1" target="_blank"
+                               class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-white font-medium shadow-lg bg-gradient-to-r from-[#07B59E] to-[#00A67A] hover:opacity-90 transition text-sm">
+                                <img src="https://cdn.simpleicons.org/upwork/ffffff" alt="UpWork" class="w-4 h-4">
+                                UpWork
+                            </a>
+                        </div>
+
+                        <!-- Action buttons -->
+                        <div class="flex flex-wrap justify-center lg:justify-start gap-3 mb-10">
+                            <a href="#projetos"
+                               class="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white font-semibold shadow-lg bg-gradient-to-r from-[#06b6d4] to-[#3b82f6] hover:opacity-90 transition">
+                                <i class="fas fa-folder-open"></i> Ver Projetos
+                            </a>
+                            <a href="img/joshua cv.docx" download
+                               class="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white font-semibold shadow-lg bg-gradient-to-r from-[#FB7185] to-[#FB923C] hover:opacity-90 transition">
+                                <i class="fas fa-download"></i> Download CV
+                            </a>
+                        </div>
+
+                        <!-- Stats -->
+                        <div class="grid grid-cols-3 gap-4 max-w-md mx-auto lg:mx-0">
+                            <div class="stat-card">
+                                <div class="stat-num counter" data-target="2" data-suffix="+">0</div>
+                                <div class="stat-label">Anos de Exp.</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-num counter" data-target="9" data-suffix="+">0</div>
+                                <div class="stat-label">Projetos</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-num counter" data-target="3" data-suffix="">0</div>
+                                <div class="stat-label">Idiomas</div>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- PHOTO SIDE -->
+                    <div class="flex-shrink-0 hidden lg:flex justify-center">
+                        <div class="hero-photo-wrap">
+                            <img src="img/Fotojs com fundo Azul.png" alt="Josué Sitoe"
+                                 class="hero-photo">
+                        </div>
+                    </div>
+
                 </div>
-                <!-- fim substituição -->
             </div>
             <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
                 <a href="#sobre" class="text-[#FFD700] text-3xl">
@@ -138,20 +150,26 @@
                     <div class="glass-card p-8 md:p-12 flex flex-col md:flex-row items-center gap-8">
                         <div class="flex-shrink-0">
                             <div class="profile-photo">
-                                <img src="img/josueProfile.jpg" alt="Josué Sitoe"
-                                    class="w-48 h-48 rounded-full object-cover">
+                                <img src="img/Fotojs com fundo Azul.png" alt="Josué Sitoe"
+                                    class="w-48 h-48 rounded-full object-cover object-top">
                             </div>
                         </div>
                         <div class="text-center md:text-left">
-                            <h3 class="text-2xl font-orbitron font-bold text-[#FFD700] mb-4">Josué Rafael Sitoe</h3>
-                            <p class="text-gray-300 leading-relaxed text-lg">
+                            <h3 class="text-2xl font-orbitron font-bold text-[#FFD700] mb-1">Josué Rafael Sitoe</h3>
+                            <p class="text-[#A37FFF] text-sm mb-4 tracking-widest uppercase">Desenvolvedor Fullstack · Maputo, MZ</p>
+                            <p class="text-gray-300 leading-relaxed text-base mb-3">
                                 Sou um profissional dedicado, dinâmico e entusiasta, sempre em busca de progresso.
                                 Gosto de criar soluções tecnológicas inovadoras e funcionais que unem design e lógica.
                             </p>
-                            <div class="mt-6 flex flex-wrap gap-3 justify-center md:justify-start">
+                            <p class="text-gray-400 leading-relaxed text-sm">
+                                Estudante de Engenharia Informática com experiência prática em projectos web, mobile e sistemas de gestão para empresas em Moçambique.
+                            </p>
+                            <div class="mt-5 flex flex-wrap gap-3 justify-center md:justify-start">
                                 <span class="badge">Inovador</span>
                                 <span class="badge">Criativo</span>
                                 <span class="badge">Dedicado</span>
+                                <span class="badge">Fullstack</span>
+                                <span class="badge">Freelancer</span>
                             </div>
                         </div>
                     </div>
@@ -219,17 +237,19 @@
         <section id="projetos" class="py-20 relative">
             <div class="container mx-auto px-6">
                 <h2 class="section-title">Projetos</h2>
+                <div class="section-sep"><div class="section-sep-diamond"></div></div>
+
                 <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                     <!-- Project 1 -->
                     <div class="project-card">
                         <div class="project-icon">
                             <i class="fas fa-graduation-cap text-4xl"></i>
                         </div>
-                        <h3 class="text-2xl font-orbitron font-bold text-[#FFD700] mb-3">Central Académica</h3>
-                        <p class="text-gray-300 mb-4 leading-relaxed">
-                            Sistema de gestão escolar com integração online e OCR para digitalização de documentos.
+                        <h3 class="text-xl font-orbitron font-bold text-[#FFD700] mb-2">Central Académica</h3>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                            Sistema de gestão escolar com integração online e OCR para digitalização automática de documentos académicos.
                         </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
+                        <div class="flex flex-wrap gap-2 mb-5">
                             <span class="tech-badge">Python</span>
                             <span class="tech-badge">OCR</span>
                             <span class="tech-badge">Web</span>
@@ -244,11 +264,11 @@
                         <div class="project-icon">
                             <i class="fas fa-tasks text-4xl"></i>
                         </div>
-                        <h3 class="text-2xl font-orbitron font-bold text-[#FFD700] mb-3">Portal de Pedidos</h3>
-                        <p class="text-gray-300 mb-4 leading-relaxed">
-                            Gestão de fluxos entre equipas com geração automática de relatórios Excel.
+                        <h3 class="text-xl font-orbitron font-bold text-[#FFD700] mb-2">Portal de Pedidos</h3>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                            Plataforma de gestão de fluxos entre equipas com geração automática de relatórios Excel e notificações em tempo real.
                         </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
+                        <div class="flex flex-wrap gap-2 mb-5">
                             <span class="tech-badge">Laravel</span>
                             <span class="tech-badge">Flutter</span>
                             <span class="tech-badge">Excel</span>
@@ -257,16 +277,17 @@
                             Ver Detalhes <i class="fas fa-arrow-right ml-2"></i>
                         </button>
                     </div>
+
                     <!-- Project 3 -->
                     <div class="project-card">
                         <div class="project-icon">
                             <i class="fas fa-volume-up text-4xl"></i>
                         </div>
-                        <h3 class="text-2xl font-orbitron font-bold text-[#FFD700] mb-3">OuvirTexto</h3>
-                        <p class="text-gray-300 mb-4 leading-relaxed">
-                            Conversor de texto para voz com inteligência artificial para acessibilidade.
+                        <h3 class="text-xl font-orbitron font-bold text-[#FFD700] mb-2">OuvirTexto</h3>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                            Conversor de texto para voz com inteligência artificial para melhorar a acessibilidade digital.
                         </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
+                        <div class="flex flex-wrap gap-2 mb-5">
                             <span class="tech-badge">PHP</span>
                             <span class="tech-badge">IA</span>
                             <span class="tech-badge">TTS</span>
@@ -281,11 +302,11 @@
                         <div class="project-icon">
                             <i class="fas fa-boxes text-4xl"></i>
                         </div>
-                        <h3 class="text-2xl font-orbitron font-bold text-[#FFD700] mb-3">AppStockP4y</h3>
-                        <p class="text-gray-300 mb-4 leading-relaxed">
-                            Aplicação de gestão de stock para web e mobile com sincronização em tempo real.
+                        <h3 class="text-xl font-orbitron font-bold text-[#FFD700] mb-2">AppStockP4y</h3>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                            Aplicação de gestão de stock para web e mobile com sincronização de dados em tempo real.
                         </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
+                        <div class="flex flex-wrap gap-2 mb-5">
                             <span class="tech-badge">Flutter</span>
                             <span class="tech-badge">Web</span>
                             <span class="tech-badge">Mobile</span>
@@ -293,6 +314,41 @@
                         <button class="btn-project">
                             Ver Detalhes <i class="fas fa-arrow-right ml-2"></i>
                         </button>
+                    </div>
+
+                    <!-- Project 5 — MyWeeding (Featured / Full Width) -->
+                    <div class="project-card project-card--featured md:col-span-2">
+                        <div class="flex flex-col md:flex-row gap-6 items-start">
+                            <div class="flex-shrink-0">
+                                <div class="project-icon" style="background: linear-gradient(135deg,#c9a84c,#e8c97a); width:80px; height:80px;">
+                                    <i class="fas fa-heart text-4xl" style="color:#0b0c10"></i>
+                                </div>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex flex-wrap items-center gap-3 mb-2">
+                                    <h3 class="text-xl font-orbitron font-bold" style="color:#c9a84c">MyWeeding</h3>
+                                    <span class="live-badge">Ao Vivo</span>
+                                </div>
+                                <p class="text-gray-400 text-sm mb-4 leading-relaxed max-w-2xl">
+                                    Site de casamento completo desenvolvido de raiz. Inclui contagem regressiva em tempo real, lista de presentes interactiva com sistema de reserva por checkbox, mapa integrado do local do evento e design elegante inspirado no convite. Hospedado no GitHub Pages.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-5">
+                                    <span class="tech-badge" style="color:#c9a84c; border-color:rgba(201,168,76,0.4)">HTML5</span>
+                                    <span class="tech-badge" style="color:#c9a84c; border-color:rgba(201,168,76,0.4)">CSS3</span>
+                                    <span class="tech-badge" style="color:#c9a84c; border-color:rgba(201,168,76,0.4)">JavaScript</span>
+                                    <span class="tech-badge" style="color:#c9a84c; border-color:rgba(201,168,76,0.4)">Canvas API</span>
+                                    <span class="tech-badge" style="color:#c9a84c; border-color:rgba(201,168,76,0.4)">GitHub Pages</span>
+                                </div>
+                                <div class="flex flex-wrap gap-3">
+                                    <a href="https://johnjoshua-dev.github.io/JosueSitoe.github.io/myweeding/" target="_blank" class="btn-project-live">
+                                        <i class="fas fa-external-link-alt mr-2"></i> Ver ao Vivo
+                                    </a>
+                                    <a href="https://github.com/JohnJoshua-Dev/JosueSitoe.github.io/tree/main/myweeding" target="_blank" class="btn-project">
+                                        <i class="fab fa-github mr-2"></i> Código Fonte
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -303,58 +359,75 @@
         <section id="contacto" class="py-20 relative">
             <div class="container mx-auto px-6">
                 <h2 class="section-title">Contacto</h2>
-                <div class="max-w-2xl mx-auto">
-                    <div class="glass-card p-8">
-                        <div class="mb-8 text-center">
-                            <div class="flex items-center justify-center gap-3 text-[#FFD700] mb-4">
-                                <i class="fas fa-envelope text-2xl"></i>
-                                <a href="mailto:josuerafaelsitoe@gmail.com"
-                                    class="text-lg hover:text-[#A37FFF] transition-colors">
-                                    josuerafaelsitoe@gmail.com
-                                </a>
+                <div class="section-sep"><div class="section-sep-diamond"></div></div>
+
+                <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-10">
+                    <!-- Left: info -->
+                    <div class="flex flex-col gap-5 justify-center">
+                        <div>
+                            <h3 class="text-2xl font-orbitron font-bold text-[#FFD700] mb-2">Vamos Trabalhar Juntos</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">Estou disponível para projectos freelance, colaborações e oportunidades de trabalho. Não hesites em entrar em contacto!</p>
+                        </div>
+
+                        <div class="flex flex-col gap-3">
+                            <a href="mailto:josuerafaelsitoe@gmail.com" class="contact-info-card">
+                                <div class="ci-icon"><i class="fas fa-envelope"></i></div>
+                                <div>
+                                    <div class="text-xs text-gray-500 uppercase tracking-wider mb-0.5">Email</div>
+                                    <a href="mailto:josuerafaelsitoe@gmail.com" class="text-sm">josuerafaelsitoe@gmail.com</a>
+                                </div>
+                            </a>
+                            <div class="contact-info-card">
+                                <div class="ci-icon"><i class="fab fa-whatsapp"></i></div>
+                                <div>
+                                    <div class="text-xs text-gray-500 uppercase tracking-wider mb-0.5">WhatsApp</div>
+                                    <span class="text-sm">+258 872 737 483</span>
+                                </div>
                             </div>
-                            <div class="flex items-center justify-center gap-3 text-[#FFD700]">
-                                <i class="fab fa-whatsapp text-2xl"></i>
-                                <span class="text-lg">+258 872737483</span>
-                            </div>
-
-                            <!-- moved GitHub/LinkedIn to Contact section -->
-                            <div class="flex justify-center gap-4 mt-6">
-                                <a href="https://github.com/josuejoshua" target="_blank" class="inline-flex items-center gap-3 px-5 py-2 rounded-lg text-white font-medium shadow-lg
-                                  bg-gradient-to-r from-[#4F46E5] to-[#A37FFF] hover:opacity-95 transition">
-                                    <i class="fab fa-github"></i> GitHub
-                                </a>
-
-                                <a href="https://linkedin.com/in/josuejoshua" target="_blank" class="inline-flex items-center gap-3 px-5 py-2 rounded-lg text-white font-medium shadow-lg
-                                  bg-gradient-to-r from-[#8B5CF6] to-[#EC4899] hover:opacity-95 transition">
-                                    <i class="fab fa-linkedin"></i> LinkedIn
-                                </a>
-
-                                <a href="https://www.upwork.com/" target="_blank" class="inline-flex items-center gap-3 px-5 py-2 rounded-lg text-white font-medium shadow-lg
-                                  bg-gradient-to-r from-[#07B59E] to-[#00A67A] hover:opacity-95 transition">
-                                    <i class="fab fa-upwork"></i> UpWork
-                                </a>
+                            <div class="contact-info-card">
+                                <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
+                                <div>
+                                    <div class="text-xs text-gray-500 uppercase tracking-wider mb-0.5">Localização</div>
+                                    <span class="text-sm">Maputo, Moçambique</span>
+                                </div>
                             </div>
                         </div>
 
-                        <form id="contact-form" class="space-y-6">
+                        <div class="flex gap-3 flex-wrap">
+                            <a href="https://github.com/JohnJoshua-Dev" target="_blank"
+                               class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-white text-sm font-medium bg-gradient-to-r from-[#4F46E5] to-[#A37FFF] hover:opacity-90 transition">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="http://www.linkedin.com/in/josué-sitoe-programmer" target="_blank"
+                               class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-white text-sm font-medium bg-gradient-to-r from-[#8B5CF6] to-[#EC4899] hover:opacity-90 transition">
+                                <i class="fab fa-linkedin"></i> LinkedIn
+                            </a>
+                            <a href="https://www.upwork.com/freelancers/~016591da5a7b26dc12?viewMode=1" target="_blank"
+                               class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-white text-sm font-medium bg-gradient-to-r from-[#07B59E] to-[#00A67A] hover:opacity-90 transition">
+                                <img src="https://cdn.simpleicons.org/upwork/ffffff" alt="UpWork" class="w-4 h-4"> UpWork
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right: form -->
+                    <div class="glass-card p-8">
+                        <form id="contact-form" class="space-y-5">
                             <div>
-                                <label for="name" class="block text-sm font-semibold mb-2 text-gray-300">Nome</label>
-                                <input type="text" id="name" name="name" required
-                                    class="w-full px-4 py-3 bg-[#0B0C10]/50 border border-[#FFD700]/30 rounded-lg focus:outline-none focus:border-[#FFD700] transition-colors text-white">
+                                <label for="name" class="block text-xs font-semibold mb-1.5 text-gray-400 uppercase tracking-wider">Nome</label>
+                                <input type="text" id="name" name="name" required placeholder="O seu nome completo"
+                                    class="w-full px-4 py-3 bg-[#0B0C10]/50 border border-[#FFD700]/20 rounded-lg focus:outline-none focus:border-[#FFD700] transition-colors text-white text-sm placeholder-gray-600">
                             </div>
                             <div>
-                                <label for="email" class="block text-sm font-semibold mb-2 text-gray-300">Email</label>
-                                <input type="email" id="email" name="email" required
-                                    class="w-full px-4 py-3 bg-[#0B0C10]/50 border border-[#FFD700]/30 rounded-lg focus:outline-none focus:border-[#FFD700] transition-colors text-white">
+                                <label for="email" class="block text-xs font-semibold mb-1.5 text-gray-400 uppercase tracking-wider">Email</label>
+                                <input type="email" id="email" name="email" required placeholder="email@exemplo.com"
+                                    class="w-full px-4 py-3 bg-[#0B0C10]/50 border border-[#FFD700]/20 rounded-lg focus:outline-none focus:border-[#FFD700] transition-colors text-white text-sm placeholder-gray-600">
                             </div>
                             <div>
-                                <label for="message"
-                                    class="block text-sm font-semibold mb-2 text-gray-300">Mensagem</label>
-                                <textarea id="message" name="message" rows="5" required
-                                    class="w-full px-4 py-3 bg-[#0B0C10]/50 border border-[#FFD700]/30 rounded-lg focus:outline-none focus:border-[#FFD700] transition-colors text-white resize-none"></textarea>
+                                <label for="message" class="block text-xs font-semibold mb-1.5 text-gray-400 uppercase tracking-wider">Mensagem</label>
+                                <textarea id="message" name="message" rows="5" required placeholder="Descreva o seu projecto ou oportunidade..."
+                                    class="w-full px-4 py-3 bg-[#0B0C10]/50 border border-[#FFD700]/20 rounded-lg focus:outline-none focus:border-[#FFD700] transition-colors text-white resize-none text-sm placeholder-gray-600"></textarea>
                             </div>
-                            <button type="submit" class="btn-primary w-full">
+                            <button type="submit" class="btn-primary w-full justify-center">
                                 <i class="fas fa-paper-plane mr-2"></i>Enviar Mensagem
                             </button>
                         </form>
@@ -364,24 +437,31 @@
         </section>
 
         <!-- Footer -->
-        <footer class="py-8 border-t border-[#FFD700]/20">
+        <footer class="py-10 border-t border-[#FFD700]/15">
             <div class="container mx-auto px-6">
-                <div class="flex flex-col items-center text-center gap-4">
-                    <p class="text-gray-400">© 2025 Josué Joshua. Todos os direitos reservados.</p>
-                    <div class="flex gap-6">
-                        <a href="https://github.com/josuejoshua" target="_blank" class="social-link">
-                            <i class="fab fa-github text-2xl"></i>
+                <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="text-center md:text-left">
+                        <div class="footer-logo mb-1">Josué Sitoe</div>
+                        <p class="text-gray-600 text-xs tracking-wider">Desenvolvedor Fullstack · Maputo, MZ</p>
+                    </div>
+                    <div class="flex gap-5">
+                        <a href="https://github.com/JohnJoshua-Dev" target="_blank" class="social-link" title="GitHub">
+                            <i class="fab fa-github text-xl"></i>
                         </a>
-                        <a href="https://linkedin.com/in/josuejoshua" target="_blank" class="social-link">
-                            <i class="fab fa-linkedin text-2xl"></i>
+                        <a href="http://www.linkedin.com/in/josué-sitoe-programmer" target="_blank" class="social-link" title="LinkedIn">
+                            <i class="fab fa-linkedin text-xl"></i>
                         </a>
-                        <a href="https://twitter.com/josuejoshua" target="_blank" class="social-link">
-                            <i class="fab fa-twitter text-2xl"></i>
+                        <a href="https://www.upwork.com/freelancers/~016591da5a7b26dc12?viewMode=1" target="_blank" class="social-link" title="UpWork">
+                            <i class="fas fa-briefcase text-xl"></i>
                         </a>
-                        <a href="https://instagram.com/josuejoshua" target="_blank" class="social-link">
-                            <i class="fab fa-instagram text-2xl"></i>
+                        <a href="https://twitter.com/josuejoshua" target="_blank" class="social-link" title="Twitter">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="https://instagram.com/josuejoshua" target="_blank" class="social-link" title="Instagram">
+                            <i class="fab fa-instagram text-xl"></i>
                         </a>
                     </div>
+                    <p class="text-gray-600 text-xs">© 2025 Josué Sitoe. Todos os direitos reservados.</p>
                 </div>
             </div>
         </footer>
