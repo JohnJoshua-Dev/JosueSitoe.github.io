@@ -23,6 +23,56 @@
             padding: 30px;
         }
 
+        .cv-actions {
+            max-width: 1100px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .cv-actions a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .cv-actions .back-link {
+            color: #1a2a3a;
+            background: #eef2f7;
+        }
+
+        .cv-actions .back-link:hover {
+            background: #dde4ec;
+        }
+
+        .cv-actions .download-link {
+            color: #fff;
+            background: #5b9bd5;
+        }
+
+        .cv-actions .download-link:hover {
+            background: #4a89c2;
+        }
+
+        @media print {
+            .cv-actions {
+                display: none;
+            }
+            body {
+                display: block;
+            }
+        }
+
         .cv-container {
             max-width: 1100px;
             width: 100%;
@@ -471,18 +521,11 @@
                 box-shadow: none;
                 border-radius: 0;
                 max-width: 100%;
-                display: block;
             }
             .sidebar {
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
-                width: 100%;
             }
-            .main {
-                width: 100%;
-            }
-            .avatar,
-            .sidebar-section,
             .ref-item,
             .exp-item,
             .edu-item,
@@ -545,56 +588,6 @@
             .lang-main .lang-item-main {
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
-            }
-        }
-
-        .cv-actions {
-            max-width: 1100px;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-
-        .cv-actions a {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: 0.2s;
-        }
-
-        .cv-actions .back-link {
-            color: #1a2a3a;
-            background: #eef2f7;
-        }
-
-        .cv-actions .back-link:hover {
-            background: #dde4ec;
-        }
-
-        .cv-actions .download-link {
-            color: #fff;
-            background: #5b9bd5;
-        }
-
-        .cv-actions .download-link:hover {
-            background: #4a89c2;
-        }
-
-        @media print {
-            .cv-actions {
-                display: none;
-            }
-            body {
-                display: block;
             }
         }
     </style>
@@ -703,10 +696,9 @@
                 <li>Administração e otimização de bases de dados (SQL, MySQL)</li>
                 <li>Suporte técnico presencial e remoto a sistemas e utilizadores</li>
                 <li>Configuração e manutenção de servidores Windows/Linux</li>
-                <li>Diagnóstico e resolução de incidentes de hardware e software</li>
                 <li>Gestão de plataformas e suporte a soluções Microsoft 365</li>
                 <li>Criação de dashboards e relatórios em <strong>Power BI</strong> para análise de dados operacionais</li>
-                <li>Automação de fluxos de trabalho com <strong>Power Automate</strong> e gestão de tarefas com <strong>Planner</strong></li>
+                <li>Automação de fluxos de trabalho com <strong>Power Automate</strong> e gestão de tarefas com <strong>Planner</strong> e <strong>Trello</strong></li>
             </ul>
         </div>
 
