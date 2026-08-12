@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Josué Sitoe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #e6e9f0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 30px;
+        }
+
+        .cv-container {
+            max-width: 1100px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            display: grid;
+            grid-template-columns: 34% 66%;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .sidebar {
+            background: #1a2a3a;
+            color: #eaeef3;
+            padding: 40px 28px;
+        }
+
+        .avatar {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .avatar i {
+            font-size: 80px;
+            color: #5b9bd5;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 20px;
+            border-radius: 50%;
+            border: 3px solid #5b9bd5;
+        }
+
+        .avatar img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #5b9bd5;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .sidebar h1 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-align: center;
+            margin-top: 10px;
+            color: #fff;
+        }
+
+        .sidebar .subtitle {
+            text-align: center;
+            font-size: 14px;
+            color: #9bb7d4;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #2f4052;
+            padding-bottom: 20px;
+        }
+
+        .sidebar-section {
+            margin-bottom: 28px;
+        }
+
+        .sidebar-section h3 {
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #5b9bd5;
+            border-bottom: 2px solid #2f4052;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: #cfdce8;
+        }
+
+        .contact-item i {
+            width: 20px;
+            color: #5b9bd5;
+            font-size: 16px;
+        }
+
+        .contact-item a {
+            color: #cfdce8;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            color: #5b9bd5;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background: #2f4052;
+            color: #eaeef3;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin: 3px 4px 3px 0;
+            border: 1px solid #3e5266;
+        }
+
+        .skill-tag.highlight {
+            background: #5b9bd5;
+            color: #fff;
+            border-color: #5b9bd5;
+        }
+
+        .skill-tag.powerbi {
+            background: #f2c811;
+            color: #1a2a3a;
+            border-color: #f2c811;
+            font-weight: 600;
+        }
+
+        .skill-tag.copilot {
+            background: #7b3fe4;
+            color: #fff;
+            border-color: #7b3fe4;
+            font-weight: 600;
+        }
+
+        .lang-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            padding: 5px 0;
+            border-bottom: 1px solid #2a3a4a;
+        }
+
+        .lang-item span:last-child {
+            color: #9bb7d4;
+            font-size: 13px;
+        }
+
+        .ref-item {
+            margin-bottom: 14px;
+            padding: 10px 12px;
+            background: #2f4052;
+            border-radius: 8px;
+            border-left: 3px solid #5b9bd5;
+        }
+
+        .ref-item .ref-name {
+            font-weight: 700;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .ref-item .ref-role {
+            font-size: 13px;
+            color: #9bb7d4;
+            margin-bottom: 4px;
+        }
+
+        .ref-item .ref-contact {
+            font-size: 12px;
+            color: #cfdce8;
+            line-height: 1.6;
+        }
+
+        .ref-item .ref-contact i {
+            color: #5b9bd5;
+            width: 16px;
+            margin-right: 4px;
+        }
+
+        .main {
+            padding: 40px 35px;
+            background: #ffffff;
+        }
+
+        .main h2 {
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #1a2a3a;
+            border-bottom: 3px solid #5b9bd5;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+            font-weight: 700;
+        }
+
+        .profile-text {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #2d3f4f;
+            margin-bottom: 28px;
+            text-align: justify;
+        }
+
+        .exp-item {
+            margin-bottom: 24px;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 4px;
+        }
+
+        .exp-header h3 {
+            font-size: 17px;
+            color: #1a2a3a;
+            font-weight: 700;
+        }
+
+        .exp-header .company {
+            font-weight: 600;
+            color: #5b9bd5;
+            font-size: 15px;
+        }
+
+        .exp-header .period {
+            font-size: 13px;
+            color: #7a8a9a;
+            background: #eef2f7;
+            padding: 2px 14px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+
+        .exp-desc {
+            list-style: none;
+            margin-top: 8px;
+            padding-left: 4px;
+        }
+
+        .exp-desc li {
+            font-size: 14px;
+            color: #2d3f4f;
+            padding: 4px 0 4px 22px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .exp-desc li::before {
+            content: "▸";
+            color: #5b9bd5;
+            font-weight: bold;
+            position: absolute;
+            left: 2px;
+        }
+
+        .edu-item {
+            margin-bottom: 14px;
+            padding: 12px 16px;
+            background: #f5f7fa;
+            border-radius: 10px;
+            border-left: 4px solid #5b9bd5;
+        }
+
+        .edu-item .edu-title {
+            font-weight: 700;
+            color: #1a2a3a;
+            font-size: 15px;
+        }
+
+        .edu-item .edu-school {
+            color: #5b9bd5;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .edu-item .edu-year {
+            font-size: 13px;
+            color: #7a8a9a;
+            background: #eef2f7;
+            padding: 1px 12px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-left: 6px;
+        }
+
+        .edu-item .edu-status {
+            font-size: 13px;
+            color: #e67e22;
+            background: #fef5e7;
+            padding: 1px 12px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-left: 6px;
+            font-weight: 600;
+        }
+
+        .edu-item .edu-status.interrompido {
+            color: #c0392b;
+            background: #fdedec;
+        }
+
+        .edu-item .edu-status.concluido {
+            color: #27ae60;
+            background: #eafaf1;
+        }
+
+        .edu-item .edu-desc {
+            font-size: 14px;
+            color: #3d4f5f;
+            margin-top: 4px;
+        }
+
+        .course-item {
+            margin-bottom: 10px;
+            padding: 10px 16px;
+            background: #f8f9fb;
+            border-radius: 8px;
+            border-left: 3px solid #27ae60;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .course-item .course-name {
+            font-weight: 600;
+            color: #1a2a3a;
+            font-size: 14px;
+        }
+
+        .course-item .course-name i {
+            color: #27ae60;
+            margin-right: 8px;
+        }
+
+        .course-item .course-info {
+            font-size: 13px;
+            color: #5d6f7f;
+        }
+
+        .course-item .course-badge {
+            font-size: 12px;
+            background: #27ae60;
+            color: #fff;
+            padding: 2px 14px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        .tech-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 10px;
+            margin-top: 6px;
+        }
+
+        .tech-grid .tag {
+            background: #eef2f7;
+            color: #1a2a3a;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .tech-grid .tag.blue {
+            background: #5b9bd5;
+            color: #fff;
+        }
+
+        .tech-grid .tag.powerbi {
+            background: #f2c811;
+            color: #1a2a3a;
+            font-weight: 600;
+        }
+
+        .tech-grid .tag.copilot {
+            background: #7b3fe4;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 8px;
+        }
+
+        .lang-main {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 30px;
+            margin-top: 6px;
+        }
+
+        .lang-main .lang-item-main {
+            font-size: 14px;
+            background: #eef2f7;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-weight: 500;
+            color: #1a2a3a;
+        }
+
+        .lang-main .lang-item-main i {
+            color: #5b9bd5;
+            margin-right: 8px;
+        }
+
+        .lang-main .lang-item-main .level {
+            font-weight: 400;
+            color: #7a8a9a;
+            font-size: 13px;
+            margin-left: 6px;
+        }
+
+        @media (max-width: 768px) {
+            .cv-container {
+                grid-template-columns: 1fr;
+            }
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+            .exp-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+            .course-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
+            }
+            .ref-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+        }
+
+        @media print {
+            body {
+                background: #fff;
+                padding: 0;
+            }
+            .cv-container {
+                box-shadow: none;
+                border-radius: 0;
+                max-width: 100%;
+                display: block;
+            }
+            .sidebar {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                width: 100%;
+            }
+            .main {
+                width: 100%;
+            }
+            .avatar,
+            .sidebar-section,
+            .ref-item,
+            .exp-item,
+            .edu-item,
+            .course-item {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+            .main h2 {
+                break-after: avoid;
+                page-break-after: avoid;
+            }
+            .skill-tag.highlight {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .skill-tag.powerbi {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .skill-tag.copilot {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .tech-grid .tag.blue {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .tech-grid .tag.powerbi {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .tech-grid .tag.copilot {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .exp-header .period {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .edu-item {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .edu-item .edu-status {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .course-item {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .course-item .course-badge {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .ref-item {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .lang-main .lang-item-main {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        .cv-actions {
+            max-width: 1100px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .cv-actions a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .cv-actions .back-link {
+            color: #1a2a3a;
+            background: #eef2f7;
+        }
+
+        .cv-actions .back-link:hover {
+            background: #dde4ec;
+        }
+
+        .cv-actions .download-link {
+            color: #fff;
+            background: #5b9bd5;
+        }
+
+        .cv-actions .download-link:hover {
+            background: #4a89c2;
+        }
+
+        @media print {
+            .cv-actions {
+                display: none;
+            }
+            body {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="cv-actions">
+    <a href="../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Voltar ao Portfólio</a>
+    <a href="cv-Josué.pdf" download class="download-link"><i class="fas fa-download"></i> Baixar CV (PDF)</a>
+</div>
+
+<div class="cv-container">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <div class="avatar">
+            <img src="FotoJS.png" alt="Josué Sitoe">
+        </div>
+        <h1>JOSUÉ SITOE</h1>
+        <div class="subtitle">
+            Fullstack Developer · Platform Manager · IT Support · DBA
+        </div>
+
+        <div class="sidebar-section">
+            <h3><i class="fas fa-address-card" style="margin-right: 10px;"></i> Contacto</h3>
+            <div class="contact-item"><i class="fas fa-phone"></i> 872737483 / 842737483</div>
+            <div class="contact-item"><i class="fas fa-envelope"></i> josuerafaelisito@gmail.com</div>
+            <div class="contact-item"><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/josue-sitoe-programmer/" target="_blank">linkedin.com/in/josue-sitoe-programmer</a></div>
+            <div class="contact-item"><i class="fas fa-map-marker-alt"></i> Maputo, Marracuene</div>
+        </div>
+
+        <div class="sidebar-section">
+            <h3><i class="fas fa-cogs"></i> Competências</h3>
+            <span class="skill-tag highlight">Microsoft 365</span>
+            <span class="skill-tag highlight">Gestão de Plataformas</span>
+            <span class="skill-tag powerbi">Power BI</span>
+            <span class="skill-tag copilot">Copilot Studio</span>
+            <span class="skill-tag">Power Automate</span>
+            <span class="skill-tag">Planner</span>
+            <span class="skill-tag">Fullstack Dev</span>
+            <span class="skill-tag">DBA</span>
+            <span class="skill-tag">Helpdesk</span>
+            <span class="skill-tag">Redes</span>
+            <span class="skill-tag">Windows/Linux</span>
+            <span class="skill-tag">Suporte de Campo</span>
+            <span class="skill-tag">Vendas Técnicas</span>
+        </div>
+
+        <div class="sidebar-section">
+            <h3><i class="fas fa-globe"></i> Idiomas</h3>
+            <div class="lang-item"><span>Português</span> <span>Nativo</span></div>
+            <div class="lang-item"><span>Inglês</span> <span>Técnico / Interm.</span></div>
+            <div class="lang-item"><span>Tsonga</span> <span>Intermediário</span></div>
+        </div>
+
+        <div class="sidebar-section">
+            <h3><i class="fas fa-truck"></i> Disponibilidade</h3>
+            <div style="font-size:14px; color:#cfdce8; line-height:1.7;">
+                <i class="fas fa-map-marker-alt" style="color:#5b9bd5; margin-right:8px;"></i> Disponível para deslocações e trabalho de campo
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <h3><i class="fas fa-users"></i> Referências</h3>
+
+            <div class="ref-item">
+                <div class="ref-name">Faquir da Gloria</div>
+                <div class="ref-role">MPDC · IT Support Application & Database</div>
+                <div class="ref-contact">
+                    <i class="fas fa-phone"></i> +258 844060906<br>
+                    <i class="fas fa-envelope"></i> faquirdagloria@gmail.com
+                </div>
+            </div>
+
+            <div class="ref-item">
+                <div class="ref-name">Silvestre Khalau</div>
+                <div class="ref-role">Print4you · IT</div>
+                <div class="ref-contact">
+                    <i class="fas fa-phone"></i> +258 846306341<br>
+                    <i class="fas fa-envelope"></i> silkhalaup@gmail.com
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <h2><i class="fas fa-user" style="margin-right:12px; color:#5b9bd5;"></i> Perfil Profissional</h2>
+        <div class="profile-text">
+            Profissional com experiência em desenvolvimento fullstack, administração de bases de dados, suporte técnico e gestão de plataformas. Especializado em <strong>soluções Microsoft 365</strong>, <strong>Power BI</strong> para análise e visualização de dados, <strong>Copilot Studio</strong>, <strong>Power Automate</strong> e <strong>Planner</strong> para automação e otimização de processos. Combino competências técnicas com visão de negócio, oferecendo suporte próximo ao cliente, diagnóstico ágil e implementação de soluções eficientes em ambientes Windows e Linux.
+        </div>
+
+        <h2><i class="fas fa-briefcase" style="margin-right:12px; color:#5b9bd5;"></i> Experiência Profissional</h2>
+
+        <div class="exp-item">
+            <div class="exp-header">
+                <div>
+                    <span class="company">Print4you</span>
+                    <h3 style="display:inline-block; margin-left:6px;">Desenvolvedor · DBA · Suporte Técnico</h3>
+                </div>
+                <span class="period">2024 – Atual</span>
+            </div>
+            <ul class="exp-desc">
+                <li>Desenvolvimento e manutenção de aplicações internas (web e mobile)</li>
+                <li>Administração e otimização de bases de dados (SQL, MySQL)</li>
+                <li>Suporte técnico presencial e remoto a sistemas e utilizadores</li>
+                <li>Configuração e manutenção de servidores Windows/Linux</li>
+                <li>Diagnóstico e resolução de incidentes de hardware e software</li>
+                <li>Gestão de plataformas e suporte a soluções Microsoft 365</li>
+                <li>Criação de dashboards e relatórios em <strong>Power BI</strong> para análise de dados operacionais</li>
+                <li>Automação de fluxos de trabalho com <strong>Power Automate</strong> e gestão de tarefas com <strong>Planner</strong></li>
+            </ul>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-header">
+                <div>
+                    <span class="company">Cipsv Serviços</span>
+                    <h3 style="display:inline-block; margin-left:6px;">Técnico de Campo · Redes</h3>
+                </div>
+                <span class="period">2015 – 2024</span>
+            </div>
+            <ul class="exp-desc">
+                <li>Instalação, configuração e manutenção de redes de dados e telecomunicações</li>
+                <li>Suporte técnico externo a clientes empresariais</li>
+                <li>Diagnóstico e resolução de problemas de conectividade e infraestrutura</li>
+                <li>Gestão de trabalhos de campo e equipas técnicas</li>
+                <li>Intervenções em projetos de redes e sistemas</li>
+            </ul>
+        </div>
+
+        <h2 style="margin-top:10px;"><i class="fas fa-graduation-cap" style="margin-right:12px; color:#5b9bd5;"></i> Formação Académica</h2>
+
+        <div class="edu-item">
+            <div class="edu-title">Informática Aplicada (Eng. Software) <span class="edu-year">2026 – 2030</span></div>
+            <div class="edu-school">Universidade Pedagógica de Maputo</div>
+            <div class="edu-desc"><i class="fas fa-clock" style="color:#27ae60; margin-right:6px;"></i> Em curso – previsão de conclusão em 2030</div>
+        </div>
+
+        <div class="edu-item">
+            <div class="edu-title">Eng. Tecnologias e Sistemas de Informação <span class="edu-year">2019 – 2020</span></div>
+            <div class="edu-school">Universidade Joaquim Chissano</div>
+            <div class="edu-desc"><span class="edu-status interrompido"><i class="fas fa-pause-circle"></i> Interrompido no 2º ano</span></div>
+        </div>
+
+        <div class="edu-item">
+            <div class="edu-title">Electricidade Industrial <span class="edu-year">2014 – 2016</span></div>
+            <div class="edu-school">Instituto Industrial de Maputo</div>
+            <div class="edu-desc"><span class="edu-status concluido"><i class="fas fa-check-circle"></i> Concluído</span></div>
+        </div>
+
+        <h2 style="margin-top:14px;"><i class="fas fa-certificate" style="margin-right:12px; color:#27ae60;"></i> Cursos & Certificações</h2>
+
+        <div class="course-item">
+            <div class="course-name"><i class="fas fa-robot"></i> Automação de Sistemas</div>
+            <div class="course-info">IFRS – 30h | 2026</div>
+            <span class="course-badge"><i class="fas fa-check"></i> Concluído</span>
+        </div>
+
+        <div class="course-item">
+            <div class="course-name"><i class="fas fa-brain"></i> AI Fluency: Framework & Foundations</div>
+            <div class="course-info">Anthropic | 2026</div>
+            <span class="course-badge"><i class="fas fa-check"></i> Concluído</span>
+        </div>
+
+        <div class="course-item">
+            <div class="course-name"><i class="fas fa-comment-dots"></i> Microsoft Copilot Studio</div>
+            <div class="course-info">Microsoft | 2026</div>
+            <span class="course-badge"><i class="fas fa-check"></i> Concluído</span>
+        </div>
+
+        <div class="course-item">
+            <div class="course-name"><i class="fas fa-tasks"></i> Microsoft Planner</div>
+            <div class="course-info">Microsoft | 2026</div>
+            <span class="course-badge"><i class="fas fa-check"></i> Concluído</span>
+        </div>
+
+        <div class="course-item">
+            <div class="course-name"><i class="fas fa-cogs"></i> Power Automate</div>
+            <div class="course-info">Microsoft | 2026</div>
+            <span class="course-badge"><i class="fas fa-check"></i> Concluído</span>
+        </div>
+
+        <h2 style="margin-top:14px;"><i class="fas fa-language" style="margin-right:12px; color:#5b9bd5;"></i> Idiomas</h2>
+        <div class="lang-main">
+            <span class="lang-item-main"><i class="fas fa-check-circle" style="color:#27ae60;"></i> Português <span class="level">(Nativo)</span></span>
+            <span class="lang-item-main"><i class="fas fa-circle" style="color:#f39c12;"></i> Inglês <span class="level">(Técnico / Interm.)</span></span>
+            <span class="lang-item-main"><i class="fas fa-circle" style="color:#f39c12;"></i> Tsonga <span class="level">(Intermediário)</span></span>
+        </div>
+
+        <h2 style="margin-top:18px;"><i class="fas fa-code" style="margin-right:12px; color:#5b9bd5;"></i> Habilidades Técnicas</h2>
+
+        <div class="two-col">
+            <div>
+                <div style="font-weight:700; font-size:14px; color:#1a2a3a; margin-bottom:5px;">💻 Desenvolvimento & Dados</div>
+                <div class="tech-grid">
+                    <span class="tag">HTML/CSS</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">PHP</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">React</span>
+                    <span class="tag">Node.js</span>
+                    <span class="tag">Flutter</span>
+                    <span class="tag blue">SQL</span>
+                    <span class="tag blue">MySQL</span>
+                    <span class="tag blue">PostgreSQL</span>
+                    <span class="tag">MongoDB</span>
+                    <span class="tag">APIs</span>
+                    <span class="tag powerbi">Power BI</span>
+                </div>
+            </div>
+            <div>
+                <div style="font-weight:700; font-size:14px; color:#1a2a3a; margin-bottom:5px;">🖥️ Sistemas & Suporte</div>
+                <div class="tech-grid">
+                    <span class="tag">Windows Server</span>
+                    <span class="tag">Linux</span>
+                    <span class="tag blue">Microsoft 365</span>
+                    <span class="tag blue">SharePoint</span>
+                    <span class="tag blue">Exchange</span>
+                    <span class="tag">Teams</span>
+                    <span class="tag copilot">Copilot Studio</span>
+                    <span class="tag">Power Automate</span>
+                    <span class="tag">Planner</span>
+                    <span class="tag">Redes TCP/IP</span>
+                    <span class="tag">Firewall/VPN</span>
+                    <span class="tag">Helpdesk</span>
+                    <span class="tag">Gestão de Incidentes</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
