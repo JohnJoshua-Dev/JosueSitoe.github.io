@@ -429,6 +429,38 @@
             font-weight: 600;
         }
 
+        .proj-item {
+            margin-bottom: 10px;
+            padding: 10px 16px;
+            background: #f8f9fb;
+            border-radius: 8px;
+            border-left: 3px solid #5b9bd5;
+        }
+
+        .proj-item .proj-name {
+            font-weight: 600;
+            color: #1a2a3a;
+            font-size: 14px;
+        }
+
+        .proj-item .proj-name i {
+            color: #5b9bd5;
+            margin-right: 8px;
+        }
+
+        .proj-item .proj-desc {
+            font-size: 13px;
+            color: #5d6f7f;
+            margin-top: 2px;
+        }
+
+        .proj-item .proj-stack {
+            font-size: 12px;
+            color: #5b9bd5;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
         .tech-grid {
             display: flex;
             flex-wrap: wrap;
@@ -538,7 +570,8 @@
             .ref-item,
             .exp-item,
             .edu-item,
-            .course-item {
+            .course-item,
+            .proj-item {
                 break-inside: avoid;
                 page-break-inside: avoid;
             }
@@ -587,6 +620,10 @@
                 print-color-adjust: exact;
             }
             .course-item .course-badge {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .proj-item {
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
@@ -728,6 +765,28 @@
             </ul>
         </div>
 
+        <h2 style="margin-top:10px;"><i class="fas fa-diagram-project" style="margin-right:12px; color:#5b9bd5;"></i> Projetos em Destaque</h2>
+
+        <div class="proj-item">
+            <div class="proj-name"><i class="fas fa-university"></i> Gestão Académica — gestão financeira, turmas e notas de uma faculdade</div>
+            <div class="proj-stack">Java · MySQL</div>
+        </div>
+
+        <div class="proj-item">
+            <div class="proj-name"><i class="fas fa-tasks"></i> Portal de Pedidos — fluxos entre equipas com relatórios e notificações em tempo real</div>
+            <div class="proj-stack">Laravel · React · SQL Server</div>
+        </div>
+
+        <div class="proj-item">
+            <div class="proj-name"><i class="fas fa-car-side"></i> Lavagem Auto — plataforma SaaS multi-tenant de marcação de lavagens, web + app móvel</div>
+            <div class="proj-stack">Node.js · Multi-tenant · PWA</div>
+        </div>
+
+        <div class="proj-item">
+            <div class="proj-name"><i class="fas fa-file-invoice"></i> Gerador de Propostas — geração automática de propostas comerciais com tracking de leitura</div>
+            <div class="proj-stack">Node.js · Python · PostgreSQL</div>
+        </div>
+
         <h2 style="margin-top:10px;"><i class="fas fa-graduation-cap" style="margin-right:12px; color:#5b9bd5;"></i> Formação Académica</h2>
 
         <div class="edu-item">
@@ -792,23 +851,7 @@
 
         <div class="course-item">
             <div class="course-text">
-                <div class="course-name"><i class="fas fa-comment-dots"></i> Microsoft Copilot Studio</div>
-                <div class="course-info">Microsoft | 2026</div>
-            </div>
-            <span class="course-badge"><i class="fas fa-check"></i> Concluído</span>
-        </div>
-
-        <div class="course-item">
-            <div class="course-text">
-                <div class="course-name"><i class="fas fa-tasks"></i> Microsoft Planner</div>
-                <div class="course-info">Microsoft | 2026</div>
-            </div>
-            <span class="course-badge"><i class="fas fa-check"></i> Concluído</span>
-        </div>
-
-        <div class="course-item">
-            <div class="course-text">
-                <div class="course-name"><i class="fas fa-cogs"></i> Power Automate</div>
+                <div class="course-name"><i class="fas fa-comment-dots"></i> Copilot Studio · Planner · Power Automate</div>
                 <div class="course-info">Microsoft | 2026</div>
             </div>
             <span class="course-badge"><i class="fas fa-check"></i> Concluído</span>
