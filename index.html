@@ -118,11 +118,11 @@
                         <!-- Stats -->
                         <div class="grid grid-cols-3 gap-4 max-w-md mx-auto lg:mx-0">
                             <div class="stat-card">
-                                <div class="stat-num counter" data-target="2" data-suffix="+">0</div>
+                                <div class="stat-num counter" data-start="2021-05-01" data-suffix="+">0</div>
                                 <div class="stat-label">Anos de Exp.</div>
                             </div>
                             <div class="stat-card">
-                                <div class="stat-num counter" data-target="9" data-suffix="+">0</div>
+                                <div class="stat-num counter" data-target="12" data-suffix="+">0</div>
                                 <div class="stat-label">Projetos</div>
                             </div>
                             <div class="stat-card">
@@ -257,8 +257,8 @@
                         </p>
                         <div class="flex flex-wrap gap-2 mb-5">
                             <span class="tech-badge">Python</span>
+                            <span class="tech-badge">MySQL</span>
                             <span class="tech-badge">OCR</span>
-                            <span class="tech-badge">Web</span>
                         </div>
                         <button class="btn-project">
                             Ver Detalhes <i class="fas fa-arrow-right ml-2"></i>
@@ -276,8 +276,8 @@
                         </p>
                         <div class="flex flex-wrap gap-2 mb-5">
                             <span class="tech-badge">Laravel</span>
-                            <span class="tech-badge">Flutter</span>
-                            <span class="tech-badge">Excel</span>
+                            <span class="tech-badge">React</span>
+                            <span class="tech-badge">SQL Server</span>
                         </div>
                         <button class="btn-project">
                             Ver Detalhes <i class="fas fa-arrow-right ml-2"></i>
@@ -294,9 +294,10 @@
                             Conversor de texto para voz com inteligência artificial para melhorar a acessibilidade digital.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-5">
-                            <span class="tech-badge">PHP</span>
-                            <span class="tech-badge">IA</span>
-                            <span class="tech-badge">TTS</span>
+                            <span class="tech-badge">HTML5</span>
+                            <span class="tech-badge">CSS3</span>
+                            <span class="tech-badge">JavaScript</span>
+                            <span class="tech-badge">IA · Speech Synthesis</span>
                         </div>
                         <button class="btn-project">
                             Ver Detalhes <i class="fas fa-arrow-right ml-2"></i>
@@ -313,16 +314,156 @@
                             Aplicação de gestão de stock para web e mobile com sincronização de dados em tempo real.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="tech-badge">Laravel</span>
+                            <span class="tech-badge">Angular</span>
                             <span class="tech-badge">Flutter</span>
-                            <span class="tech-badge">Web</span>
-                            <span class="tech-badge">Mobile</span>
+                            <span class="tech-badge">SQL Server</span>
                         </div>
                         <button class="btn-project">
                             Ver Detalhes <i class="fas fa-arrow-right ml-2"></i>
                         </button>
                     </div>
 
-                    <!-- Project 5 — MyWeeding (Featured / Full Width) -->
+                    <!-- Project 5 — Lavagem Auto -->
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-car-side text-4xl"></i>
+                        </div>
+                        <h3 class="text-xl font-orbitron font-bold text-[#FFD700] mb-2">Lavagem Auto</h3>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                            Plataforma multi-tenant de gestão de lavagens de viaturas ao domicílio e em garagem, por marcação. Clientes registam o seu carro e escolhem pacotes de lavagem; operadores aceitam os pedidos, com uma taxa de manutenção do sistema descontada automaticamente. Backoffice web para administradores e apps móveis para clientes e operadores.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="tech-badge">Node.js</span>
+                            <span class="tech-badge">Multi-tenant</span>
+                            <span class="tech-badge">PWA</span>
+                        </div>
+                        <div class="flex flex-wrap gap-3">
+                            <a href="https://autolavagem-api.onrender.com" target="_blank" class="btn-project-live">
+                                <i class="fas fa-external-link-alt mr-2"></i> Web / Backoffice
+                            </a>
+                            <a href="https://lavagem-mobile.vercel.app" target="_blank" class="btn-project-live">
+                                <i class="fas fa-mobile-alt mr-2"></i> App Móvel (PWA)
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 6 — Gerador de Propostas -->
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-file-invoice text-4xl"></i>
+                        </div>
+                        <h3 class="text-xl font-orbitron font-bold text-[#FFD700] mb-2">Gerador de Propostas</h3>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                            Aplicação web que automatiza a criação de propostas comerciais, gerando a partir dos mesmos dados uma landing page e um PPTX. Permite rastrear se e quando a proposta foi aberta e por quanto tempo foi analisada, com formas rápidas de contacto integradas.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="tech-badge">Node.js</span>
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">PostgreSQL (Supabase)</span>
+                        </div>
+                        <button class="btn-project">
+                            Ver Detalhes <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+
+                    <!-- Project 7 — SIAGD -->
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-chart-line text-4xl"></i>
+                        </div>
+                        <h3 class="text-xl font-orbitron font-bold text-[#FFD700] mb-2">SIAGD</h3>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                            Sistema Integrado de Análise e Gestão de Desempenho para acompanhar tarefas e metas de colaboradores e da organização, com avaliações desde a autoavaliação até à avaliação por superiores hierárquicos, além de gestão de férias, entre outras funcionalidades.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="tech-badge">Node.js</span>
+                            <span class="tech-badge">PostgreSQL</span>
+                        </div>
+                        <button class="btn-project">
+                            Ver Detalhes <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+
+                    <!-- Project 8 — API Credium Smart -->
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-money-check-alt text-4xl"></i>
+                        </div>
+                        <h3 class="text-xl font-orbitron font-bold text-[#FFD700] mb-2">API Credium Smart</h3>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                            Desenvolvimento do backend e da API do Credium Smart, uma solução multi-tenant de gestão inteligente de microcrédito que cobre marketing, RH, gestão de empréstimos, follow-up e pagamento final.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="tech-badge">Laravel</span>
+                            <span class="tech-badge">MySQL</span>
+                            <span class="tech-badge">Multi-tenant</span>
+                        </div>
+                        <div class="flex flex-wrap gap-3">
+                            <a href="https://crediumsmart.com" target="_blank" class="btn-project-live">
+                                <i class="fas fa-external-link-alt mr-2"></i> Ver Site
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 9 — Assinatura Digital -->
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-signature text-4xl"></i>
+                        </div>
+                        <h3 class="text-xl font-orbitron font-bold text-[#FFD700] mb-2">Assinatura Digital</h3>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                            API e portal de gestão de assinatura digital de documentos, facilitando a digitalização de processos ao permitir definir o local exato da assinatura no documento. Implementada no Portal de Pedidos interno.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="tech-badge">Laravel</span>
+                            <span class="tech-badge">SQL Server</span>
+                            <span class="tech-badge">API</span>
+                        </div>
+                        <button class="btn-project">
+                            Ver Detalhes <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+
+                    <!-- Project 10 — Gestão Académica -->
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-university text-4xl"></i>
+                        </div>
+                        <h3 class="text-xl font-orbitron font-bold text-[#FFD700] mb-2">Gestão Académica</h3>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                            Aplicação Java Web para gestão de uma faculdade: finanças, atribuição de alunos a turmas e de docentes a disciplinas, e gestão de notas de frequência e de exames. Solução não hospedada, disponível como código-fonte no meu GitHub.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="tech-badge">Java</span>
+                            <span class="tech-badge">Java Web</span>
+                            <span class="tech-badge">MySQL</span>
+                        </div>
+                        <button class="btn-project">
+                            Ver Detalhes <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+
+                    <!-- Project 11 — We Code -->
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-chalkboard-teacher text-4xl"></i>
+                        </div>
+                        <h3 class="text-xl font-orbitron font-bold text-[#FFD700] mb-2">We Code</h3>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                            Iniciativa de aulas de programação em Java que criei em 2025 para ajudar jovens universitários a ligar a teoria da faculdade à prática do mercado, guiando-os a transformar conhecimento em soluções funcionais de ponta a ponta. Durou 3 meses.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="tech-badge">Java</span>
+                            <span class="tech-badge">Mentoria</span>
+                            <span class="tech-badge">2025</span>
+                        </div>
+                        <button class="btn-project">
+                            Ver Detalhes <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+
+                    <!-- Project 12 — MyWeeding (Featured / Full Width) -->
                     <div class="project-card project-card--featured md:col-span-2">
                         <div class="flex flex-col md:flex-row gap-6 items-start">
                             <div class="flex-shrink-0">

@@ -235,7 +235,17 @@ const navObserver = new IntersectionObserver((entries) => {
 sections.forEach((s) => navObserver.observe(s))
 
 // Counter Animation
+function yearsSince(startStr) {
+  const start = new Date(startStr)
+  const now = new Date()
+  let years = now.getFullYear() - start.getFullYear()
+  const monthDay = now.getMonth() - start.getMonth() || now.getDate() - start.getDate()
+  if (monthDay < 0) years--
+  return years
+}
+
 function animateCounter(el) {
+  if (el.dataset.start) el.dataset.target = yearsSince(el.dataset.start)
   const target = parseInt(el.dataset.target, 10)
   const suffix = el.dataset.suffix || ""
   const duration = 1800
