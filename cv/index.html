@@ -557,11 +557,32 @@
             body {
                 background: #fff;
                 padding: 0;
+                display: block;
+                min-height: auto;
             }
             .cv-container {
                 box-shadow: none;
                 border-radius: 0;
                 max-width: 100%;
+                grid-template-columns: 34% 66% !important;
+                zoom: 0.75;
+            }
+            .two-col {
+                grid-template-columns: 1fr 1fr !important;
+            }
+            .exp-header {
+                flex-direction: row !important;
+                align-items: baseline !important;
+                gap: 0 !important;
+            }
+            .course-item {
+                flex-direction: row !important;
+                align-items: center !important;
+                gap: 12px !important;
+            }
+            .ref-item {
+                flex-direction: column !important;
+                align-items: flex-start !important;
             }
             .sidebar {
                 -webkit-print-color-adjust: exact;
