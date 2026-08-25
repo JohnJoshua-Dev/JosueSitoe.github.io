@@ -157,18 +157,21 @@ contactForm.addEventListener("submit", (e) => {
   const email   = document.getElementById("email").value.trim()
   const message = document.getElementById("message").value.trim()
 
+  const lang = document.documentElement.lang === "en" ? "en" : "pt"
+  const t = (window.PORTFOLIO_I18N && window.PORTFOLIO_I18N[lang]) || {}
+
   if (!name || !email || !message) {
-    showToast("Por favor, preencha todos os campos.", "error")
+    showToast(t.toast_fill_fields || "Por favor, preencha todos os campos.", "error")
     return
   }
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   if (!emailRegex.test(email)) {
-    showToast("Por favor, insira um email válido.", "error")
+    showToast(t.toast_invalid_email || "Por favor, insira um email válido.", "error")
     return
   }
 
-  showToast("Mensagem enviada! Entrarei em contacto em breve 🙏")
+  showToast(t.toast_success || "Mensagem enviada! Entrarei em contacto em breve 🙏")
   contactForm.reset()
 })
 

@@ -33,26 +33,32 @@
                     <div class="text-2xl font-orbitron font-bold text-[#FFD700] glow-text">
                         JS
                     </div>
-                    <div class="hidden md:flex space-x-8">
-                        <a href="#inicio" class="nav-link">Início</a>
-                        <a href="#sobre" class="nav-link">Sobre</a>
-                        <a href="#habilidades" class="nav-link">Habilidades</a>
-                        <a href="#projetos" class="nav-link">Projetos</a>
-                        <a href="cv/" target="_blank" class="nav-link">Currículo</a>
-                        <a href="#contacto" class="nav-link">Contacto</a>
+                    <div class="hidden md:flex space-x-8 items-center">
+                        <a href="#inicio" class="nav-link" data-i18n="nav_inicio">Início</a>
+                        <a href="#sobre" class="nav-link" data-i18n="nav_sobre">Sobre</a>
+                        <a href="#habilidades" class="nav-link" data-i18n="nav_habilidades">Habilidades</a>
+                        <a href="#projetos" class="nav-link" data-i18n="nav_projetos">Projetos</a>
+                        <a href="cv/" target="_blank" class="nav-link" data-i18n="nav_curriculo">Currículo</a>
+                        <a href="#contacto" class="nav-link" data-i18n="nav_contacto">Contacto</a>
                     </div>
-                    <button id="mobile-menu-btn" class="md:hidden text-[#FFD700]">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
+                    <div class="flex items-center gap-3">
+                        <div class="lang-switch-nav">
+                            <button type="button" class="lang-btn-nav" data-lang="pt">PT</button>
+                            <button type="button" class="lang-btn-nav" data-lang="en">EN</button>
+                        </div>
+                        <button id="mobile-menu-btn" class="md:hidden text-[#FFD700]">
+                            <i class="fas fa-bars text-2xl"></i>
+                        </button>
+                    </div>
                 </div>
                 <!-- Mobile Menu -->
                 <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-4">
-                    <a href="#inicio" class="block nav-link">Início</a>
-                    <a href="#sobre" class="block nav-link">Sobre</a>
-                    <a href="#habilidades" class="block nav-link">Habilidades</a>
-                    <a href="#projetos" class="block nav-link">Projetos</a>
-                    <a href="cv/" target="_blank" class="block nav-link">Currículo</a>
-                    <a href="#contacto" class="block nav-link">Contacto</a>
+                    <a href="#inicio" class="block nav-link" data-i18n="nav_inicio">Início</a>
+                    <a href="#sobre" class="block nav-link" data-i18n="nav_sobre">Sobre</a>
+                    <a href="#habilidades" class="block nav-link" data-i18n="nav_habilidades">Habilidades</a>
+                    <a href="#projetos" class="block nav-link" data-i18n="nav_projetos">Projetos</a>
+                    <a href="cv/" target="_blank" class="block nav-link" data-i18n="nav_curriculo">Currículo</a>
+                    <a href="#contacto" class="block nav-link" data-i18n="nav_contacto">Contacto</a>
                 </div>
             </div>
         </nav>
@@ -65,15 +71,15 @@
                     <!-- TEXT SIDE -->
                     <div class="flex-1 text-center lg:text-left">
                         <div class="flex flex-wrap justify-center lg:justify-start gap-3 mb-6">
-                            <span class="avail-badge available">🟢 Disponível para Freelance</span>
-                            <span class="avail-badge location">📍 Maputo, Moçambique</span>
+                            <span class="avail-badge available" data-i18n="avail_badge">🟢 Disponível para Freelance</span>
+                            <span class="avail-badge location" data-i18n="location_badge">📍 Maputo, Moçambique</span>
                         </div>
 
                         <h1 class="text-4xl md:text-6xl font-orbitron font-bold mb-3 glow-text leading-tight">
-                            Olá, eu sou<br><span class="text-[#FFD700]">Josué Sitoe</span>
+                            <span data-i18n="hero_greeting">Olá, eu sou</span><br><span class="text-[#FFD700]">Josué Sitoe</span>
                         </h1>
 
-                        <p class="text-lg md:text-xl text-gray-300 mb-4">
+                        <p class="text-lg md:text-xl text-gray-300 mb-4" data-i18n="hero_subtitle">
                             Desenvolvedor Fullstack apaixonado por tecnologia e inovação.
                         </p>
 
@@ -103,15 +109,15 @@
                         <div class="flex flex-wrap justify-center lg:justify-start gap-3 mb-10">
                             <a href="#projetos"
                                class="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white font-semibold shadow-lg bg-gradient-to-r from-[#06b6d4] to-[#3b82f6] hover:opacity-90 transition">
-                                <i class="fas fa-folder-open"></i> Ver Projetos
+                                <i class="fas fa-folder-open"></i> <span data-i18n="btn_ver_projetos">Ver Projetos</span>
                             </a>
-                            <a href="cv/" target="_blank"
+                            <a href="cv/" target="_blank" id="hero-cv-link"
                                class="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white font-semibold shadow-lg bg-gradient-to-r from-[#FB7185] to-[#FB923C] hover:opacity-90 transition">
-                                <i class="fas fa-id-card"></i> Ver CV
+                                <i class="fas fa-id-card"></i> <span data-i18n="btn_ver_cv">Ver CV</span>
                             </a>
-                            <a href="cv/cv-Josué.pdf?v=4" download="cv-Josué.pdf"
+                            <a href="cv/cv-Josué.pdf?v=5" download="cv-Josué.pdf" id="hero-download-link"
                                class="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white font-semibold shadow-lg bg-gradient-to-r from-[#FB7185] to-[#FB923C] hover:opacity-90 transition">
-                                <i class="fas fa-download"></i> Download CV
+                                <i class="fas fa-download"></i> <span data-i18n="btn_download_cv">Download CV</span>
                             </a>
                         </div>
 
@@ -119,15 +125,15 @@
                         <div class="grid grid-cols-3 gap-4 max-w-md mx-auto lg:mx-0">
                             <div class="stat-card">
                                 <div class="stat-num counter" data-start="2021-05-01" data-suffix="+">0</div>
-                                <div class="stat-label">Anos de Exp.</div>
+                                <div class="stat-label" data-i18n="stat_anos">Anos de Exp.</div>
                             </div>
                             <div class="stat-card">
                                 <div class="stat-num counter" data-target="12" data-suffix="+">0</div>
-                                <div class="stat-label">Projetos</div>
+                                <div class="stat-label" data-i18n="stat_projetos">Projetos</div>
                             </div>
                             <div class="stat-card">
                                 <div class="stat-num counter" data-target="3" data-suffix="">0</div>
-                                <div class="stat-label">Idiomas</div>
+                                <div class="stat-label" data-i18n="stat_idiomas">Idiomas</div>
                             </div>
                         </div>
                     </div>
@@ -151,7 +157,7 @@
 
         <section id="sobre" class="py-20 relative">
             <div class="container mx-auto px-6">
-                <h2 class="section-title">Sobre Mim</h2>
+                <h2 class="section-title" data-i18n="sobre_title">Sobre Mim</h2>
                 <div class="max-w-4xl mx-auto">
                     <div class="glass-card p-8 md:p-12 flex flex-col md:flex-row items-center gap-8">
                         <div class="flex-shrink-0">
@@ -162,18 +168,18 @@
                         </div>
                         <div class="text-center md:text-left">
                             <h3 class="text-2xl font-orbitron font-bold text-[#FFD700] mb-1">Josué Rafael Sitoe</h3>
-                            <p class="text-[#A37FFF] text-sm mb-4 tracking-widest uppercase">Desenvolvedor Fullstack · Maputo, MZ</p>
-                            <p class="text-gray-300 leading-relaxed text-base mb-3">
+                            <p class="text-[#A37FFF] text-sm mb-4 tracking-widest uppercase" data-i18n="role_line">Desenvolvedor Fullstack · Maputo, MZ</p>
+                            <p class="text-gray-300 leading-relaxed text-base mb-3" data-i18n="about_p1">
                                 Sou um profissional dedicado, dinâmico e entusiasta, sempre em busca de progresso.
                                 Gosto de criar soluções tecnológicas inovadoras e funcionais que unem design e lógica.
                             </p>
-                            <p class="text-gray-400 leading-relaxed text-sm">
+                            <p class="text-gray-400 leading-relaxed text-sm" data-i18n="about_p2">
                                 Estudante de Engenharia Informática com experiência prática em projectos web, mobile e sistemas de gestão para empresas em Moçambique.
                             </p>
                             <div class="mt-5 flex flex-wrap gap-3 justify-center md:justify-start">
-                                <span class="badge">Inovador</span>
-                                <span class="badge">Criativo</span>
-                                <span class="badge">Dedicado</span>
+                                <span class="badge" data-i18n="badge_inovador">Inovador</span>
+                                <span class="badge" data-i18n="badge_criativo">Criativo</span>
+                                <span class="badge" data-i18n="badge_dedicado">Dedicado</span>
                                 <span class="badge">Fullstack</span>
                                 <span class="badge">Freelancer</span>
                             </div>
@@ -186,7 +192,7 @@
         <!-- Skills Section -->
         <section id="habilidades" class="py-20 relative">
             <div class="container mx-auto px-6">
-                <h2 class="section-title">Habilidades Técnicas</h2>
+                <h2 class="section-title" data-i18n="habilidades_title">Habilidades Técnicas</h2>
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 max-w-6xl mx-auto">
                     <div class="skill-card">
                         <i class="fab fa-html5 text-5xl mb-3"></i>
@@ -242,7 +248,7 @@
         <!-- Projects Section -->
         <section id="projetos" class="py-20 relative">
             <div class="container mx-auto px-6">
-                <h2 class="section-title">Projetos</h2>
+                <h2 class="section-title" data-i18n="projetos_title">Projetos</h2>
                 <div class="section-sep"><div class="section-sep-diamond"></div></div>
 
                 <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
@@ -252,7 +258,7 @@
                             <i class="fas fa-graduation-cap text-4xl"></i>
                         </div>
                         <h3 class="text-xl font-orbitron font-bold text-[#FFD700] mb-2">Central Académica</h3>
-                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed" data-i18n="proj_central_academica_desc">
                             Sistema de gestão escolar com integração online e OCR para digitalização automática de documentos académicos.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-5">
@@ -261,7 +267,7 @@
                             <span class="tech-badge">OCR</span>
                         </div>
                         <button class="btn-project">
-                            Ver Detalhes <i class="fas fa-arrow-right ml-2"></i>
+                            <span data-i18n="btn_ver_detalhes">Ver Detalhes</span> <i class="fas fa-arrow-right ml-2"></i>
                         </button>
                     </div>
 
@@ -271,7 +277,7 @@
                             <i class="fas fa-tasks text-4xl"></i>
                         </div>
                         <h3 class="text-xl font-orbitron font-bold text-[#FFD700] mb-2">Portal de Pedidos</h3>
-                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed" data-i18n="proj_portal_pedidos_desc">
                             Plataforma de gestão de fluxos entre equipas com geração automática de relatórios Excel e notificações em tempo real.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-5">
@@ -280,7 +286,7 @@
                             <span class="tech-badge">SQL Server</span>
                         </div>
                         <button class="btn-project">
-                            Ver Detalhes <i class="fas fa-arrow-right ml-2"></i>
+                            <span data-i18n="btn_ver_detalhes">Ver Detalhes</span> <i class="fas fa-arrow-right ml-2"></i>
                         </button>
                     </div>
 
@@ -290,7 +296,7 @@
                             <i class="fas fa-volume-up text-4xl"></i>
                         </div>
                         <h3 class="text-xl font-orbitron font-bold text-[#FFD700] mb-2">OuvirTexto</h3>
-                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed" data-i18n="proj_ouvirtexto_desc">
                             Conversor de texto para voz com inteligência artificial para melhorar a acessibilidade digital.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-5">
@@ -300,7 +306,7 @@
                             <span class="tech-badge">IA · Speech Synthesis</span>
                         </div>
                         <button class="btn-project">
-                            Ver Detalhes <i class="fas fa-arrow-right ml-2"></i>
+                            <span data-i18n="btn_ver_detalhes">Ver Detalhes</span> <i class="fas fa-arrow-right ml-2"></i>
                         </button>
                     </div>
 
@@ -310,7 +316,7 @@
                             <img src="img/appstock.png" alt="AppStockP4y" class="w-full h-full object-contain">
                         </div>
                         <h3 class="text-xl font-orbitron font-bold text-[#FFD700] mb-2">AppStockP4y</h3>
-                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed" data-i18n="proj_appstock_desc">
                             Aplicação de gestão de stock para web e mobile com sincronização de dados em tempo real.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-5">
@@ -320,7 +326,7 @@
                             <span class="tech-badge">SQL Server</span>
                         </div>
                         <button class="btn-project">
-                            Ver Detalhes <i class="fas fa-arrow-right ml-2"></i>
+                            <span data-i18n="btn_ver_detalhes">Ver Detalhes</span> <i class="fas fa-arrow-right ml-2"></i>
                         </button>
                     </div>
 
@@ -330,7 +336,7 @@
                             <i class="fas fa-car-side text-4xl"></i>
                         </div>
                         <h3 class="text-xl font-orbitron font-bold text-[#FFD700] mb-2">Lavagem Auto</h3>
-                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed" data-i18n="proj_lavagem_desc">
                             Plataforma multi-tenant de gestão de lavagens de viaturas ao domicílio e em garagem, por marcação. Clientes registam o seu carro e escolhem pacotes de lavagem; operadores aceitam os pedidos, com uma taxa de manutenção do sistema descontada automaticamente. Backoffice web para administradores e apps móveis para clientes e operadores.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-5">
@@ -340,10 +346,10 @@
                         </div>
                         <div class="flex flex-wrap gap-3">
                             <a href="https://autolavagem-api.onrender.com" target="_blank" class="btn-project-live">
-                                <i class="fas fa-external-link-alt mr-2"></i> Web / Backoffice
+                                <i class="fas fa-external-link-alt mr-2"></i> <span data-i18n="proj_lavagem_link1">Web / Backoffice</span>
                             </a>
                             <a href="https://lavagem-mobile.vercel.app" target="_blank" class="btn-project-live">
-                                <i class="fas fa-mobile-alt mr-2"></i> App Móvel (PWA)
+                                <i class="fas fa-mobile-alt mr-2"></i> <span data-i18n="proj_lavagem_link2">App Móvel (PWA)</span>
                             </a>
                         </div>
                     </div>
@@ -354,7 +360,7 @@
                             <i class="fas fa-file-invoice text-4xl"></i>
                         </div>
                         <h3 class="text-xl font-orbitron font-bold text-[#FFD700] mb-2">Gerador de Propostas</h3>
-                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed" data-i18n="proj_propostas_desc">
                             Aplicação web que automatiza a criação de propostas comerciais, gerando a partir dos mesmos dados uma landing page e um PPTX. Permite rastrear se e quando a proposta foi aberta e por quanto tempo foi analisada, com formas rápidas de contacto integradas.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-5">
@@ -363,7 +369,7 @@
                             <span class="tech-badge">PostgreSQL (Supabase)</span>
                         </div>
                         <button class="btn-project">
-                            Ver Detalhes <i class="fas fa-arrow-right ml-2"></i>
+                            <span data-i18n="btn_ver_detalhes">Ver Detalhes</span> <i class="fas fa-arrow-right ml-2"></i>
                         </button>
                     </div>
 
@@ -373,7 +379,7 @@
                             <i class="fas fa-chart-line text-4xl"></i>
                         </div>
                         <h3 class="text-xl font-orbitron font-bold text-[#FFD700] mb-2">SIAGD</h3>
-                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed" data-i18n="proj_siagd_desc">
                             Sistema Integrado de Análise e Gestão de Desempenho para acompanhar tarefas e metas de colaboradores e da organização, com avaliações desde a autoavaliação até à avaliação por superiores hierárquicos, além de gestão de férias, entre outras funcionalidades.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-5">
@@ -381,7 +387,7 @@
                             <span class="tech-badge">PostgreSQL</span>
                         </div>
                         <button class="btn-project">
-                            Ver Detalhes <i class="fas fa-arrow-right ml-2"></i>
+                            <span data-i18n="btn_ver_detalhes">Ver Detalhes</span> <i class="fas fa-arrow-right ml-2"></i>
                         </button>
                     </div>
 
@@ -391,7 +397,7 @@
                             <img src="img/credium-smart-logo.png" alt="Credium Smart" class="w-full h-full object-contain">
                         </div>
                         <h3 class="text-xl font-orbitron font-bold text-[#FFD700] mb-2">API Credium Smart</h3>
-                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed" data-i18n="proj_credium_desc">
                             Desenvolvimento do backend e da API do Credium Smart, uma solução multi-tenant de gestão inteligente de microcrédito que cobre marketing, RH, gestão de empréstimos, follow-up e pagamento final.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-5">
@@ -401,7 +407,7 @@
                         </div>
                         <div class="flex flex-wrap gap-3">
                             <a href="https://crediumsmart.com" target="_blank" class="btn-project-live">
-                                <i class="fas fa-external-link-alt mr-2"></i> Ver Site
+                                <i class="fas fa-external-link-alt mr-2"></i> <span data-i18n="btn_ver_site">Ver Site</span>
                             </a>
                         </div>
                     </div>
@@ -412,7 +418,7 @@
                             <i class="fas fa-signature text-4xl"></i>
                         </div>
                         <h3 class="text-xl font-orbitron font-bold text-[#FFD700] mb-2">Assinatura Digital</h3>
-                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed" data-i18n="proj_assinatura_desc">
                             API e portal de gestão de assinatura digital de documentos, facilitando a digitalização de processos ao permitir definir o local exato da assinatura no documento. Implementada no Portal de Pedidos interno.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-5">
@@ -421,7 +427,7 @@
                             <span class="tech-badge">API</span>
                         </div>
                         <button class="btn-project">
-                            Ver Detalhes <i class="fas fa-arrow-right ml-2"></i>
+                            <span data-i18n="btn_ver_detalhes">Ver Detalhes</span> <i class="fas fa-arrow-right ml-2"></i>
                         </button>
                     </div>
 
@@ -431,7 +437,7 @@
                             <i class="fas fa-university text-4xl"></i>
                         </div>
                         <h3 class="text-xl font-orbitron font-bold text-[#FFD700] mb-2">Gestão Académica</h3>
-                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed" data-i18n="proj_gestao_academica_desc">
                             Aplicação Java Web para gestão de uma faculdade: finanças, atribuição de alunos a turmas e de docentes a disciplinas, e gestão de notas de frequência e de exames. Solução não hospedada, disponível como código-fonte no meu GitHub.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-5">
@@ -440,7 +446,7 @@
                             <span class="tech-badge">MySQL</span>
                         </div>
                         <button class="btn-project">
-                            Ver Detalhes <i class="fas fa-arrow-right ml-2"></i>
+                            <span data-i18n="btn_ver_detalhes">Ver Detalhes</span> <i class="fas fa-arrow-right ml-2"></i>
                         </button>
                     </div>
 
@@ -450,7 +456,7 @@
                             <i class="fas fa-chalkboard-teacher text-4xl"></i>
                         </div>
                         <h3 class="text-xl font-orbitron font-bold text-[#FFD700] mb-2">We Code</h3>
-                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed" data-i18n="proj_wecode_desc">
                             Iniciativa de aulas de programação em Java que criei em 2025 para ajudar jovens universitários a ligar a teoria da faculdade à prática do mercado, guiando-os a transformar conhecimento em soluções funcionais de ponta a ponta. Durou 3 meses.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-5">
@@ -459,7 +465,7 @@
                             <span class="tech-badge">2025</span>
                         </div>
                         <button class="btn-project">
-                            Ver Detalhes <i class="fas fa-arrow-right ml-2"></i>
+                            <span data-i18n="btn_ver_detalhes">Ver Detalhes</span> <i class="fas fa-arrow-right ml-2"></i>
                         </button>
                     </div>
 
@@ -474,9 +480,9 @@
                             <div class="flex-1">
                                 <div class="flex flex-wrap items-center gap-3 mb-2">
                                     <h3 class="text-xl font-orbitron font-bold" style="color:#c9a84c">MyWeeding</h3>
-                                    <span class="live-badge">Ao Vivo</span>
+                                    <span class="live-badge" data-i18n="live_badge">Ao Vivo</span>
                                 </div>
-                                <p class="text-gray-400 text-sm mb-4 leading-relaxed max-w-2xl">
+                                <p class="text-gray-400 text-sm mb-4 leading-relaxed max-w-2xl" data-i18n="proj_myweeding_desc">
                                     Site de casamento completo desenvolvido de raiz. Inclui contagem regressiva em tempo real, lista de presentes interactiva com sistema de reserva por checkbox, mapa integrado do local do evento e design elegante inspirado no convite. Hospedado no GitHub Pages.
                                 </p>
                                 <div class="flex flex-wrap gap-2 mb-5">
@@ -488,7 +494,7 @@
                                 </div>
                                 <div class="flex flex-wrap gap-3">
                                     <a href="https://johnjoshua-dev.github.io/JosueSitoe.github.io/myweeding/" target="_blank" class="btn-project-live">
-                                        <i class="fas fa-external-link-alt mr-2"></i> Ver ao Vivo
+                                        <i class="fas fa-external-link-alt mr-2"></i> <span data-i18n="btn_ver_ao_vivo">Ver ao Vivo</span>
                                     </a>
                                 </div>
                             </div>
@@ -502,15 +508,15 @@
         <!-- Contact Section -->
         <section id="contacto" class="py-20 relative">
             <div class="container mx-auto px-6">
-                <h2 class="section-title">Contacto</h2>
+                <h2 class="section-title" data-i18n="contacto_title">Contacto</h2>
                 <div class="section-sep"><div class="section-sep-diamond"></div></div>
 
                 <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-10">
                     <!-- Left: info -->
                     <div class="flex flex-col gap-5 justify-center">
                         <div>
-                            <h3 class="text-2xl font-orbitron font-bold text-[#FFD700] mb-2">Vamos Trabalhar Juntos</h3>
-                            <p class="text-gray-400 text-sm leading-relaxed">Estou disponível para projectos freelance, colaborações e oportunidades de trabalho. Não hesites em entrar em contacto!</p>
+                            <h3 class="text-2xl font-orbitron font-bold text-[#FFD700] mb-2" data-i18n="contact_heading">Vamos Trabalhar Juntos</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed" data-i18n="contact_intro">Estou disponível para projectos freelance, colaborações e oportunidades de trabalho. Não hesites em entrar em contacto!</p>
                         </div>
 
                         <div class="flex flex-col gap-3">
@@ -531,8 +537,8 @@
                             <div class="contact-info-card">
                                 <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
                                 <div>
-                                    <div class="text-xs text-gray-500 uppercase tracking-wider mb-0.5">Localização</div>
-                                    <span class="text-sm">Maputo, Moçambique</span>
+                                    <div class="text-xs text-gray-500 uppercase tracking-wider mb-0.5" data-i18n="label_localizacao">Localização</div>
+                                    <span class="text-sm" data-i18n="location_value">Maputo, Moçambique</span>
                                 </div>
                             </div>
                         </div>
@@ -557,22 +563,22 @@
                     <div class="glass-card p-8">
                         <form id="contact-form" class="space-y-5">
                             <div>
-                                <label for="name" class="block text-xs font-semibold mb-1.5 text-gray-400 uppercase tracking-wider">Nome</label>
-                                <input type="text" id="name" name="name" required placeholder="O seu nome completo"
+                                <label for="name" class="block text-xs font-semibold mb-1.5 text-gray-400 uppercase tracking-wider" data-i18n="form_label_nome">Nome</label>
+                                <input type="text" id="name" name="name" required placeholder="O seu nome completo" data-i18n-placeholder="placeholder_nome"
                                     class="w-full px-4 py-3 bg-[#0B0C10]/50 border border-[#FFD700]/20 rounded-lg focus:outline-none focus:border-[#FFD700] transition-colors text-white text-sm placeholder-gray-600">
                             </div>
                             <div>
                                 <label for="email" class="block text-xs font-semibold mb-1.5 text-gray-400 uppercase tracking-wider">Email</label>
-                                <input type="email" id="email" name="email" required placeholder="email@exemplo.com"
+                                <input type="email" id="email" name="email" required placeholder="email@exemplo.com" data-i18n-placeholder="placeholder_email"
                                     class="w-full px-4 py-3 bg-[#0B0C10]/50 border border-[#FFD700]/20 rounded-lg focus:outline-none focus:border-[#FFD700] transition-colors text-white text-sm placeholder-gray-600">
                             </div>
                             <div>
-                                <label for="message" class="block text-xs font-semibold mb-1.5 text-gray-400 uppercase tracking-wider">Mensagem</label>
-                                <textarea id="message" name="message" rows="5" required placeholder="Descreva o seu projecto ou oportunidade..."
+                                <label for="message" class="block text-xs font-semibold mb-1.5 text-gray-400 uppercase tracking-wider" data-i18n="form_label_mensagem">Mensagem</label>
+                                <textarea id="message" name="message" rows="5" required placeholder="Descreva o seu projecto ou oportunidade..." data-i18n-placeholder="placeholder_mensagem"
                                     class="w-full px-4 py-3 bg-[#0B0C10]/50 border border-[#FFD700]/20 rounded-lg focus:outline-none focus:border-[#FFD700] transition-colors text-white resize-none text-sm placeholder-gray-600"></textarea>
                             </div>
                             <button type="submit" class="btn-primary w-full justify-center">
-                                <i class="fas fa-paper-plane mr-2"></i>Enviar Mensagem
+                                <i class="fas fa-paper-plane mr-2"></i><span data-i18n="btn_enviar">Enviar Mensagem</span>
                             </button>
                         </form>
                     </div>
@@ -586,7 +592,7 @@
                 <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                     <div class="text-center md:text-left">
                         <div class="footer-logo mb-1">Josué Sitoe</div>
-                        <p class="text-gray-600 text-xs tracking-wider">Desenvolvedor Fullstack · Maputo, MZ</p>
+                        <p class="text-gray-600 text-xs tracking-wider" data-i18n="role_line">Desenvolvedor Fullstack · Maputo, MZ</p>
                     </div>
                     <div class="flex gap-5">
                         <a href="https://github.com/JohnJoshua-Dev" target="_blank" class="social-link" title="GitHub">
@@ -605,12 +611,135 @@
                             <i class="fab fa-instagram text-xl"></i>
                         </a>
                     </div>
-                    <p class="text-gray-600 text-xs">© 2025 Josué Sitoe. Todos os direitos reservados.</p>
+                    <p class="text-gray-600 text-xs" data-i18n="footer_rights">© 2025 Josué Sitoe. Todos os direitos reservados.</p>
                 </div>
             </div>
         </footer>
 
-        <script src="script.js?v=2"></script>
+        <script src="script.js?v=3"></script>
+        <script>
+            window.PORTFOLIO_I18N = {
+                pt: {
+                    nav_inicio: "Início", nav_sobre: "Sobre", nav_habilidades: "Habilidades", nav_projetos: "Projetos", nav_curriculo: "Currículo", nav_contacto: "Contacto",
+                    avail_badge: "🟢 Disponível para Freelance", location_badge: "📍 Maputo, Moçambique",
+                    hero_greeting: "Olá, eu sou", hero_subtitle: "Desenvolvedor Fullstack apaixonado por tecnologia e inovação.",
+                    btn_ver_projetos: "Ver Projetos", btn_ver_cv: "Ver CV", btn_download_cv: "Download CV",
+                    stat_anos: "Anos de Exp.", stat_projetos: "Projetos", stat_idiomas: "Idiomas",
+                    sobre_title: "Sobre Mim", role_line: "Desenvolvedor Fullstack · Maputo, MZ",
+                    about_p1: "Sou um profissional dedicado, dinâmico e entusiasta, sempre em busca de progresso. Gosto de criar soluções tecnológicas inovadoras e funcionais que unem design e lógica.",
+                    about_p2: "Estudante de Engenharia Informática com experiência prática em projectos web, mobile e sistemas de gestão para empresas em Moçambique.",
+                    badge_inovador: "Inovador", badge_criativo: "Criativo", badge_dedicado: "Dedicado",
+                    habilidades_title: "Habilidades Técnicas",
+                    projetos_title: "Projetos", btn_ver_detalhes: "Ver Detalhes",
+                    proj_central_academica_desc: "Sistema de gestão escolar com integração online e OCR para digitalização automática de documentos académicos.",
+                    proj_portal_pedidos_desc: "Plataforma de gestão de fluxos entre equipas com geração automática de relatórios Excel e notificações em tempo real.",
+                    proj_ouvirtexto_desc: "Conversor de texto para voz com inteligência artificial para melhorar a acessibilidade digital.",
+                    proj_appstock_desc: "Aplicação de gestão de stock para web e mobile com sincronização de dados em tempo real.",
+                    proj_lavagem_desc: "Plataforma multi-tenant de gestão de lavagens de viaturas ao domicílio e em garagem, por marcação. Clientes registam o seu carro e escolhem pacotes de lavagem; operadores aceitam os pedidos, com uma taxa de manutenção do sistema descontada automaticamente. Backoffice web para administradores e apps móveis para clientes e operadores.",
+                    proj_lavagem_link1: "Web / Backoffice", proj_lavagem_link2: "App Móvel (PWA)",
+                    proj_propostas_desc: "Aplicação web que automatiza a criação de propostas comerciais, gerando a partir dos mesmos dados uma landing page e um PPTX. Permite rastrear se e quando a proposta foi aberta e por quanto tempo foi analisada, com formas rápidas de contacto integradas.",
+                    proj_siagd_desc: "Sistema Integrado de Análise e Gestão de Desempenho para acompanhar tarefas e metas de colaboradores e da organização, com avaliações desde a autoavaliação até à avaliação por superiores hierárquicos, além de gestão de férias, entre outras funcionalidades.",
+                    proj_credium_desc: "Desenvolvimento do backend e da API do Credium Smart, uma solução multi-tenant de gestão inteligente de microcrédito que cobre marketing, RH, gestão de empréstimos, follow-up e pagamento final.",
+                    btn_ver_site: "Ver Site",
+                    proj_assinatura_desc: "API e portal de gestão de assinatura digital de documentos, facilitando a digitalização de processos ao permitir definir o local exato da assinatura no documento. Implementada no Portal de Pedidos interno.",
+                    proj_gestao_academica_desc: "Aplicação Java Web para gestão de uma faculdade: finanças, atribuição de alunos a turmas e de docentes a disciplinas, e gestão de notas de frequência e de exames. Solução não hospedada, disponível como código-fonte no meu GitHub.",
+                    proj_wecode_desc: "Iniciativa de aulas de programação em Java que criei em 2025 para ajudar jovens universitários a ligar a teoria da faculdade à prática do mercado, guiando-os a transformar conhecimento em soluções funcionais de ponta a ponta. Durou 3 meses.",
+                    live_badge: "Ao Vivo",
+                    proj_myweeding_desc: "Site de casamento completo desenvolvido de raiz. Inclui contagem regressiva em tempo real, lista de presentes interactiva com sistema de reserva por checkbox, mapa integrado do local do evento e design elegante inspirado no convite. Hospedado no GitHub Pages.",
+                    btn_ver_ao_vivo: "Ver ao Vivo",
+                    contacto_title: "Contacto", contact_heading: "Vamos Trabalhar Juntos",
+                    contact_intro: "Estou disponível para projectos freelance, colaborações e oportunidades de trabalho. Não hesites em entrar em contacto!",
+                    label_localizacao: "Localização", location_value: "Maputo, Moçambique",
+                    form_label_nome: "Nome", placeholder_nome: "O seu nome completo",
+                    placeholder_email: "email@exemplo.com",
+                    form_label_mensagem: "Mensagem", placeholder_mensagem: "Descreva o seu projecto ou oportunidade...",
+                    btn_enviar: "Enviar Mensagem",
+                    footer_rights: "© 2025 Josué Sitoe. Todos os direitos reservados.",
+                    toast_fill_fields: "Por favor, preencha todos os campos.",
+                    toast_invalid_email: "Por favor, insira um email válido.",
+                    toast_success: "Mensagem enviada! Entrarei em contacto em breve 🙏"
+                },
+                en: {
+                    nav_inicio: "Home", nav_sobre: "About", nav_habilidades: "Skills", nav_projetos: "Projects", nav_curriculo: "Resume", nav_contacto: "Contact",
+                    avail_badge: "🟢 Available for Freelance", location_badge: "📍 Maputo, Mozambique",
+                    hero_greeting: "Hi, I'm", hero_subtitle: "Fullstack Developer passionate about technology and innovation.",
+                    btn_ver_projetos: "View Projects", btn_ver_cv: "View CV", btn_download_cv: "Download CV",
+                    stat_anos: "Years Exp.", stat_projetos: "Projects", stat_idiomas: "Languages",
+                    sobre_title: "About Me", role_line: "Fullstack Developer · Maputo, MZ",
+                    about_p1: "I'm a dedicated, dynamic and enthusiastic professional, always striving for progress. I enjoy creating innovative, functional tech solutions that combine design and logic.",
+                    about_p2: "Computer Engineering student with hands-on experience in web, mobile and management-system projects for companies in Mozambique.",
+                    badge_inovador: "Innovative", badge_criativo: "Creative", badge_dedicado: "Dedicated",
+                    habilidades_title: "Technical Skills",
+                    projetos_title: "Projects", btn_ver_detalhes: "View Details",
+                    proj_central_academica_desc: "School management system with online integration and OCR for automatic digitization of academic documents.",
+                    proj_portal_pedidos_desc: "Cross-team workflow management platform with automatic Excel report generation and real-time notifications.",
+                    proj_ouvirtexto_desc: "AI-powered text-to-speech converter to improve digital accessibility.",
+                    proj_appstock_desc: "Web and mobile stock management application with real-time data synchronization.",
+                    proj_lavagem_desc: "Multi-tenant platform for booking home and garage car washes. Customers register their car and choose a wash package; operators accept requests, with a system maintenance fee deducted automatically. Web backoffice for administrators and mobile apps for customers and operators.",
+                    proj_lavagem_link1: "Web / Backoffice", proj_lavagem_link2: "Mobile App (PWA)",
+                    proj_propostas_desc: "Web app that automates the creation of business proposals, generating a landing page and a PPTX from the same data. Tracks whether and when the proposal was opened and how long it was reviewed, with quick contact options built in.",
+                    proj_siagd_desc: "Integrated Performance Analysis & Management System for tracking employee and organizational tasks and goals, with evaluations ranging from self-assessment to manager review, plus leave management and more.",
+                    proj_credium_desc: "Backend and API development for Credium Smart, a multi-tenant smart microcredit management solution covering marketing, HR, loan management, follow-up and final payment.",
+                    btn_ver_site: "View Site",
+                    proj_assinatura_desc: "API and management portal for digital document signing, streamlining process digitization by letting users set the exact signature position on the document. Deployed in the internal Portal de Pedidos.",
+                    proj_gestao_academica_desc: "Java web application for managing a university: finances, assigning students to classes and teachers to courses, and managing attendance and exam grades. Not hosted — available as source code on my GitHub.",
+                    proj_wecode_desc: "Java programming class initiative I started in 2025 to help young university students connect academic theory with real-world practice, guiding them to turn knowledge into fully working solutions. Ran for 3 months.",
+                    live_badge: "Live",
+                    proj_myweeding_desc: "Complete wedding website built from scratch. Includes a real-time countdown, an interactive gift registry with checkbox-based reservations, an embedded event location map, and an elegant design inspired by the invitation. Hosted on GitHub Pages.",
+                    btn_ver_ao_vivo: "View Live",
+                    contacto_title: "Contact", contact_heading: "Let's Work Together",
+                    contact_intro: "I'm available for freelance projects, collaborations and job opportunities. Feel free to reach out!",
+                    label_localizacao: "Location", location_value: "Maputo, Mozambique",
+                    form_label_nome: "Name", placeholder_nome: "Your full name",
+                    placeholder_email: "email@example.com",
+                    form_label_mensagem: "Message", placeholder_mensagem: "Describe your project or opportunity...",
+                    btn_enviar: "Send Message",
+                    footer_rights: "© 2025 Josué Sitoe. All rights reserved.",
+                    toast_fill_fields: "Please fill in all fields.",
+                    toast_invalid_email: "Please enter a valid email address.",
+                    toast_success: "Message sent! I'll get back to you soon 🙏"
+                }
+            };
+
+            function applySiteLang(lang) {
+                if (!window.PORTFOLIO_I18N[lang]) lang = 'pt';
+                document.querySelectorAll('[data-i18n]').forEach(function (el) {
+                    var key = el.getAttribute('data-i18n');
+                    if (window.PORTFOLIO_I18N[lang][key] !== undefined) el.innerHTML = window.PORTFOLIO_I18N[lang][key];
+                });
+                document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
+                    var key = el.getAttribute('data-i18n-placeholder');
+                    if (window.PORTFOLIO_I18N[lang][key] !== undefined) el.setAttribute('placeholder', window.PORTFOLIO_I18N[lang][key]);
+                });
+                document.documentElement.setAttribute('lang', lang);
+                document.querySelectorAll('.lang-btn-nav').forEach(function (btn) {
+                    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+                });
+
+                var cvLink = document.getElementById('hero-cv-link');
+                if (cvLink) cvLink.setAttribute('href', lang === 'en' ? 'cv/?lang=en' : 'cv/');
+
+                var dlLink = document.getElementById('hero-download-link');
+                if (dlLink) {
+                    var file = lang === 'en' ? 'cv/cv-Josué-EN.pdf' : 'cv/cv-Josué.pdf';
+                    dlLink.setAttribute('href', file + '?v=5');
+                    dlLink.setAttribute('download', lang === 'en' ? 'cv-Josué-EN.pdf' : 'cv-Josué.pdf');
+                }
+
+                try { localStorage.setItem('siteLang', lang); } catch (e) {}
+            }
+
+            document.querySelectorAll('.lang-btn-nav').forEach(function (btn) {
+                btn.addEventListener('click', function () { applySiteLang(btn.getAttribute('data-lang')); });
+            });
+
+            (function initSiteLang() {
+                var urlLang = new URLSearchParams(window.location.search).get('lang');
+                var stored = null;
+                try { stored = localStorage.getItem('siteLang'); } catch (e) {}
+                applySiteLang(urlLang || stored || 'pt');
+            })();
+        </script>
     </div>
 </body>
 
