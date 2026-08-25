@@ -64,6 +64,41 @@
             background: #4a89c2;
         }
 
+        .cv-actions-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .lang-switch {
+            display: inline-flex;
+            background: #eef2f7;
+            border-radius: 8px;
+            padding: 3px;
+            gap: 2px;
+        }
+
+        .lang-btn {
+            border: none;
+            background: transparent;
+            color: #5d6f7f;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .lang-btn.active {
+            background: #5b9bd5;
+            color: #fff;
+        }
+
+        .lang-btn:hover:not(.active) {
+            background: #dde4ec;
+        }
+
         @media print {
             .cv-actions {
                 display: none;
@@ -662,8 +697,14 @@
 <body>
 
 <div class="cv-actions">
-    <a href="../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Voltar ao Portfólio</a>
-    <a href="cv-Josué.pdf?v=4" download="cv-Josué.pdf" class="download-link"><i class="fas fa-download"></i> Baixar CV (PDF)</a>
+    <a href="../index.html" class="back-link"><i class="fas fa-arrow-left"></i> <span data-i18n="back_link">Voltar ao Portfólio</span></a>
+    <div class="cv-actions-right">
+        <div class="lang-switch">
+            <button type="button" class="lang-btn" data-lang="pt">PT</button>
+            <button type="button" class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <a href="cv-Josué.pdf?v=5" download="cv-Josué.pdf" class="download-link" id="pdf-download-link"><i class="fas fa-download"></i> <span data-i18n="download_btn">Baixar CV (PDF)</span></a>
+    </div>
 </div>
 
 <div class="cv-container">
@@ -679,7 +720,7 @@
         </div>
 
         <div class="sidebar-section">
-            <h3><i class="fas fa-address-card" style="margin-right: 10px;"></i> Contacto</h3>
+            <h3><i class="fas fa-address-card" style="margin-right: 10px;"></i> <span data-i18n="contacto_h">Contacto</span></h3>
             <div class="contact-item"><i class="fas fa-phone"></i> 872737483 / 842737483</div>
             <div class="contact-item"><i class="fas fa-envelope"></i> josuerafaelisito@gmail.com</div>
             <div class="contact-item"><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/josue-sitoe-programmer/" target="_blank">linkedin.com/in/josue-sitoe-programmer</a></div>
@@ -688,9 +729,9 @@
         </div>
 
         <div class="sidebar-section">
-            <h3><i class="fas fa-cogs"></i> Competências</h3>
+            <h3><i class="fas fa-cogs"></i> <span data-i18n="competencias_h">Competências</span></h3>
             <span class="skill-tag highlight">Microsoft 365</span>
-            <span class="skill-tag highlight">Gestão de Plataformas</span>
+            <span class="skill-tag highlight" data-i18n="skill_platform_mgmt">Gestão de Plataformas</span>
             <span class="skill-tag powerbi">Power BI</span>
             <span class="skill-tag copilot">Copilot Studio</span>
             <span class="skill-tag">Power Automate</span>
@@ -698,28 +739,28 @@
             <span class="skill-tag">Fullstack Dev</span>
             <span class="skill-tag">DBA</span>
             <span class="skill-tag">Helpdesk</span>
-            <span class="skill-tag">Redes</span>
+            <span class="skill-tag" data-i18n="skill_networks">Redes</span>
             <span class="skill-tag">Windows/Linux</span>
-            <span class="skill-tag">Suporte de Campo</span>
-            <span class="skill-tag">Vendas Técnicas</span>
+            <span class="skill-tag" data-i18n="skill_field_support">Suporte de Campo</span>
+            <span class="skill-tag" data-i18n="skill_tech_sales">Vendas Técnicas</span>
         </div>
 
         <div class="sidebar-section">
-            <h3><i class="fas fa-globe"></i> Idiomas</h3>
-            <div class="lang-item"><span>Português</span> <span>Nativo</span></div>
-            <div class="lang-item"><span>Inglês</span> <span>Técnico / Interm.</span></div>
-            <div class="lang-item"><span>Tsonga</span> <span>Fluente</span></div>
+            <h3><i class="fas fa-globe"></i> <span data-i18n="idiomas_h">Idiomas</span></h3>
+            <div class="lang-item"><span data-i18n="lang_pt">Português</span> <span data-i18n="lang_native">Nativo</span></div>
+            <div class="lang-item"><span data-i18n="lang_en">Inglês</span> <span data-i18n="lang_en_level">Técnico / Interm.</span></div>
+            <div class="lang-item"><span>Tsonga</span> <span data-i18n="lang_fluent">Fluente</span></div>
         </div>
 
         <div class="sidebar-section">
-            <h3><i class="fas fa-truck"></i> Disponibilidade</h3>
+            <h3><i class="fas fa-truck"></i> <span data-i18n="disponibilidade_h">Disponibilidade</span></h3>
             <div style="font-size:14px; color:#cfdce8; line-height:1.7;">
-                <i class="fas fa-map-marker-alt" style="color:#5b9bd5; margin-right:8px;"></i> Disponível para deslocações e trabalho de campo
+                <i class="fas fa-map-marker-alt" style="color:#5b9bd5; margin-right:8px;"></i> <span data-i18n="disponibilidade_text">Disponível para deslocações e trabalho de campo</span>
             </div>
         </div>
 
         <div class="sidebar-section">
-            <h3><i class="fas fa-users"></i> Referências</h3>
+            <h3><i class="fas fa-users"></i> <span data-i18n="referencias_h">Referências</span></h3>
 
             <div class="ref-item">
                 <div class="ref-name">Faquir da Gloria</div>
@@ -744,29 +785,29 @@
     <!-- MAIN -->
     <div class="main">
 
-        <h2><i class="fas fa-user" style="margin-right:12px; color:#5b9bd5;"></i> Perfil Profissional</h2>
-        <div class="profile-text">
+        <h2><i class="fas fa-user" style="margin-right:12px; color:#5b9bd5;"></i> <span data-i18n="perfil_h">Perfil Profissional</span></h2>
+        <div class="profile-text" data-i18n="perfil_text">
             <strong>Trouble solver</strong> por natureza — essa sempre foi a minha primeira característica, muito antes de ser a minha profissão. Desenvolvedor Fullstack com experiência prática no desenvolvimento e suporte de aplicações internas, administração de bases de dados e suporte a sistemas empresariais, actuando em ambientes <strong>Windows</strong> e <strong>Linux</strong>. Junto a esta base de desenvolvimento uma sólida experiência em <strong>gestão de plataformas</strong>: soluções <strong>Microsoft 365</strong>, dashboards e análise de dados em <strong>Power BI</strong>, automação de processos com <strong>Copilot Studio</strong> e <strong>Power Automate</strong>, e organização de trabalho com <strong>Planner</strong> e <strong>Trello</strong>. O fio condutor é sempre o mesmo — entender o problema de negócio e resolvê-lo com a solução tecnológica mais eficiente, esteja ela num código, numa base de dados ou num fluxo automatizado.
         </div>
 
-        <h2><i class="fas fa-briefcase" style="margin-right:12px; color:#5b9bd5;"></i> Experiência Profissional</h2>
+        <h2><i class="fas fa-briefcase" style="margin-right:12px; color:#5b9bd5;"></i> <span data-i18n="experiencia_h">Experiência Profissional</span></h2>
 
         <div class="exp-item">
             <div class="exp-header">
                 <div>
                     <span class="company">Print4you</span>
-                    <h3 style="display:inline-block; margin-left:6px;">Desenvolvedor · DBA · Suporte Técnico</h3>
+                    <h3 style="display:inline-block; margin-left:6px;" data-i18n="exp1_role">Desenvolvedor · DBA · Suporte Técnico</h3>
                 </div>
-                <span class="period">2024 – Atual</span>
+                <span class="period" data-i18n="exp1_period">2024 – Atual</span>
             </div>
             <ul class="exp-desc">
-                <li>Desenvolvimento e manutenção de aplicações internas (web e mobile)</li>
-                <li>Administração e otimização de bases de dados (SQL, MySQL)</li>
-                <li>Suporte técnico presencial e remoto a sistemas e utilizadores</li>
-                <li>Configuração e manutenção de servidores Windows/Linux</li>
-                <li>Gestão de plataformas e suporte a soluções Microsoft 365</li>
-                <li>Criação de dashboards e relatórios em <strong>Power BI</strong> para análise de dados operacionais</li>
-                <li>Automação de fluxos de trabalho com <strong>Power Automate</strong> e gestão de tarefas com <strong>Planner</strong> e <strong>Trello</strong></li>
+                <li data-i18n="exp1_b1">Desenvolvimento e manutenção de aplicações internas (web e mobile)</li>
+                <li data-i18n="exp1_b2">Administração e otimização de bases de dados (SQL, MySQL)</li>
+                <li data-i18n="exp1_b3">Suporte técnico presencial e remoto a sistemas e utilizadores</li>
+                <li data-i18n="exp1_b4">Configuração e manutenção de servidores Windows/Linux</li>
+                <li data-i18n="exp1_b5">Gestão de plataformas e suporte a soluções Microsoft 365</li>
+                <li data-i18n="exp1_b6">Criação de dashboards e relatórios em <strong>Power BI</strong> para análise de dados operacionais</li>
+                <li data-i18n="exp1_b7">Automação de fluxos de trabalho com <strong>Power Automate</strong> e gestão de tarefas com <strong>Planner</strong> e <strong>Trello</strong></li>
             </ul>
         </div>
 
@@ -774,93 +815,93 @@
             <div class="exp-header">
                 <div>
                     <span class="company">Cipsv Serviços</span>
-                    <h3 style="display:inline-block; margin-left:6px;">Técnico de Campo · Redes</h3>
+                    <h3 style="display:inline-block; margin-left:6px;" data-i18n="exp2_role">Técnico de Campo · Redes</h3>
                 </div>
                 <span class="period">2015 – 2024</span>
             </div>
             <ul class="exp-desc">
-                <li>Instalação, configuração e manutenção de redes de dados e telecomunicações</li>
-                <li>Suporte técnico externo a clientes empresariais</li>
-                <li>Diagnóstico e resolução de problemas de conectividade e infraestrutura</li>
-                <li>Gestão de trabalhos de campo e equipas técnicas</li>
-                <li>Intervenções em projetos de redes e sistemas</li>
+                <li data-i18n="exp2_b1">Instalação, configuração e manutenção de redes de dados e telecomunicações</li>
+                <li data-i18n="exp2_b2">Suporte técnico externo a clientes empresariais</li>
+                <li data-i18n="exp2_b3">Diagnóstico e resolução de problemas de conectividade e infraestrutura</li>
+                <li data-i18n="exp2_b4">Gestão de trabalhos de campo e equipas técnicas</li>
+                <li data-i18n="exp2_b5">Intervenções em projetos de redes e sistemas</li>
             </ul>
         </div>
 
-        <h2 style="margin-top:10px;"><i class="fas fa-diagram-project" style="margin-right:12px; color:#5b9bd5;"></i> Projetos em Destaque</h2>
+        <h2 style="margin-top:10px;"><i class="fas fa-diagram-project" style="margin-right:12px; color:#5b9bd5;"></i> <span data-i18n="projetos_h">Projetos em Destaque</span></h2>
 
         <div class="proj-item">
-            <div class="proj-name"><i class="fas fa-university"></i> Gestão Académica — gestão financeira, turmas e notas de uma faculdade</div>
+            <div class="proj-name"><i class="fas fa-university"></i> <span data-i18n="proj1_name">Gestão Académica — gestão financeira, turmas e notas de uma faculdade</span></div>
             <div class="proj-stack">Java · MySQL</div>
         </div>
 
         <div class="proj-item">
-            <div class="proj-name"><i class="fas fa-tasks"></i> Portal de Pedidos — fluxos entre equipas com relatórios e notificações em tempo real</div>
+            <div class="proj-name"><i class="fas fa-tasks"></i> <span data-i18n="proj2_name">Portal de Pedidos — fluxos entre equipas com relatórios e notificações em tempo real</span></div>
             <div class="proj-stack">Laravel · React · SQL Server</div>
         </div>
 
         <div class="proj-item">
-            <div class="proj-name"><i class="fas fa-car-side"></i> Lavagem Auto — plataforma SaaS multi-tenant de marcação de lavagens, web + app móvel</div>
+            <div class="proj-name"><i class="fas fa-car-side"></i> <span data-i18n="proj3_name">Lavagem Auto — plataforma SaaS multi-tenant de marcação de lavagens, web + app móvel</span></div>
             <div class="proj-stack">Node.js · Multi-tenant · PWA</div>
         </div>
 
         <div class="proj-item">
-            <div class="proj-name"><i class="fas fa-file-invoice"></i> Gerador de Propostas — geração automática de propostas comerciais com tracking de leitura</div>
+            <div class="proj-name"><i class="fas fa-file-invoice"></i> <span data-i18n="proj4_name">Gerador de Propostas — geração automática de propostas comerciais com tracking de leitura</span></div>
             <div class="proj-stack">Node.js · Python · PostgreSQL</div>
         </div>
 
-        <h2 style="margin-top:10px;"><i class="fas fa-graduation-cap" style="margin-right:12px; color:#5b9bd5;"></i> Formação Académica</h2>
+        <h2 style="margin-top:10px;"><i class="fas fa-graduation-cap" style="margin-right:12px; color:#5b9bd5;"></i> <span data-i18n="formacao_h">Formação Académica</span></h2>
 
         <div class="edu-item">
-            <div class="edu-title">Informática Aplicada (Eng. Software) <span class="edu-year">2026 – 2030</span></div>
+            <div class="edu-title"><span data-i18n="edu1_title">Informática Aplicada (Eng. Software)</span> <span class="edu-year">2026 – 2030</span></div>
             <div class="edu-school">Universidade Pedagógica de Maputo</div>
-            <div class="edu-desc"><i class="fas fa-clock" style="color:#27ae60; margin-right:6px;"></i> Em curso – previsão de conclusão em 2030</div>
+            <div class="edu-desc"><i class="fas fa-clock" style="color:#27ae60; margin-right:6px;"></i> <span data-i18n="edu1_desc">Em curso – previsão de conclusão em 2030</span></div>
         </div>
 
         <div class="edu-item">
-            <div class="edu-title">Eng. Tecnologias e Sistemas de Informação <span class="edu-year">2019 – 2020</span></div>
+            <div class="edu-title"><span data-i18n="edu2_title">Eng. Tecnologias e Sistemas de Informação</span> <span class="edu-year">2019 – 2020</span></div>
             <div class="edu-school">Universidade Joaquim Chissano</div>
-            <div class="edu-desc"><span class="edu-status interrompido"><i class="fas fa-pause-circle"></i> Interrompido no 2º ano</span></div>
+            <div class="edu-desc"><span class="edu-status interrompido"><i class="fas fa-pause-circle"></i> <span data-i18n="edu2_status">Interrompido no 2º ano</span></span></div>
         </div>
 
         <div class="edu-item">
-            <div class="edu-title">Electricidade Industrial <span class="edu-year">2014 – 2016</span></div>
+            <div class="edu-title"><span data-i18n="edu3_title">Electricidade Industrial</span> <span class="edu-year">2014 – 2016</span></div>
             <div class="edu-school">Instituto Industrial de Maputo</div>
-            <div class="edu-desc"><span class="edu-status concluido"><i class="fas fa-check-circle"></i> Concluído</span></div>
+            <div class="edu-desc"><span class="edu-status concluido"><i class="fas fa-check-circle"></i> <span data-i18n="concluido_badge">Concluído</span></span></div>
         </div>
 
-        <h2 style="margin-top:14px;"><i class="fas fa-certificate" style="margin-right:12px; color:#27ae60;"></i> Cursos & Certificações</h2>
+        <h2 style="margin-top:14px;"><i class="fas fa-certificate" style="margin-right:12px; color:#27ae60;"></i> <span data-i18n="cursos_h">Cursos & Certificações</span></h2>
 
         <div class="course-item">
             <div class="course-text">
                 <div class="course-name"><i class="fas fa-microchip"></i> Electronics and Arduino Programming</div>
                 <div class="course-info">TME Education · Universidade Joaquim Chissano | 2021</div>
             </div>
-            <span class="course-badge"><i class="fas fa-check"></i> Concluído</span>
+            <span class="course-badge"><i class="fas fa-check"></i> <span data-i18n="concluido_badge">Concluído</span></span>
         </div>
 
         <div class="course-item">
             <div class="course-text">
-                <div class="course-name"><i class="fas fa-laptop-code"></i> Informática Avançada e Programação Web</div>
-                <div class="course-info">Unitec Academy – 3 meses | 2024</div>
+                <div class="course-name"><i class="fas fa-laptop-code"></i> <span data-i18n="course2_name">Informática Avançada e Programação Web</span></div>
+                <div class="course-info"><span data-i18n="course2_info">Unitec Academy – 3 meses | 2024</span></div>
             </div>
-            <span class="course-badge"><i class="fas fa-check"></i> Concluído</span>
+            <span class="course-badge"><i class="fas fa-check"></i> <span data-i18n="concluido_badge">Concluído</span></span>
         </div>
 
         <div class="course-item">
             <div class="course-text">
-                <div class="course-name"><i class="fas fa-database"></i> Administrador de Banco de Dados</div>
+                <div class="course-name"><i class="fas fa-database"></i> <span data-i18n="course3_name">Administrador de Banco de Dados</span></div>
                 <div class="course-info">IFRS – 200h | 2025</div>
             </div>
-            <span class="course-badge"><i class="fas fa-check"></i> Concluído</span>
+            <span class="course-badge"><i class="fas fa-check"></i> <span data-i18n="concluido_badge">Concluído</span></span>
         </div>
 
         <div class="course-item">
             <div class="course-text">
-                <div class="course-name"><i class="fas fa-robot"></i> Automação de Sistemas</div>
+                <div class="course-name"><i class="fas fa-robot"></i> <span data-i18n="course4_name">Automação de Sistemas</span></div>
                 <div class="course-info">IFRS – 30h | 2026</div>
             </div>
-            <span class="course-badge"><i class="fas fa-check"></i> Concluído</span>
+            <span class="course-badge"><i class="fas fa-check"></i> <span data-i18n="concluido_badge">Concluído</span></span>
         </div>
 
         <div class="course-item">
@@ -868,7 +909,7 @@
                 <div class="course-name"><i class="fas fa-brain"></i> AI Fluency: Framework & Foundations</div>
                 <div class="course-info">Anthropic | 2026</div>
             </div>
-            <span class="course-badge"><i class="fas fa-check"></i> Concluído</span>
+            <span class="course-badge"><i class="fas fa-check"></i> <span data-i18n="concluido_badge">Concluído</span></span>
         </div>
 
         <div class="course-item">
@@ -876,21 +917,21 @@
                 <div class="course-name"><i class="fas fa-comment-dots"></i> Copilot Studio · Planner · Power Automate</div>
                 <div class="course-info">Microsoft | 2026</div>
             </div>
-            <span class="course-badge"><i class="fas fa-check"></i> Concluído</span>
+            <span class="course-badge"><i class="fas fa-check"></i> <span data-i18n="concluido_badge">Concluído</span></span>
         </div>
 
-        <h2 style="margin-top:14px;"><i class="fas fa-language" style="margin-right:12px; color:#5b9bd5;"></i> Idiomas</h2>
+        <h2 style="margin-top:14px;"><i class="fas fa-language" style="margin-right:12px; color:#5b9bd5;"></i> <span data-i18n="idiomas_h">Idiomas</span></h2>
         <div class="lang-main">
-            <span class="lang-item-main"><i class="fas fa-check-circle" style="color:#27ae60;"></i> Português <span class="level">(Nativo)</span></span>
-            <span class="lang-item-main"><i class="fas fa-circle" style="color:#f39c12;"></i> Inglês <span class="level">(Técnico / Interm.)</span></span>
-            <span class="lang-item-main"><i class="fas fa-check-circle" style="color:#27ae60;"></i> Tsonga <span class="level">(Fluente)</span></span>
+            <span class="lang-item-main"><i class="fas fa-check-circle" style="color:#27ae60;"></i> <span data-i18n="lang_pt">Português</span> <span class="level" data-i18n="lang_native_paren">(Nativo)</span></span>
+            <span class="lang-item-main"><i class="fas fa-circle" style="color:#f39c12;"></i> <span data-i18n="lang_en">Inglês</span> <span class="level" data-i18n="lang_en_level_paren">(Técnico / Interm.)</span></span>
+            <span class="lang-item-main"><i class="fas fa-check-circle" style="color:#27ae60;"></i> Tsonga <span class="level" data-i18n="lang_fluent_paren">(Fluente)</span></span>
         </div>
 
-        <h2 style="margin-top:18px;"><i class="fas fa-code" style="margin-right:12px; color:#5b9bd5;"></i> Habilidades Técnicas</h2>
+        <h2 style="margin-top:18px;"><i class="fas fa-code" style="margin-right:12px; color:#5b9bd5;"></i> <span data-i18n="habilidades_h">Habilidades Técnicas</span></h2>
 
         <div class="two-col">
             <div>
-                <div style="font-weight:700; font-size:14px; color:#1a2a3a; margin-bottom:5px;">💻 Desenvolvimento & Dados</div>
+                <div style="font-weight:700; font-size:14px; color:#1a2a3a; margin-bottom:5px;" data-i18n="dev_dados_h">💻 Desenvolvimento & Dados</div>
                 <div class="tech-grid">
                     <span class="tag">HTML/CSS</span>
                     <span class="tag">JavaScript</span>
@@ -912,7 +953,7 @@
                 </div>
             </div>
             <div>
-                <div style="font-weight:700; font-size:14px; color:#1a2a3a; margin-bottom:5px;">🖥️ Sistemas & Suporte</div>
+                <div style="font-weight:700; font-size:14px; color:#1a2a3a; margin-bottom:5px;" data-i18n="sistemas_suporte_h">🖥️ Sistemas & Suporte</div>
                 <div class="tech-grid">
                     <span class="tag">Windows Server</span>
                     <span class="tag">Linux</span>
@@ -933,6 +974,161 @@
 
     </div>
 </div>
+
+<script>
+    var I18N = {
+        pt: {
+            contacto_h: "Contacto",
+            competencias_h: "Competências",
+            idiomas_h: "Idiomas",
+            disponibilidade_h: "Disponibilidade",
+            referencias_h: "Referências",
+            skill_platform_mgmt: "Gestão de Plataformas",
+            skill_networks: "Redes",
+            skill_field_support: "Suporte de Campo",
+            skill_tech_sales: "Vendas Técnicas",
+            lang_pt: "Português",
+            lang_native: "Nativo",
+            lang_en: "Inglês",
+            lang_en_level: "Técnico / Interm.",
+            lang_fluent: "Fluente",
+            lang_native_paren: "(Nativo)",
+            lang_en_level_paren: "(Técnico / Interm.)",
+            lang_fluent_paren: "(Fluente)",
+            disponibilidade_text: "Disponível para deslocações e trabalho de campo",
+            perfil_h: "Perfil Profissional",
+            perfil_text: "<strong>Trouble solver</strong> por natureza — essa sempre foi a minha primeira característica, muito antes de ser a minha profissão. Desenvolvedor Fullstack com experiência prática no desenvolvimento e suporte de aplicações internas, administração de bases de dados e suporte a sistemas empresariais, actuando em ambientes <strong>Windows</strong> e <strong>Linux</strong>. Junto a esta base de desenvolvimento uma sólida experiência em <strong>gestão de plataformas</strong>: soluções <strong>Microsoft 365</strong>, dashboards e análise de dados em <strong>Power BI</strong>, automação de processos com <strong>Copilot Studio</strong> e <strong>Power Automate</strong>, e organização de trabalho com <strong>Planner</strong> e <strong>Trello</strong>. O fio condutor é sempre o mesmo — entender o problema de negócio e resolvê-lo com a solução tecnológica mais eficiente, esteja ela num código, numa base de dados ou num fluxo automatizado.",
+            experiencia_h: "Experiência Profissional",
+            exp1_role: "Desenvolvedor · DBA · Suporte Técnico",
+            exp1_period: "2024 – Atual",
+            exp1_b1: "Desenvolvimento e manutenção de aplicações internas (web e mobile)",
+            exp1_b2: "Administração e otimização de bases de dados (SQL, MySQL)",
+            exp1_b3: "Suporte técnico presencial e remoto a sistemas e utilizadores",
+            exp1_b4: "Configuração e manutenção de servidores Windows/Linux",
+            exp1_b5: "Gestão de plataformas e suporte a soluções Microsoft 365",
+            exp1_b6: "Criação de dashboards e relatórios em <strong>Power BI</strong> para análise de dados operacionais",
+            exp1_b7: "Automação de fluxos de trabalho com <strong>Power Automate</strong> e gestão de tarefas com <strong>Planner</strong> e <strong>Trello</strong>",
+            exp2_role: "Técnico de Campo · Redes",
+            exp2_b1: "Instalação, configuração e manutenção de redes de dados e telecomunicações",
+            exp2_b2: "Suporte técnico externo a clientes empresariais",
+            exp2_b3: "Diagnóstico e resolução de problemas de conectividade e infraestrutura",
+            exp2_b4: "Gestão de trabalhos de campo e equipas técnicas",
+            exp2_b5: "Intervenções em projetos de redes e sistemas",
+            projetos_h: "Projetos em Destaque",
+            proj1_name: "Gestão Académica — gestão financeira, turmas e notas de uma faculdade",
+            proj2_name: "Portal de Pedidos — fluxos entre equipas com relatórios e notificações em tempo real",
+            proj3_name: "Lavagem Auto — plataforma SaaS multi-tenant de marcação de lavagens, web + app móvel",
+            proj4_name: "Gerador de Propostas — geração automática de propostas comerciais com tracking de leitura",
+            formacao_h: "Formação Académica",
+            edu1_title: "Informática Aplicada (Eng. Software)",
+            edu1_desc: "Em curso – previsão de conclusão em 2030",
+            edu2_title: "Eng. Tecnologias e Sistemas de Informação",
+            edu2_status: "Interrompido no 2º ano",
+            edu3_title: "Electricidade Industrial",
+            concluido_badge: "Concluído",
+            cursos_h: "Cursos & Certificações",
+            course2_name: "Informática Avançada e Programação Web",
+            course2_info: "Unitec Academy – 3 meses | 2024",
+            course3_name: "Administrador de Banco de Dados",
+            course4_name: "Automação de Sistemas",
+            habilidades_h: "Habilidades Técnicas",
+            dev_dados_h: "💻 Desenvolvimento & Dados",
+            sistemas_suporte_h: "🖥️ Sistemas & Suporte",
+            back_link: "Voltar ao Portfólio",
+            download_btn: "Baixar CV (PDF)"
+        },
+        en: {
+            contacto_h: "Contact",
+            competencias_h: "Skills",
+            idiomas_h: "Languages",
+            disponibilidade_h: "Availability",
+            referencias_h: "References",
+            skill_platform_mgmt: "Platform Management",
+            skill_networks: "Networks",
+            skill_field_support: "Field Support",
+            skill_tech_sales: "Technical Sales",
+            lang_pt: "Portuguese",
+            lang_native: "Native",
+            lang_en: "English",
+            lang_en_level: "Technical / Interm.",
+            lang_fluent: "Fluent",
+            lang_native_paren: "(Native)",
+            lang_en_level_paren: "(Technical / Interm.)",
+            lang_fluent_paren: "(Fluent)",
+            disponibilidade_text: "Available for travel and field work",
+            perfil_h: "Professional Profile",
+            perfil_text: "<strong>Trouble solver</strong> by nature — that has always been my defining trait, long before it became my profession. Fullstack Developer with hands-on experience developing and supporting internal applications, database administration and enterprise systems support, working across <strong>Windows</strong> and <strong>Linux</strong> environments. Alongside this development background, I bring solid experience in <strong>platform management</strong>: <strong>Microsoft 365</strong> solutions, dashboards and data analysis in <strong>Power BI</strong>, process automation with <strong>Copilot Studio</strong> and <strong>Power Automate</strong>, and work organization with <strong>Planner</strong> and <strong>Trello</strong>. The common thread is always the same — understanding the business problem and solving it with the most efficient technological solution, whether that means writing code, managing a database, or automating a workflow.",
+            experiencia_h: "Professional Experience",
+            exp1_role: "Developer · DBA · Technical Support",
+            exp1_period: "2024 – Present",
+            exp1_b1: "Development and maintenance of internal applications (web and mobile)",
+            exp1_b2: "Database administration and optimization (SQL, MySQL)",
+            exp1_b3: "On-site and remote technical support for systems and users",
+            exp1_b4: "Configuration and maintenance of Windows/Linux servers",
+            exp1_b5: "Platform management and support for Microsoft 365 solutions",
+            exp1_b6: "Creation of dashboards and reports in <strong>Power BI</strong> for operational data analysis",
+            exp1_b7: "Workflow automation with <strong>Power Automate</strong> and task management with <strong>Planner</strong> and <strong>Trello</strong>",
+            exp2_role: "Field Technician · Networks",
+            exp2_b1: "Installation, configuration and maintenance of data and telecommunications networks",
+            exp2_b2: "External technical support for corporate clients",
+            exp2_b3: "Diagnosis and resolution of connectivity and infrastructure issues",
+            exp2_b4: "Management of field work and technical teams",
+            exp2_b5: "Involvement in network and systems projects",
+            projetos_h: "Featured Projects",
+            proj1_name: "Gestão Académica — financial management, class assignments and grades for a university",
+            proj2_name: "Portal de Pedidos — cross-team workflows with real-time reports and notifications",
+            proj3_name: "Lavagem Auto — multi-tenant SaaS platform for booking car washes, web + mobile app",
+            proj4_name: "Gerador de Propostas — automatic generation of business proposals with read-tracking",
+            formacao_h: "Academic Education",
+            edu1_title: "Applied Computer Science (Software Eng.)",
+            edu1_desc: "In progress – expected completion in 2030",
+            edu2_title: "Information Systems & Technologies Eng.",
+            edu2_status: "Discontinued in year 2",
+            edu3_title: "Industrial Electricity",
+            concluido_badge: "Completed",
+            cursos_h: "Courses & Certifications",
+            course2_name: "Advanced IT & Web Programming",
+            course2_info: "Unitec Academy – 3 months | 2024",
+            course3_name: "Database Administrator",
+            course4_name: "Systems Automation",
+            habilidades_h: "Technical Skills",
+            dev_dados_h: "💻 Development & Data",
+            sistemas_suporte_h: "🖥️ Systems & Support",
+            back_link: "Back to Portfolio",
+            download_btn: "Download CV (PDF)"
+        }
+    };
+
+    function applyLang(lang) {
+        if (!I18N[lang]) lang = 'pt';
+        document.querySelectorAll('[data-i18n]').forEach(function (el) {
+            var key = el.getAttribute('data-i18n');
+            if (I18N[lang][key] !== undefined) el.innerHTML = I18N[lang][key];
+        });
+        document.documentElement.setAttribute('lang', lang);
+        document.querySelectorAll('.lang-btn').forEach(function (btn) {
+            btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+        });
+        var pdfLink = document.getElementById('pdf-download-link');
+        if (pdfLink) {
+            var file = lang === 'en' ? 'cv-Josué-EN.pdf' : 'cv-Josué.pdf';
+            pdfLink.setAttribute('href', file + '?v=5');
+            pdfLink.setAttribute('download', file);
+        }
+        try { localStorage.setItem('cvLang', lang); } catch (e) {}
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () { applyLang(btn.getAttribute('data-lang')); });
+    });
+
+    (function initLang() {
+        var urlLang = new URLSearchParams(window.location.search).get('lang');
+        var stored = null;
+        try { stored = localStorage.getItem('cvLang'); } catch (e) {}
+        applyLang(urlLang || stored || 'pt');
+    })();
+</script>
 
 </body>
 </html>
