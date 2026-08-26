@@ -58,6 +58,10 @@
         .cv-actions .download-link {
             color: #fff;
             background: #5b9bd5;
+            border: none;
+            font-family: inherit;
+            font-size: 14px;
+            cursor: pointer;
         }
 
         .cv-actions .download-link:hover {
@@ -710,7 +714,7 @@
             <button type="button" class="lang-btn" data-lang="pt">PT</button>
             <button type="button" class="lang-btn" data-lang="en">EN</button>
         </div>
-        <a href="cv-Josué.pdf?v=5" download="cv-Josué.pdf" class="download-link" id="pdf-download-link"><i class="fas fa-download"></i> <span data-i18n="download_btn">Baixar CV (PDF)</span></a>
+        <button type="button" class="download-link" id="pdf-download-link" onclick="window.print()"><i class="fas fa-download"></i> <span data-i18n="download_btn">Baixar CV (PDF)</span></button>
     </div>
 </div>
 
@@ -1123,12 +1127,7 @@
         document.querySelectorAll('.lang-btn').forEach(function (btn) {
             btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
         });
-        var pdfLink = document.getElementById('pdf-download-link');
-        if (pdfLink) {
-            var file = lang === 'en' ? 'cv-Josué-EN.pdf' : 'cv-Josué.pdf';
-            pdfLink.setAttribute('href', file + '?v=5');
-            pdfLink.setAttribute('download', file);
-        }
+        // PDF is generated from the current HTML via window.print()
         try { localStorage.setItem('cvLang', lang); } catch (e) {}
     }
 
