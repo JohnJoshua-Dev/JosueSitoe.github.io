@@ -103,6 +103,10 @@
             background: #dde4ec;
         }
 
+        @page {
+            margin: 0;
+        }
+
         @media print {
             .cv-actions {
                 display: none;
@@ -610,12 +614,7 @@
                 box-shadow: none;
                 border-radius: 0;
                 max-width: 100%;
-                width: 100%;
                 grid-template-columns: 34% 66% !important;
-                align-items: stretch;
-                background: linear-gradient(to right, #1a2a3a 34%, #ffffff 34%) !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
                 zoom: 0.75;
             }
             .two-col {
@@ -731,8 +730,8 @@
             <img src="FotoJS.png" alt="Josué Sitoe">
         </div>
         <h1>JOSUÉ SITOE</h1>
-        <div class="subtitle">
-            Fullstack Developer · Sistemas Empresariais · DBA · Integrações de APIs
+        <div class="subtitle" data-i18n="subtitle">
+            PHP/Laravel Developer · SaaS · APIs REST · Dev com IA
         </div>
 
         <div class="sidebar-section">
@@ -756,10 +755,11 @@
             <span class="skill-tag">Fullstack Dev</span>
             <span class="skill-tag">DBA</span>
             <span class="skill-tag">APIs REST</span>
+            <span class="skill-tag">Bootstrap</span>
+            <span class="skill-tag">AI Tools</span>
             <span class="skill-tag powerbi">Power BI</span>
             <span class="skill-tag copilot">Copilot Studio</span>
             <span class="skill-tag">Microsoft 365</span>
-            <span class="skill-tag">Windows/Linux</span>
         </div>
 
         <div class="sidebar-section">
@@ -959,6 +959,8 @@
                     <span class="tag blue">PostgreSQL</span>
                     <span class="tag blue">MySQL</span>
                     <span class="tag blue">APIs REST</span>
+                    <span class="tag blue">Bootstrap</span>
+                    <span class="tag blue">AI-Assisted Dev</span>
                     <span class="tag">JavaScript</span>
                     <span class="tag">Node.js</span>
                     <span class="tag">React</span>
@@ -1015,17 +1017,17 @@
             lang_fluent_paren: "(Fluente)",
             disponibilidade_text: "Disponível para deslocações e trabalho de campo",
             perfil_h: "Perfil Profissional",
-            perfil_text: "Desenvolvedor de Software <strong>Fullstack</strong> especializado em <strong>aplicações empresariais web</strong>, integrações de <strong>APIs REST</strong> e administração de bases de dados (<strong>SQL Server</strong>, <strong>MySQL</strong>, <strong>PostgreSQL</strong>). Com mais de 2 anos de desenvolvimento activo e 9 anos de experiência em sistemas e infraestrutura, entrego soluções que unem lógica de negócio robusta, integridade de dados e performance em ambientes críticos. Certificado como <strong>DBA (IFRS)</strong>, com experiência comprovada em modelagem de dados, otimização de queries e controlo de fluxos financeiros em sistemas empresariais desenvolvidos com <strong>PHP/Laravel</strong>, <strong>Java</strong> e <strong>Python</strong>. Cursando <strong>Engenharia de Software</strong> na Universidade Pedagógica — sólida base académica aliada a prática real.",
+            perfil_text: "Desenvolvedor <strong>PHP/Laravel</strong> com mais de 2 anos de experiência prática no desenvolvimento full-stack de <strong>aplicações empresariais web</strong> e plataformas <strong>SaaS</strong>. Capaz de apropriar-se de funcionalidades do início ao fim — do levantamento à entrega — com envolvimento directo com clientes e stakeholders. Certificado como <strong>DBA (IFRS)</strong>, com forte domínio de <strong>MySQL</strong>, <strong>PostgreSQL</strong> e <strong>SQL Server</strong>, optimização de queries e integridade de dados em sistemas produtivos. Utiliza activamente <strong>ferramentas de IA</strong> no desenvolvimento para acelerar entregas. Cursando <strong>Engenharia de Software</strong> — curioso, orientado ao crescimento e pronto para assumir maior responsabilidade.",
             experiencia_h: "Experiência Profissional",
-            exp1_role: "Desenvolvedor Fullstack · DBA · Sistemas Empresariais",
+            exp1_role: "Desenvolvedor PHP/Laravel · Full-Stack · Sistemas Empresariais",
             exp1_period: "2024 – Atual",
             exp1_b1: "Desenvolvimento de aplicações empresariais web com <strong>PHP/Laravel</strong>, <strong>Java</strong> e <strong>Python</strong> — Portal de Pedidos e Sistema de Gestão Académica",
             exp1_b2: "Administração e otimização de bases de dados (<strong>SQL Server</strong>, <strong>MySQL</strong>, <strong>PostgreSQL</strong>) com foco em integridade de dados e performance em operações críticas",
             exp1_b3: "Modelagem de dados e controlo de fluxos financeiros em sistemas internos com regras de negócio complexas",
             exp1_b4: "Integração de APIs REST entre módulos e serviços externos, garantindo consistência e rastreabilidade",
             exp1_b5: "Geração de relatórios em tempo real e dashboards operacionais em <strong>Power BI</strong>",
-            exp1_b6: "Configuração e manutenção de servidores Windows/Linux e gestão de plataformas <strong>Microsoft 365</strong>",
-            exp1_b7: "Automação de fluxos de trabalho com <strong>Power Automate</strong> e <strong>Copilot Studio</strong>",
+            exp1_b6: "Utilização activa de ferramentas de <strong>IA</strong> no desenvolvimento para acelerar entregas; contribuição para modernização de codebases <strong>PHP</strong> existentes",
+            exp1_b7: "Suporte técnico directo a clientes — sessões de onboarding, documentação clara e formação para administradores e equipas de IT",
             exp2_role: "Técnico de Campo · Redes",
             exp2_b1: "Instalação, configuração e manutenção de redes de dados e telecomunicações",
             exp2_b2: "Suporte técnico externo a clientes empresariais",
@@ -1054,6 +1056,7 @@
             habilidades_h: "Habilidades Técnicas",
             dev_dados_h: "💻 Desenvolvimento & Dados",
             sistemas_suporte_h: "🖥️ Sistemas & Suporte",
+            subtitle: "PHP/Laravel Developer · SaaS · APIs REST · Dev com IA",
             back_link: "Voltar ao Portfólio",
             download_btn: "Baixar CV (PDF)"
         },
@@ -1078,17 +1081,17 @@
             lang_fluent_paren: "(Fluent)",
             disponibilidade_text: "Available for travel and field work",
             perfil_h: "Professional Profile",
-            perfil_text: "<strong>Fullstack Software Developer</strong> specialised in <strong>enterprise web applications</strong>, <strong>REST API</strong> integrations and database administration (<strong>SQL Server</strong>, <strong>MySQL</strong>, <strong>PostgreSQL</strong>). With 2+ years of active development and 9 years in systems and infrastructure, I deliver solutions that combine robust business logic, data integrity and performance in mission-critical environments. Certified <strong>DBA (IFRS)</strong> with proven experience in data modelling, query optimisation and financial flow control in enterprise systems built with <strong>PHP/Laravel</strong>, <strong>Java</strong> and <strong>Python</strong>. Currently pursuing a <strong>Software Engineering</strong> degree — strong academic foundation paired with real-world delivery.",
+            perfil_text: "<strong>PHP/Laravel developer</strong> with 2+ years of hands-on full-stack experience building <strong>enterprise web applications</strong> and <strong>SaaS</strong> platforms. Proven ability to own features end-to-end — from scoping through delivery — while engaging directly with clients and stakeholders. Certified <strong>DBA (IFRS)</strong> with strong expertise in <strong>MySQL</strong>, <strong>PostgreSQL</strong> and <strong>SQL Server</strong>, query optimisation and data integrity in production systems. Actively leverages <strong>AI-assisted development tools</strong> to move faster and punch above experience level. Currently pursuing a <strong>Software Engineering</strong> degree — coachable, curious, and ready to grow with senior mentorship.",
             experiencia_h: "Professional Experience",
-            exp1_role: "Fullstack Developer · DBA · Enterprise Systems",
+            exp1_role: "PHP/Laravel Developer · Full-Stack · Enterprise Systems",
             exp1_period: "2024 – Present",
             exp1_b1: "Enterprise web application development with <strong>PHP/Laravel</strong>, <strong>Java</strong> and <strong>Python</strong> — Orders Portal and Academic Management System",
             exp1_b2: "Database administration and optimisation (<strong>SQL Server</strong>, <strong>MySQL</strong>, <strong>PostgreSQL</strong>) focused on data integrity and performance in critical operations",
             exp1_b3: "Data modelling and financial flow control in internal systems with complex business rules",
             exp1_b4: "REST API integration across modules and external services, ensuring consistency and traceability",
             exp1_b5: "Real-time report generation and operational dashboards in <strong>Power BI</strong>",
-            exp1_b6: "Configuration and maintenance of Windows/Linux servers and <strong>Microsoft 365</strong> platform management",
-            exp1_b7: "Workflow automation with <strong>Power Automate</strong> and <strong>Copilot Studio</strong>",
+            exp1_b6: "Actively uses <strong>AI-assisted development tools</strong> to accelerate delivery; contributed to modernising existing <strong>PHP</strong> codebases",
+            exp1_b7: "Direct client-facing technical support — technical onboarding sessions, clear documentation and training for administrators and IT teams",
             exp2_role: "Field Technician · Networks",
             exp2_b1: "Installation, configuration and maintenance of data and telecommunications networks",
             exp2_b2: "External technical support for corporate clients",
@@ -1117,6 +1120,7 @@
             habilidades_h: "Technical Skills",
             dev_dados_h: "💻 Development & Data",
             sistemas_suporte_h: "🖥️ Systems & Support",
+            subtitle: "PHP/Laravel Developer · SaaS · REST APIs · AI-Assisted Dev",
             back_link: "Back to Portfolio",
             download_btn: "Download CV (PDF)"
         }
