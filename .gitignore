@@ -25,3 +25,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+# ATS tailor plaintext source — only the encrypted build (cv/ats-tailor.enc.json) is published
+/private/
+
+# Source photos (not used by the site; kept locally only)
+/img/joshua new.jpg
+/img/joshua-clean.png
+/img/joshua-new-cutout.png
+/img/josue-hero.png

@@ -1,746 +1,1179 @@
 <!DOCTYPE html>
-<html lang="pt" class="scroll-smooth bg-[#0B0C10] min-h-screen">
+<html lang="pt">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Josué Sitoe - Desenvolvedor Fullstack</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Josué Sitoe — Desenvolvedor Fullstack</title>
+    <meta name="description"
+        content="Portfólio de Josué Sitoe — Desenvolvedor de Software Fullstack especializado em ecossistemas web, mobile e arquitecturas de backend escaláveis.">
+    <meta name="keywords"
+        content="Josué Sitoe, Desenvolvedor Fullstack, React, Next.js, Laravel, Node.js, Flutter, Maputo, Moçambique">
+    <meta name="author" content="Josué Sitoe">
+
+    <!-- Open Graph / Meta Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Josué Sitoe — Desenvolvedor Fullstack">
+    <meta property="og:description"
+        content="Sistemas web robustos, aplicações móveis fluidas e arquitecturas de backend altamente escaláveis.">
+
+    <!-- Google Fonts: Playfair Display (Editorial Serif) + Plus Jakarta Sans + JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+
+    <!-- Font Awesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Main Stylesheet (Lendex-inspired Design System) -->
+    <link rel="stylesheet" href="styles.css?v=8">
 </head>
 
-<body class="text-white font-inter overflow-x-hidden">
+<body>
 
-    <!-- Scroll progress bar -->
-    <div id="progress-bar"></div>
+    <!-- ── Top Navigation Bar ── -->
+    <header class="site-header">
+        <div class="container-custom">
+            <div class="nav-wrap">
 
-    <!-- Toast notification -->
-    <div class="toast" id="toast"></div>
-
-    <!-- particles canvas moved to cover whole page -->
-    <canvas id="particles-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
-
-    <!-- wrap site content so it sits above the canvas -->
-    <div class="relative z-10">
-        <!-- Navigation -->
-        <nav class="fixed top-0 w-full z-50 bg-[#0B0C10]/80 backdrop-blur-md border-b border-[#FFD700]/20">
-            <div class="container mx-auto px-6 py-4">
-                <div class="flex items-center justify-between">
-                    <div class="text-2xl font-orbitron font-bold text-[#FFD700] glow-text">
-                        JS
-                    </div>
-                    <div class="hidden md:flex space-x-8 items-center">
-                        <a href="#inicio" class="nav-link" data-i18n="nav_inicio">Início</a>
-                        <a href="#sobre" class="nav-link" data-i18n="nav_sobre">Sobre</a>
-                        <a href="#habilidades" class="nav-link" data-i18n="nav_habilidades">Habilidades</a>
-                        <a href="#projetos" class="nav-link" data-i18n="nav_projetos">Projetos</a>
-                        <a href="cv/" target="_blank" class="nav-link" data-i18n="nav_curriculo">Currículo</a>
-                        <a href="#contacto" class="nav-link" data-i18n="nav_contacto">Contacto</a>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <div class="lang-switch-nav">
-                            <button type="button" class="lang-btn-nav" data-lang="pt">PT</button>
-                            <button type="button" class="lang-btn-nav" data-lang="en">EN</button>
-                        </div>
-                        <button id="mobile-menu-btn" class="md:hidden text-[#FFD700]">
-                            <i class="fas fa-bars text-2xl"></i>
-                        </button>
-                    </div>
-                </div>
-                <!-- Mobile Menu -->
-                <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-4">
-                    <a href="#inicio" class="block nav-link" data-i18n="nav_inicio">Início</a>
-                    <a href="#sobre" class="block nav-link" data-i18n="nav_sobre">Sobre</a>
-                    <a href="#habilidades" class="block nav-link" data-i18n="nav_habilidades">Habilidades</a>
-                    <a href="#projetos" class="block nav-link" data-i18n="nav_projetos">Projetos</a>
-                    <a href="cv/" target="_blank" class="block nav-link" data-i18n="nav_curriculo">Currículo</a>
-                    <a href="#contacto" class="block nav-link" data-i18n="nav_contacto">Contacto</a>
-                </div>
-            </div>
-        </nav>
-
-        <!-- Hero Section -->
-        <section id="inicio" class="min-h-screen flex items-center relative overflow-hidden pt-20">
-            <div class="container mx-auto px-6 relative z-10">
-                <div class="animate-fade-in flex flex-col lg:flex-row items-center gap-12">
-
-                    <!-- TEXT SIDE -->
-                    <div class="flex-1 text-center lg:text-left">
-                        <div class="flex flex-wrap justify-center lg:justify-start gap-3 mb-6">
-                            <span class="avail-badge available" data-i18n="avail_badge">🟢 Disponível para Freelance</span>
-                            <span class="avail-badge location" data-i18n="location_badge">📍 Maputo, Moçambique</span>
-                        </div>
-
-                        <h1 class="text-4xl md:text-6xl font-orbitron font-bold mb-3 glow-text leading-tight">
-                            <span data-i18n="hero_greeting">Olá, eu sou</span><br><span class="text-[#FFD700]">Josué Sitoe</span>
-                        </h1>
-
-                        <p class="text-lg md:text-xl text-gray-300 mb-4" data-i18n="hero_subtitle">
-                            Desenvolvedor Fullstack apaixonado por tecnologia e inovação.
-                        </p>
-
-                        <div class="text-xl md:text-2xl font-orbitron text-[#A37FFF] mb-8 h-10">
-                            <span id="typing-text"></span>
-                            <span class="typing-cursor">|</span>
-                        </div>
-
-                        <!-- Social buttons -->
-                        <div class="flex flex-wrap justify-center lg:justify-start gap-3 mb-5">
-                            <a href="https://github.com/JohnJoshua-Dev" target="_blank"
-                               class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-white font-medium shadow-lg bg-gradient-to-r from-[#4F46E5] to-[#A37FFF] hover:opacity-90 transition text-sm">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                            <a href="http://www.linkedin.com/in/josué-sitoe-programmer" target="_blank"
-                               class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-white font-medium shadow-lg bg-gradient-to-r from-[#8B5CF6] to-[#EC4899] hover:opacity-90 transition text-sm">
-                                <i class="fab fa-linkedin"></i> LinkedIn
-                            </a>
-                            <a href="https://www.upwork.com/freelancers/~016591da5a7b26dc12?viewMode=1" target="_blank"
-                               class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-white font-medium shadow-lg bg-gradient-to-r from-[#07B59E] to-[#00A67A] hover:opacity-90 transition text-sm">
-                                <img src="https://cdn.simpleicons.org/upwork/ffffff" alt="UpWork" class="w-4 h-4">
-                                UpWork
-                            </a>
-                        </div>
-
-                        <!-- Action buttons -->
-                        <div class="flex flex-wrap justify-center lg:justify-start gap-3 mb-10">
-                            <a href="#projetos"
-                               class="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white font-semibold shadow-lg bg-gradient-to-r from-[#06b6d4] to-[#3b82f6] hover:opacity-90 transition">
-                                <i class="fas fa-folder-open"></i> <span data-i18n="btn_ver_projetos">Ver Projetos</span>
-                            </a>
-                            <a href="cv/" target="_blank" id="hero-cv-link"
-                               class="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white font-semibold shadow-lg bg-gradient-to-r from-[#FB7185] to-[#FB923C] hover:opacity-90 transition">
-                                <i class="fas fa-id-card"></i> <span data-i18n="btn_ver_cv">Ver CV</span>
-                            </a>
-                            <a href="cv/cv-Josué.pdf?v=5" download="cv-Josué.pdf" id="hero-download-link"
-                               class="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white font-semibold shadow-lg bg-gradient-to-r from-[#FB7185] to-[#FB923C] hover:opacity-90 transition">
-                                <i class="fas fa-download"></i> <span data-i18n="btn_download_cv">Download CV</span>
-                            </a>
-                        </div>
-
-                        <!-- Stats -->
-                        <div class="grid grid-cols-3 gap-4 max-w-md mx-auto lg:mx-0">
-                            <div class="stat-card">
-                                <div class="stat-num counter" data-start="2021-05-01" data-suffix="+">0</div>
-                                <div class="stat-label" data-i18n="stat_anos">Anos de Exp.</div>
-                            </div>
-                            <div class="stat-card">
-                                <div class="stat-num counter" data-target="12" data-suffix="+">0</div>
-                                <div class="stat-label" data-i18n="stat_projetos">Projetos</div>
-                            </div>
-                            <div class="stat-card">
-                                <div class="stat-num counter" data-target="3" data-suffix="">0</div>
-                                <div class="stat-label" data-i18n="stat_idiomas">Idiomas</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- PHOTO SIDE -->
-                    <div class="flex-shrink-0 hidden lg:flex justify-center">
-                        <div class="hero-photo-wrap">
-                            <img src="img/Fotojs com fundo Azul.png" alt="Josué Sitoe"
-                                 class="hero-photo">
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-                <a href="#sobre" class="text-[#FFD700] text-3xl">
-                    <i class="fas fa-chevron-down"></i>
+                <!-- Brand Logo -->
+                <a href="#inicio" class="brand-logo" aria-label="Josué Sitoe Início">
+                    <div class="brand-logo-mark">JS</div>
+                    <span class="brand-logo-text">Josué Sitoe</span>
                 </a>
-            </div>
-        </section>
 
-        <section id="sobre" class="py-20 relative">
-            <div class="container mx-auto px-6">
-                <h2 class="section-title" data-i18n="sobre_title">Sobre Mim</h2>
-                <div class="max-w-4xl mx-auto">
-                    <div class="glass-card p-8 md:p-12 flex flex-col md:flex-row items-center gap-8">
-                        <div class="flex-shrink-0">
-                            <div class="profile-photo">
-                                <img src="img/Fotojs com fundo Azul.png" alt="Josué Sitoe"
-                                    class="w-48 h-48 rounded-full object-cover object-top">
-                            </div>
-                        </div>
-                        <div class="text-center md:text-left">
-                            <h3 class="text-2xl font-orbitron font-bold text-[#FFD700] mb-1">Josué Rafael Sitoe</h3>
-                            <p class="text-[#A37FFF] text-sm mb-4 tracking-widest uppercase" data-i18n="role_line">Desenvolvedor Fullstack · Maputo, MZ</p>
-                            <p class="text-gray-300 leading-relaxed text-base mb-3" data-i18n="about_p1">
-                                Sou um profissional dedicado, dinâmico e entusiasta, sempre em busca de progresso.
-                                Gosto de criar soluções tecnológicas inovadoras e funcionais que unem design e lógica.
-                            </p>
-                            <p class="text-gray-400 leading-relaxed text-sm" data-i18n="about_p2">
-                                Estudante de Engenharia Informática com experiência prática em projectos web, mobile e sistemas de gestão para empresas em Moçambique.
-                            </p>
-                            <div class="mt-5 flex flex-wrap gap-3 justify-center md:justify-start">
-                                <span class="badge" data-i18n="badge_inovador">Inovador</span>
-                                <span class="badge" data-i18n="badge_criativo">Criativo</span>
-                                <span class="badge" data-i18n="badge_dedicado">Dedicado</span>
-                                <span class="badge">Fullstack</span>
-                                <span class="badge">Freelancer</span>
-                            </div>
-                        </div>
+                <!-- Desktop Menu -->
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="#inicio" class="nav-item-link active" data-i18n="nav_home">Início</a></li>
+                        <li><a href="#servicos" class="nav-item-link" data-i18n="nav_services">Serviços</a></li>
+                        <li><a href="#habilidades" class="nav-item-link" data-i18n="nav_skills">Especialidades</a></li>
+                        <li><a href="#projetos" class="nav-item-link" data-i18n="nav_portfolio">Projectos</a></li>
+                        <li><a href="cv/" target="_blank" class="nav-item-link" id="hero-cv-link"
+                                data-i18n="nav_resume">Currículo</a></li>
+                        <li><a href="#contacto" class="nav-item-link" data-i18n="nav_contact">Contacto</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Actions: Language Switch & Hire Me CTA -->
+                <div class="nav-actions">
+                    <div class="lang-switch-pill" role="group" aria-label="Seleccionar Idioma">
+                        <button type="button" class="lang-btn active" data-lang="pt">PT</button>
+                        <button type="button" class="lang-btn" data-lang="en">EN</button>
                     </div>
+
+                    <a href="#contacto" class="btn-pill btn-pill-outline hidden-mobile" data-i18n="nav_hire_me">
+                        Contactar »
+                    </a>
+
+                    <!-- Mobile Hamburger -->
+                    <button id="mobile-menu-btn" class="mobile-menu-toggle" aria-label="Abrir Menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
                 </div>
+
             </div>
+        </div>
+    </header>
 
-        </section>
-        <!-- Skills Section -->
-        <section id="habilidades" class="py-20 relative">
-            <div class="container mx-auto px-6">
-                <h2 class="section-title" data-i18n="habilidades_title">Habilidades Técnicas</h2>
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 max-w-6xl mx-auto">
-                    <div class="skill-card">
-                        <i class="fab fa-html5 text-5xl mb-3"></i>
-                        <p class="font-semibold">HTML5</p>
-                    </div>
-                    <div class="skill-card">
-                        <i class="fab fa-css3-alt text-5xl mb-3"></i>
-                        <p class="font-semibold">CSS3</p>
-                    </div>
-                    <div class="skill-card">
-                        <i class="fab fa-js text-5xl mb-3"></i>
-                        <p class="font-semibold">JavaScript</p>
-                    </div>
-                    <div class="skill-card">
-                        <i class="fab fa-php text-5xl mb-3"></i>
-                        <p class="font-semibold">PHP</p>
-                    </div>
-                    <div class="skill-card">
-                        <i class="fab fa-laravel text-5xl mb-3"></i>
-                        <p class="font-semibold">Laravel</p>
-                    </div>
-                    <div class="skill-card">
-                        <i class="fab fa-react text-5xl mb-3"></i>
-                        <p class="font-semibold">React</p>
-                    </div>
-                    <div class="skill-card">
-                        <i class="fab fa-node text-5xl mb-3"></i>
-                        <p class="font-semibold">Node.js</p>
-                    </div>
-                    <div class="skill-card">
-                        <i class="fas fa-mobile-alt text-5xl mb-3"></i>
-                        <p class="font-semibold">Flutter</p>
-                    </div>
-                    <div class="skill-card">
-                        <i class="fab fa-python text-5xl mb-3"></i>
-                        <p class="font-semibold">Python</p>
-                    </div>
-                    <div class="skill-card">
-                        <i class="fas fa-database text-5xl mb-3"></i>
-                        <p class="font-semibold">MySQL</p>
-                    </div>
-                    <div class="skill-card">
-                        <i class="fas fa-server text-5xl mb-3"></i>
-                        <p class="font-semibold">SQL Server</p>
-                    </div>
-                    <div class="skill-card">
-                        <i class="fas fa-code text-5xl mb-3"></i>
-                        <p class="font-semibold">Fullstack</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Projects Section -->
-        <section id="projetos" class="py-20 relative">
-            <div class="container mx-auto px-6">
-                <h2 class="section-title" data-i18n="projetos_title">Projetos</h2>
-                <div class="section-sep"><div class="section-sep-diamond"></div></div>
+    <!-- Mobile Dropdown Panel -->
+    <div id="mobile-nav-panel" class="mobile-nav-panel">
+        <a href="#inicio" class="mobile-nav-link" data-i18n="nav_home">Início</a>
+        <a href="#servicos" class="mobile-nav-link" data-i18n="nav_services">Serviços</a>
+        <a href="#habilidades" class="mobile-nav-link" data-i18n="nav_skills">Especialidades</a>
+        <a href="#projetos" class="mobile-nav-link" data-i18n="nav_portfolio">Projectos</a>
+        <a href="cv/" target="_blank" class="mobile-nav-link" data-i18n="nav_resume">Currículo (CV)</a>
+        <a href="#contacto" class="mobile-nav-link" data-i18n="nav_contact">Contacto</a>
+    </div>
 
-                <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                    <!-- Project 1 -->
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fas fa-graduation-cap text-4xl"></i>
-                        </div>
-                        <h3 class="text-xl font-orbitron font-bold text-[#FFD700] mb-2">Central Académica</h3>
-                        <p class="text-gray-400 text-sm mb-4 leading-relaxed" data-i18n="proj_central_academica_desc">
-                            Sistema de gestão escolar com integração online e OCR para digitalização automática de documentos académicos.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-5">
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">MySQL</span>
-                            <span class="tech-badge">OCR</span>
-                        </div>
-                        <button class="btn-project">
-                            <span data-i18n="btn_ver_detalhes">Ver Detalhes</span> <i class="fas fa-arrow-right ml-2"></i>
-                        </button>
+    <!-- ── Hero Section (Lendex Persona & Orbit System) ── -->
+    <section id="inicio" class="hero-section">
+        <div class="container-custom">
+            <div class="hero-grid">
+
+                <!-- Left Content -->
+                <div class="hero-content">
+
+                    <!-- Badges -->
+                    <div class="hero-badge-wrap">
+                        <span class="hero-status-pill">
+                            <span class="status-dot"></span>
+                            <span data-i18n="hero_avail">Disponível para Novos Projectos</span>
+                        </span>
+                        <span class="hero-status-pill">
+                            <i class="fas fa-location-dot" style="color: var(--accent-gold);"></i>
+                            <span data-i18n="hero_location">Maputo, Moçambique</span>
+                        </span>
                     </div>
 
-                    <!-- Project 2 -->
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fas fa-tasks text-4xl"></i>
-                        </div>
-                        <h3 class="text-xl font-orbitron font-bold text-[#FFD700] mb-2">Portal de Pedidos</h3>
-                        <p class="text-gray-400 text-sm mb-4 leading-relaxed" data-i18n="proj_portal_pedidos_desc">
-                            Plataforma de gestão de fluxos entre equipas com geração automática de relatórios Excel e notificações em tempo real.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-5">
-                            <span class="tech-badge">Laravel</span>
-                            <span class="tech-badge">React</span>
-                            <span class="tech-badge">SQL Server</span>
-                        </div>
-                        <button class="btn-project">
-                            <span data-i18n="btn_ver_detalhes">Ver Detalhes</span> <i class="fas fa-arrow-right ml-2"></i>
-                        </button>
+                    <!-- Editorial Serif Headline with Wavy Accent -->
+                    <h1 class="hero-greeting">
+                        <span data-i18n="hero_greeting_prefix">Olá! Eu sou</span><br>
+                        <span class="hero-name-wrap">
+                            Josué Sitoe
+                            <svg class="hero-wavy-accent" viewBox="0 0 240 18" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M3 12C20 4 35 15 52 11C69 7 84 15 101 11C118 7 133 15 150 11C167 7 182 15 199 11C216 7 228 14 237 10"
+                                    stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+                            </svg>
+                        </span>
+                    </h1>
+
+                    <!-- Role Description -->
+                    <p class="hero-role-desc" data-i18n="hero_role_desc">
+                        Desenvolvedor de Software Fullstack focado na construção de sistemas web robustos, aplicações
+                        móveis fluidas e arquitecturas de backend altamente escaláveis.
+                    </p>
+
+                    <!-- Typewriter Tech Focus -->
+                    <div class="hero-typing-box">
+                        <span class="hero-typing-prompt">$ tech.focus:</span>
+                        <span id="typing-text"></span>
+                        <span class="typing-cursor"></span>
                     </div>
 
-                    <!-- Project 3 -->
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fas fa-volume-up text-4xl"></i>
-                        </div>
-                        <h3 class="text-xl font-orbitron font-bold text-[#FFD700] mb-2">OuvirTexto</h3>
-                        <p class="text-gray-400 text-sm mb-4 leading-relaxed" data-i18n="proj_ouvirtexto_desc">
-                            Conversor de texto para voz com inteligência artificial para melhorar a acessibilidade digital.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-5">
-                            <span class="tech-badge">HTML5</span>
-                            <span class="tech-badge">CSS3</span>
-                            <span class="tech-badge">JavaScript</span>
-                            <span class="tech-badge">IA · Speech Synthesis</span>
-                        </div>
-                        <button class="btn-project">
-                            <span data-i18n="btn_ver_detalhes">Ver Detalhes</span> <i class="fas fa-arrow-right ml-2"></i>
-                        </button>
-                    </div>
+                    <!-- Action Buttons -->
+                    <div class="hero-cta-group">
+                        <a href="cv/cv-Josué.pdf?v=6" download="cv-Josue.pdf" id="hero-download-link"
+                            class="btn-pill btn-pill-primary">
+                            <i class="fas fa-arrow-down-to-bracket"></i>
+                            <span data-i18n="hero_btn_resume">Baixar CV</span>
+                        </a>
 
-                    <!-- Project 4 -->
-                    <div class="project-card">
-                        <div class="project-icon" style="background:#0B0C10; padding:8px;">
-                            <img src="img/appstock.png" alt="AppStockP4y" class="w-full h-full object-contain">
-                        </div>
-                        <h3 class="text-xl font-orbitron font-bold text-[#FFD700] mb-2">AppStockP4y</h3>
-                        <p class="text-gray-400 text-sm mb-4 leading-relaxed" data-i18n="proj_appstock_desc">
-                            Aplicação de gestão de stock para web e mobile com sincronização de dados em tempo real.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-5">
-                            <span class="tech-badge">Laravel</span>
-                            <span class="tech-badge">Angular</span>
-                            <span class="tech-badge">Flutter</span>
-                            <span class="tech-badge">SQL Server</span>
-                        </div>
-                        <button class="btn-project">
-                            <span data-i18n="btn_ver_detalhes">Ver Detalhes</span> <i class="fas fa-arrow-right ml-2"></i>
-                        </button>
-                    </div>
-
-                    <!-- Project 5 — Lavagem Auto -->
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fas fa-car-side text-4xl"></i>
-                        </div>
-                        <h3 class="text-xl font-orbitron font-bold text-[#FFD700] mb-2">Lavagem Auto</h3>
-                        <p class="text-gray-400 text-sm mb-4 leading-relaxed" data-i18n="proj_lavagem_desc">
-                            Plataforma multi-tenant de gestão de lavagens de viaturas ao domicílio e em garagem, por marcação. Clientes registam o seu carro e escolhem pacotes de lavagem; operadores aceitam os pedidos, com uma taxa de manutenção do sistema descontada automaticamente. Backoffice web para administradores e apps móveis para clientes e operadores.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-5">
-                            <span class="tech-badge">Node.js</span>
-                            <span class="tech-badge">Multi-tenant</span>
-                            <span class="tech-badge">PWA</span>
-                        </div>
-                        <div class="flex flex-wrap gap-3">
-                            <a href="https://autolavagem-api.onrender.com" target="_blank" class="btn-project-live">
-                                <i class="fas fa-external-link-alt mr-2"></i> <span data-i18n="proj_lavagem_link1">Web / Backoffice</span>
-                            </a>
-                            <a href="https://lavagem-mobile.vercel.app" target="_blank" class="btn-project-live">
-                                <i class="fas fa-mobile-alt mr-2"></i> <span data-i18n="proj_lavagem_link2">App Móvel (PWA)</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Project 6 — Gerador de Propostas -->
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fas fa-file-invoice text-4xl"></i>
-                        </div>
-                        <h3 class="text-xl font-orbitron font-bold text-[#FFD700] mb-2">Gerador de Propostas</h3>
-                        <p class="text-gray-400 text-sm mb-4 leading-relaxed" data-i18n="proj_propostas_desc">
-                            Aplicação web que automatiza a criação de propostas comerciais, gerando a partir dos mesmos dados uma landing page e um PPTX. Permite rastrear se e quando a proposta foi aberta e por quanto tempo foi analisada, com formas rápidas de contacto integradas.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-5">
-                            <span class="tech-badge">Node.js</span>
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">PostgreSQL (Supabase)</span>
-                        </div>
-                        <button class="btn-project">
-                            <span data-i18n="btn_ver_detalhes">Ver Detalhes</span> <i class="fas fa-arrow-right ml-2"></i>
-                        </button>
-                    </div>
-
-                    <!-- Project 7 — SIAGD -->
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fas fa-chart-line text-4xl"></i>
-                        </div>
-                        <h3 class="text-xl font-orbitron font-bold text-[#FFD700] mb-2">SIAGD</h3>
-                        <p class="text-gray-400 text-sm mb-4 leading-relaxed" data-i18n="proj_siagd_desc">
-                            Sistema Integrado de Análise e Gestão de Desempenho para acompanhar tarefas e metas de colaboradores e da organização, com avaliações desde a autoavaliação até à avaliação por superiores hierárquicos, além de gestão de férias, entre outras funcionalidades.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-5">
-                            <span class="tech-badge">Node.js</span>
-                            <span class="tech-badge">PostgreSQL</span>
-                        </div>
-                        <button class="btn-project">
-                            <span data-i18n="btn_ver_detalhes">Ver Detalhes</span> <i class="fas fa-arrow-right ml-2"></i>
-                        </button>
-                    </div>
-
-                    <!-- Project 8 — API Credium Smart -->
-                    <div class="project-card">
-                        <div class="project-icon" style="background:#0B0C10; padding:8px;">
-                            <img src="img/credium-smart-logo.png" alt="Credium Smart" class="w-full h-full object-contain">
-                        </div>
-                        <h3 class="text-xl font-orbitron font-bold text-[#FFD700] mb-2">API Credium Smart</h3>
-                        <p class="text-gray-400 text-sm mb-4 leading-relaxed" data-i18n="proj_credium_desc">
-                            Desenvolvimento do backend e da API do Credium Smart, uma solução multi-tenant de gestão inteligente de microcrédito que cobre marketing, RH, gestão de empréstimos, follow-up e pagamento final.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-5">
-                            <span class="tech-badge">Laravel</span>
-                            <span class="tech-badge">MySQL</span>
-                            <span class="tech-badge">Multi-tenant</span>
-                        </div>
-                        <div class="flex flex-wrap gap-3">
-                            <a href="https://crediumsmart.com" target="_blank" class="btn-project-live">
-                                <i class="fas fa-external-link-alt mr-2"></i> <span data-i18n="btn_ver_site">Ver Site</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Project 9 — Assinatura Digital -->
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fas fa-signature text-4xl"></i>
-                        </div>
-                        <h3 class="text-xl font-orbitron font-bold text-[#FFD700] mb-2">Assinatura Digital</h3>
-                        <p class="text-gray-400 text-sm mb-4 leading-relaxed" data-i18n="proj_assinatura_desc">
-                            API e portal de gestão de assinatura digital de documentos, facilitando a digitalização de processos ao permitir definir o local exato da assinatura no documento. Implementada no Portal de Pedidos interno.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-5">
-                            <span class="tech-badge">Laravel</span>
-                            <span class="tech-badge">SQL Server</span>
-                            <span class="tech-badge">API</span>
-                        </div>
-                        <button class="btn-project">
-                            <span data-i18n="btn_ver_detalhes">Ver Detalhes</span> <i class="fas fa-arrow-right ml-2"></i>
-                        </button>
-                    </div>
-
-                    <!-- Project 10 — Gestão Académica -->
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fas fa-university text-4xl"></i>
-                        </div>
-                        <h3 class="text-xl font-orbitron font-bold text-[#FFD700] mb-2">Gestão Académica</h3>
-                        <p class="text-gray-400 text-sm mb-4 leading-relaxed" data-i18n="proj_gestao_academica_desc">
-                            Aplicação Java Web para gestão de uma faculdade: finanças, atribuição de alunos a turmas e de docentes a disciplinas, e gestão de notas de frequência e de exames. Solução não hospedada, disponível como código-fonte no meu GitHub.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-5">
-                            <span class="tech-badge">Java</span>
-                            <span class="tech-badge">Java Web</span>
-                            <span class="tech-badge">MySQL</span>
-                        </div>
-                        <button class="btn-project">
-                            <span data-i18n="btn_ver_detalhes">Ver Detalhes</span> <i class="fas fa-arrow-right ml-2"></i>
-                        </button>
-                    </div>
-
-                    <!-- Project 11 — We Code -->
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fas fa-chalkboard-teacher text-4xl"></i>
-                        </div>
-                        <h3 class="text-xl font-orbitron font-bold text-[#FFD700] mb-2">We Code</h3>
-                        <p class="text-gray-400 text-sm mb-4 leading-relaxed" data-i18n="proj_wecode_desc">
-                            Iniciativa de aulas de programação em Java que criei em 2025 para ajudar jovens universitários a ligar a teoria da faculdade à prática do mercado, guiando-os a transformar conhecimento em soluções funcionais de ponta a ponta. Durou 3 meses.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-5">
-                            <span class="tech-badge">Java</span>
-                            <span class="tech-badge">Mentoria</span>
-                            <span class="tech-badge">2025</span>
-                        </div>
-                        <button class="btn-project">
-                            <span data-i18n="btn_ver_detalhes">Ver Detalhes</span> <i class="fas fa-arrow-right ml-2"></i>
-                        </button>
-                    </div>
-
-                    <!-- Project 12 — MyWeeding (Featured / Full Width) -->
-                    <div class="project-card project-card--featured md:col-span-2">
-                        <div class="flex flex-col md:flex-row gap-6 items-start">
-                            <div class="flex-shrink-0">
-                                <div class="project-icon" style="background: linear-gradient(135deg,#c9a84c,#e8c97a); width:80px; height:80px;">
-                                    <i class="fas fa-heart text-4xl" style="color:#0b0c10"></i>
-                                </div>
+                        <a href="#projetos" class="btn-play-circle">
+                            <div class="play-icon-wrap">
+                                <i class="fas fa-play" style="margin-left: 2px;"></i>
                             </div>
-                            <div class="flex-1">
-                                <div class="flex flex-wrap items-center gap-3 mb-2">
-                                    <h3 class="text-xl font-orbitron font-bold" style="color:#c9a84c">MyWeeding</h3>
-                                    <span class="live-badge" data-i18n="live_badge">Ao Vivo</span>
-                                </div>
-                                <p class="text-gray-400 text-sm mb-4 leading-relaxed max-w-2xl" data-i18n="proj_myweeding_desc">
-                                    Site de casamento completo desenvolvido de raiz. Inclui contagem regressiva em tempo real, lista de presentes interactiva com sistema de reserva por checkbox, mapa integrado do local do evento e design elegante inspirado no convite. Hospedado no GitHub Pages.
-                                </p>
-                                <div class="flex flex-wrap gap-2 mb-5">
-                                    <span class="tech-badge" style="color:#c9a84c; border-color:rgba(201,168,76,0.4)">HTML5</span>
-                                    <span class="tech-badge" style="color:#c9a84c; border-color:rgba(201,168,76,0.4)">CSS3</span>
-                                    <span class="tech-badge" style="color:#c9a84c; border-color:rgba(201,168,76,0.4)">JavaScript</span>
-                                    <span class="tech-badge" style="color:#c9a84c; border-color:rgba(201,168,76,0.4)">Canvas API</span>
-                                    <span class="tech-badge" style="color:#c9a84c; border-color:rgba(201,168,76,0.4)">GitHub Pages</span>
-                                </div>
-                                <div class="flex flex-wrap gap-3">
-                                    <a href="https://johnjoshua-dev.github.io/JosueSitoe.github.io/myweeding/" target="_blank" class="btn-project-live">
-                                        <i class="fas fa-external-link-alt mr-2"></i> <span data-i18n="btn_ver_ao_vivo">Ver ao Vivo</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                            <span data-i18n="hero_btn_watch">Ver Projectos</span>
+                        </a>
                     </div>
 
                 </div>
+
+                <!-- Right Visual: Persona Portrait + Concentric Orbits + Floating Nodes -->
+                <div class="hero-visual-wrap">
+                    <!-- Concentric Circles -->
+                    <div class="orbit-ring orbit-ring-1"></div>
+                    <div class="orbit-ring orbit-ring-2"></div>
+                    <div class="orbit-ring orbit-ring-3"></div>
+
+                    <!-- Orbiting Interactive Social Nodes -->
+                    <a href="https://github.com/JohnJoshua-Dev" target="_blank" rel="noopener noreferrer"
+                        class="orbit-node orbit-node-1" data-tooltip="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+
+                    <a href="http://www.linkedin.com/in/josué-sitoe-programmer" target="_blank"
+                        rel="noopener noreferrer" class="orbit-node orbit-node-2" data-tooltip="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+
+                    <a href="https://www.upwork.com/freelancers/~016591da5a7b26dc12?viewMode=1" target="_blank"
+                        rel="noopener noreferrer" class="orbit-node orbit-node-3" data-tooltip="UpWork">
+                        <i class="fas fa-briefcase"></i>
+                    </a>
+
+                    <a href="https://wa.me/258842737483" target="_blank" rel="noopener noreferrer"
+                        class="orbit-node orbit-node-4" data-tooltip="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+
+                    <a href="cv/" target="_blank" class="orbit-node orbit-node-5" data-tooltip="Ver CV Online">
+                        <i class="fas fa-globe"></i>
+                    </a>
+                </div>
+
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Contact Section -->
-        <section id="contacto" class="py-20 relative">
-            <div class="container mx-auto px-6">
-                <h2 class="section-title" data-i18n="contacto_title">Contacto</h2>
-                <div class="section-sep"><div class="section-sep-diamond"></div></div>
+    <!-- ── Services Section (Exact Lendex 3-Card Design) ── -->
+    <section id="servicos" class="services-section reveal-on-scroll">
+        <div class="container-custom">
 
-                <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-10">
-                    <!-- Left: info -->
-                    <div class="flex flex-col gap-5 justify-center">
-                        <div>
-                            <h3 class="text-2xl font-orbitron font-bold text-[#FFD700] mb-2" data-i18n="contact_heading">Vamos Trabalhar Juntos</h3>
-                            <p class="text-gray-400 text-sm leading-relaxed" data-i18n="contact_intro">Estou disponível para projectos freelance, colaborações e oportunidades de trabalho. Não hesites em entrar em contacto!</p>
+            <div class="services-header">
+                <div class="section-tag">
+                    <span>||</span> <span data-i18n="services_tag">O Que Ofereço</span>
+                </div>
+                <h2 class="section-title" data-i18n="services_title">
+                    Serviços & Soluções de Desenvolvimento
+                </h2>
+            </div>
+
+            <div class="services-grid">
+
+                <!-- Service 1: Backend & APIs -->
+                <div class="service-card">
+                    <div class="service-icon-box">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="service-title" data-i18n="service_1_title">Backend & Cloud APIs</h3>
+                    <ul class="service-list">
+                        <li class="service-list-item">
+                            <span class="arrow">»</span>
+                            <span data-i18n="service_1_item_1">Arquitecturas RESTful & Microsserviços</span>
+                        </li>
+                        <li class="service-list-item">
+                            <span class="arrow">»</span>
+                            <span data-i18n="service_1_item_2">Node.js, Laravel, Python & Java</span>
+                        </li>
+                        <li class="service-list-item">
+                            <span class="arrow">»</span>
+                            <span data-i18n="service_1_item_3">PostgreSQL, MySQL & SQL Server</span>
+                        </li>
+                        <li class="service-list-item">
+                            <span class="arrow">»</span>
+                            <span data-i18n="service_1_item_4">Sistemas Multi-tenant & Autenticação JWT</span>
+                        </li>
+                        <li class="service-list-item">
+                            <span class="arrow">»</span>
+                            <span data-i18n="service_1_item_5">Escalabilidade & Otimização de Performance</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Service 2: Frontend & UI Engineering -->
+                <div class="service-card">
+                    <div class="service-icon-box">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3 class="service-title" data-i18n="service_2_title">Frontend & UI Engineering</h3>
+                    <ul class="service-list">
+                        <li class="service-list-item">
+                            <span class="arrow">»</span>
+                            <span data-i18n="service_2_item_1">Interfaces Modernas com React & Next.js</span>
+                        </li>
+                        <li class="service-list-item">
+                            <span class="arrow">»</span>
+                            <span data-i18n="service_2_item_2">Single Page Applications (SPA) de Alta Performance</span>
+                        </li>
+                        <li class="service-list-item">
+                            <span class="arrow">»</span>
+                            <span data-i18n="service_2_item_3">Design Systems com Tailwind CSS & CSS Moderno</span>
+                        </li>
+                        <li class="service-list-item">
+                            <span class="arrow">»</span>
+                            <span data-i18n="service_2_item_4">Animações Fluidas & Micro-interacções</span>
+                        </li>
+                        <li class="service-list-item">
+                            <span class="arrow">»</span>
+                            <span data-i18n="service_2_item_5">Responsividade Impecável & Acessibilidade Web</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Service 3: Mobile & Smart Automation -->
+                <div class="service-card">
+                    <div class="service-icon-box">
+                        <i class="fas fa-mobile-screen-button"></i>
+                    </div>
+                    <h3 class="service-title" data-i18n="service_3_title">Mobile Apps & Automação</h3>
+                    <ul class="service-list">
+                        <li class="service-list-item">
+                            <span class="arrow">»</span>
+                            <span data-i18n="service_3_item_1">Apps Multiplataforma Android & iOS com Flutter</span>
+                        </li>
+                        <li class="service-list-item">
+                            <span class="arrow">»</span>
+                            <span data-i18n="service_3_item_2">Progressive Web Apps (PWA) Offline-First</span>
+                        </li>
+                        <li class="service-list-item">
+                            <span class="arrow">»</span>
+                            <span data-i18n="service_3_item_3">Integração com Inteligência Artificial & OCR</span>
+                        </li>
+                        <li class="service-list-item">
+                            <span class="arrow">»</span>
+                            <span data-i18n="service_3_item_4">Automação de Processos Empresariais</span>
+                        </li>
+                        <li class="service-list-item">
+                            <span class="arrow">»</span>
+                            <span data-i18n="service_3_item_5">Backoffices & Dashboards em Tempo Real</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Special Skills Section (Exact Lendex Split Layout) ── -->
+    <section id="habilidades" class="skills-section reveal-on-scroll">
+        <div class="container-custom">
+            <div class="skills-split-grid">
+
+                <!-- Left Column -->
+                <div class="skills-left-content">
+                    <div class="section-tag">
+                        <span>||</span> <span data-i18n="skills_tag">Domínio Técnico</span>
+                    </div>
+                    <h2 class="section-title" data-i18n="skills_title">
+                        Especialidades & Competências
+                    </h2>
+                    <p class="skills-desc-text" data-i18n="skills_desc">
+                        Com formação em Engenharia Informática e vasta experiência prática em sistemas corporativos e
+                        plataformas digitais em Moçambique, aplico boas práticas de arquitectura de software para criar
+                        produtos fiáveis, performantes e prontos para escalar globalmente.
+                    </p>
+
+                    <!-- Tech Badges Cloud -->
+                    <div class="skills-badges-cloud">
+                        <span class="tech-pill"><i class="fab fa-react"></i> React</span>
+                        <span class="tech-pill"><i class="fas fa-bolt"></i> Next.js</span>
+                        <span class="tech-pill"><i class="fab fa-laravel"></i> Laravel</span>
+                        <span class="tech-pill"><i class="fab fa-node"></i> Node.js</span>
+                        <span class="tech-pill"><i class="fab fa-js"></i> TypeScript</span>
+                        <span class="tech-pill"><i class="fas fa-mobile-alt"></i> Flutter</span>
+                        <span class="tech-pill"><i class="fab fa-python"></i> Python</span>
+                        <span class="tech-pill"><i class="fab fa-java"></i> Java</span>
+                        <span class="tech-pill"><i class="fas fa-database"></i> PostgreSQL</span>
+                        <span class="tech-pill"><i class="fas fa-server"></i> SQL Server</span>
+                        <span class="tech-pill"><i class="fab fa-docker"></i> Docker</span>
+                        <span class="tech-pill"><i class="fab fa-git-alt"></i> Git</span>
+                    </div>
+
+                    <a href="cv/" target="_blank" class="btn-pill btn-pill-outline">
+                        <i class="fas fa-file-invoice"></i>
+                        <span data-i18n="skills_btn_cv">Ver Currículo Completo</span>
+                    </a>
+                </div>
+
+                <!-- Right Column: Elevated Skill Bar Cards -->
+                <div class="skills-bars-list">
+
+                    <!-- Skill 1 -->
+                    <div class="skill-bar-card">
+                        <div class="skill-bar-header">
+                            <span class="skill-name" data-i18n="skill_backend">Arquitectura Backend & APIs</span>
+                            <span class="skill-pct">94%</span>
                         </div>
-
-                        <div class="flex flex-col gap-3">
-                            <a href="mailto:josuerafaelsitoe@gmail.com" class="contact-info-card">
-                                <div class="ci-icon"><i class="fas fa-envelope"></i></div>
-                                <div>
-                                    <div class="text-xs text-gray-500 uppercase tracking-wider mb-0.5">Email</div>
-                                    <span class="text-sm">josuerafaelsitoe@gmail.com</span>
-                                </div>
-                            </a>
-                            <div class="contact-info-card">
-                                <div class="ci-icon"><i class="fab fa-whatsapp"></i></div>
-                                <div>
-                                    <div class="text-xs text-gray-500 uppercase tracking-wider mb-0.5">WhatsApp</div>
-                                    <span class="text-sm">+258 842 737 483</span>
-                                </div>
-                            </div>
-                            <div class="contact-info-card">
-                                <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
-                                <div>
-                                    <div class="text-xs text-gray-500 uppercase tracking-wider mb-0.5" data-i18n="label_localizacao">Localização</div>
-                                    <span class="text-sm" data-i18n="location_value">Maputo, Moçambique</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="flex gap-3 flex-wrap">
-                            <a href="https://github.com/JohnJoshua-Dev" target="_blank"
-                               class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-white text-sm font-medium bg-gradient-to-r from-[#4F46E5] to-[#A37FFF] hover:opacity-90 transition">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                            <a href="http://www.linkedin.com/in/josué-sitoe-programmer" target="_blank"
-                               class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-white text-sm font-medium bg-gradient-to-r from-[#8B5CF6] to-[#EC4899] hover:opacity-90 transition">
-                                <i class="fab fa-linkedin"></i> LinkedIn
-                            </a>
-                            <a href="https://www.upwork.com/freelancers/~016591da5a7b26dc12?viewMode=1" target="_blank"
-                               class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-white text-sm font-medium bg-gradient-to-r from-[#07B59E] to-[#00A67A] hover:opacity-90 transition">
-                                <img src="https://cdn.simpleicons.org/upwork/ffffff" alt="UpWork" class="w-4 h-4"> UpWork
-                            </a>
+                        <div class="skill-track">
+                            <div class="skill-fill" data-width="94%"></div>
                         </div>
                     </div>
 
-                    <!-- Right: form -->
-                    <div class="glass-card p-8">
-                        <form id="contact-form" class="space-y-5">
-                            <div>
-                                <label for="name" class="block text-xs font-semibold mb-1.5 text-gray-400 uppercase tracking-wider" data-i18n="form_label_nome">Nome</label>
-                                <input type="text" id="name" name="name" required placeholder="O seu nome completo" data-i18n-placeholder="placeholder_nome"
-                                    class="w-full px-4 py-3 bg-[#0B0C10]/50 border border-[#FFD700]/20 rounded-lg focus:outline-none focus:border-[#FFD700] transition-colors text-white text-sm placeholder-gray-600">
+                    <!-- Skill 2 -->
+                    <div class="skill-bar-card">
+                        <div class="skill-bar-header">
+                            <span class="skill-name" data-i18n="skill_frontend">Frontend Moderno & UI Engineering
+                                (React/Next)</span>
+                            <span class="skill-pct">90%</span>
+                        </div>
+                        <div class="skill-track">
+                            <div class="skill-fill" data-width="90%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Skill 3 -->
+                    <div class="skill-bar-card">
+                        <div class="skill-bar-header">
+                            <span class="skill-name" data-i18n="skill_db">Modelação de Dados & Otimização SQL</span>
+                            <span class="skill-pct">88%</span>
+                        </div>
+                        <div class="skill-track">
+                            <div class="skill-fill" data-width="88%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Skill 4 -->
+                    <div class="skill-bar-card">
+                        <div class="skill-bar-header">
+                            <span class="skill-name" data-i18n="skill_mobile">Desenvolvimento Mobile & PWA
+                                (Flutter)</span>
+                            <span class="skill-pct">82%</span>
+                        </div>
+                        <div class="skill-track">
+                            <div class="skill-fill" data-width="82%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Skill 5 -->
+                    <div class="skill-bar-card">
+                        <div class="skill-bar-header">
+                            <span class="skill-name" data-i18n="skill_cloud">Sistemas Multi-tenant & Integrações
+                                Cloud</span>
+                            <span class="skill-pct">86%</span>
+                        </div>
+                        <div class="skill-track">
+                            <div class="skill-fill" data-width="86%"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Stats & Impact Counter Strip (Lendex Foto 4) ── -->
+    <section id="estatisticas" class="stats-section reveal-on-scroll">
+        <div class="container-custom">
+            <div class="stats-grid">
+
+                <!-- Stat 1 -->
+                <div class="stat-item">
+                    <div class="stat-icon-wrap">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-number counter-num" data-target="4" data-suffix="+">4+</span>
+                        <span class="stat-label" data-i18n="stat_years">Anos de Experiência</span>
+                    </div>
+                </div>
+
+                <!-- Stat 2 -->
+                <div class="stat-item">
+                    <div class="stat-icon-wrap">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-number counter-num" data-target="12" data-suffix="+">12+</span>
+                        <span class="stat-label" data-i18n="stat_projects">Projectos Concluídos</span>
+                    </div>
+                </div>
+
+                <!-- Stat 3 -->
+                <div class="stat-item">
+                    <div class="stat-icon-wrap">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-number counter-num" data-target="100" data-suffix="%">100%</span>
+                        <span class="stat-label" data-i18n="stat_quality">Compromisso & Qualidade</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Projects Showcase (Lendex Foto 4 & 5) ── -->
+    <section id="projetos" class="portfolio-section reveal-on-scroll">
+        <div class="container-custom">
+
+            <!-- Section Header + Controls -->
+            <div class="portfolio-header-wrap">
+                <div>
+                    <div class="section-tag">
+                        <span>||</span> <span data-i18n="portfolio_tag">Portfólio em Destaque</span>
+                    </div>
+                    <h2 class="section-title" data-i18n="portfolio_title">
+                        Projectos & Casos de Sucesso
+                    </h2>
+                </div>
+
+                <div class="portfolio-nav-controls">
+                    <button id="portfolio-prev" class="portfolio-nav-btn" aria-label="Anterior">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button id="portfolio-next" class="portfolio-nav-btn" aria-label="Seguinte">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="portfolio-filters" role="tablist">
+                <button type="button" class="filter-btn active" data-filter="all" data-i18n="filter_all">Todos</button>
+                <button type="button" class="filter-btn" data-filter="web" data-i18n="filter_web">Web & SaaS</button>
+                <button type="button" class="filter-btn" data-filter="mobile" data-i18n="filter_mobile">Mobile &
+                    PWA</button>
+                <button type="button" class="filter-btn" data-filter="backend" data-i18n="filter_backend">APIs &
+                    Backend</button>
+                <button type="button" class="filter-btn" data-filter="enterprise" data-i18n="filter_enterprise">Sistemas
+                    Enterprise</button>
+            </div>
+
+            <!-- Projects Grid (12 Production Projects) -->
+            <div class="portfolio-grid">
+
+                <!-- 1. Lavagem Auto -->
+                <article class="project-card" data-category="mobile">
+                    <div class="project-preview">
+                        <span class="project-category-badge">Mobile & PWA</span>
+                        <div class="project-preview-mockup">
+                            <div class="mockup-header">
+                                <span class="mockup-dot"></span>
+                                <span class="mockup-dot"></span>
+                                <span class="mockup-dot"></span>
                             </div>
-                            <div>
-                                <label for="email" class="block text-xs font-semibold mb-1.5 text-gray-400 uppercase tracking-wider">Email</label>
-                                <input type="email" id="email" name="email" required placeholder="email@exemplo.com" data-i18n-placeholder="placeholder_email"
-                                    class="w-full px-4 py-3 bg-[#0B0C10]/50 border border-[#FFD700]/20 rounded-lg focus:outline-none focus:border-[#FFD700] transition-colors text-white text-sm placeholder-gray-600">
+                            <div class="mockup-body" style="background: linear-gradient(135deg, #1e293b, #0f172a);">
+                                <div class="mockup-badge-center">
+                                    <i class="fas fa-car-side" style="color: var(--accent-cyan);"></i>
+                                    <span>Lavagem Auto</span>
+                                </div>
                             </div>
-                            <div>
-                                <label for="message" class="block text-xs font-semibold mb-1.5 text-gray-400 uppercase tracking-wider" data-i18n="form_label_mensagem">Mensagem</label>
-                                <textarea id="message" name="message" rows="5" required placeholder="Descreva o seu projecto ou oportunidade..." data-i18n-placeholder="placeholder_mensagem"
-                                    class="w-full px-4 py-3 bg-[#0B0C10]/50 border border-[#FFD700]/20 rounded-lg focus:outline-none focus:border-[#FFD700] transition-colors text-white resize-none text-sm placeholder-gray-600"></textarea>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Lavagem Auto</h3>
+                        <p class="project-desc">
+                            Plataforma multi-tenant para agendamento de lavagens de viaturas com backoffice
+                            administrativo e PWA para operadores.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag-badge">Node.js</span>
+                            <span class="tag-badge">Multi-tenant</span>
+                            <span class="tag-badge">PWA</span>
+                            <span class="tag-badge">PostgreSQL</span>
+                        </div>
+                        <div class="project-footer-actions">
+                            <button type="button" class="btn-project-details" data-open-project="lavagem-auto">
+                                <span data-i18n="btn_details">Ver Detalhes</span> <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <a href="https://lavagem-mobile.vercel.app" target="_blank" rel="noopener noreferrer"
+                                class="btn-project-live-link">
+                                <i class="fas fa-arrow-up-right-from-square"></i> <span data-i18n="btn_live_demo">Demo Ao
+                                    Vivo</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 2. Credium Smart -->
+                <article class="project-card" data-category="backend">
+                    <div class="project-preview">
+                        <span class="project-category-badge">Fintech API</span>
+                        <div class="project-preview-mockup">
+                            <div class="mockup-header">
+                                <span class="mockup-dot"></span>
+                                <span class="mockup-dot"></span>
+                                <span class="mockup-dot"></span>
                             </div>
-                            <button type="submit" class="btn-primary w-full justify-center">
-                                <i class="fas fa-paper-plane mr-2"></i><span data-i18n="btn_enviar">Enviar Mensagem</span>
+                            <div class="mockup-body" style="background: linear-gradient(135deg, #1a2238, #111827);">
+                                <div class="mockup-badge-center">
+                                    <i class="fas fa-landmark" style="color: var(--accent-gold);"></i>
+                                    <span>Credium Smart</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">API Credium Smart</h3>
+                        <p class="project-desc">
+                            Backend e arquitectura de microcrédito cobrindo cálculo financeiro, gestão de propostas,
+                            avaliação de risco e liquidações.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag-badge">Laravel</span>
+                            <span class="tag-badge">MySQL</span>
+                            <span class="tag-badge">Multi-tenant</span>
+                            <span class="tag-badge">REST API</span>
+                        </div>
+                        <div class="project-footer-actions">
+                            <button type="button" class="btn-project-details" data-open-project="credium-smart">
+                                <span data-i18n="btn_details">Ver Detalhes</span> <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <a href="https://crediumsmart.com" target="_blank" rel="noopener noreferrer"
+                                class="btn-project-live-link">
+                                <i class="fas fa-arrow-up-right-from-square"></i> <span data-i18n="btn_view_site">Ver
+                                    Site</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 3. Central Académica (OCR) -->
+                <article class="project-card" data-category="enterprise">
+                    <div class="project-preview">
+                        <span class="project-category-badge">IA & OCR</span>
+                        <div class="project-preview-mockup">
+                            <div class="mockup-header">
+                                <span class="mockup-dot"></span>
+                                <span class="mockup-dot"></span>
+                                <span class="mockup-dot"></span>
+                            </div>
+                            <div class="mockup-body" style="background: linear-gradient(135deg, #192734, #0d1a26);">
+                                <div class="mockup-badge-center">
+                                    <i class="fas fa-graduation-cap" style="color: #60a5fa;"></i>
+                                    <span>Central Académica</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Central Académica</h3>
+                        <p class="project-desc">
+                            Sistema de gestão escolar integrado com digitalização automática por OCR de documentos e
+                            pautas de exame.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag-badge">Python</span>
+                            <span class="tag-badge">OCR</span>
+                            <span class="tag-badge">MySQL</span>
+                            <span class="tag-badge">Computer Vision</span>
+                        </div>
+                        <div class="project-footer-actions">
+                            <button type="button" class="btn-project-details" data-open-project="central-academica">
+                                <span data-i18n="btn_details">Ver Detalhes</span> <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <span class="tag-badge" style="color: var(--text-muted);">Enterprise</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 4. Portal de Pedidos -->
+                <article class="project-card" data-category="enterprise">
+                    <div class="project-preview">
+                        <span class="project-category-badge">Enterprise Workflow</span>
+                        <div class="project-preview-mockup">
+                            <div class="mockup-header">
+                                <span class="mockup-dot"></span>
+                                <span class="mockup-dot"></span>
+                                <span class="mockup-dot"></span>
+                            </div>
+                            <div class="mockup-body" style="background: linear-gradient(135deg, #1e2638, #121824);">
+                                <div class="mockup-badge-center">
+                                    <i class="fas fa-network-wired" style="color: #a78bfa;"></i>
+                                    <span>Portal de Pedidos</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Portal de Pedidos</h3>
+                        <p class="project-desc">
+                            Plataforma de gestão de requisições internas interdepartamentais com relatórios dinâmicos em
+                            Excel e auditoria.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag-badge">Laravel</span>
+                            <span class="tag-badge">React</span>
+                            <span class="tag-badge">SQL Server</span>
+                            <span class="tag-badge">Workflows</span>
+                        </div>
+                        <div class="project-footer-actions">
+                            <button type="button" class="btn-project-details" data-open-project="portal-pedidos">
+                                <span data-i18n="btn_details">Ver Detalhes</span> <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <span class="tag-badge" style="color: var(--text-muted);">Corporativo</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 5. Gerador de Propostas -->
+                <article class="project-card" data-category="web">
+                    <div class="project-preview">
+                        <span class="project-category-badge">Web & Automação</span>
+                        <div class="project-preview-mockup">
+                            <div class="mockup-header">
+                                <span class="mockup-dot"></span>
+                                <span class="mockup-dot"></span>
+                                <span class="mockup-dot"></span>
+                            </div>
+                            <div class="mockup-body" style="background: linear-gradient(135deg, #1b2838, #0e1722);">
+                                <div class="mockup-badge-center">
+                                    <i class="fas fa-file-powerpoint" style="color: #f97316;"></i>
+                                    <span>Gerador de Propostas</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Gerador de Propostas</h3>
+                        <p class="project-desc">
+                            Criação instantânea de Landing Pages e ficheiros PPTX a partir dos mesmos dados, com
+                            telemetria de leitura em tempo real.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag-badge">Node.js</span>
+                            <span class="tag-badge">Python</span>
+                            <span class="tag-badge">Supabase</span>
+                            <span class="tag-badge">Analytics</span>
+                        </div>
+                        <div class="project-footer-actions">
+                            <button type="button" class="btn-project-details" data-open-project="gerador-propostas">
+                                <span data-i18n="btn_details">Ver Detalhes</span> <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <span class="tag-badge" style="color: var(--text-muted);">SaaS</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 6. SIAGD -->
+                <article class="project-card" data-category="enterprise">
+                    <div class="project-preview">
+                        <span class="project-category-badge">Enterprise RH</span>
+                        <div class="project-preview-mockup">
+                            <div class="mockup-header">
+                                <span class="mockup-dot"></span>
+                                <span class="mockup-dot"></span>
+                                <span class="mockup-dot"></span>
+                            </div>
+                            <div class="mockup-body" style="background: linear-gradient(135deg, #22293b, #131722);">
+                                <div class="mockup-badge-center">
+                                    <i class="fas fa-chart-line" style="color: #10b981;"></i>
+                                    <span>SIAGD</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">SIAGD</h3>
+                        <p class="project-desc">
+                            Sistema Integrado de Análise e Gestão de Desempenho com avaliação 360°, gestão de férias e
+                            monitorização de OKRs.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag-badge">Node.js</span>
+                            <span class="tag-badge">PostgreSQL</span>
+                            <span class="tag-badge">KPIs</span>
+                            <span class="tag-badge">RH</span>
+                        </div>
+                        <div class="project-footer-actions">
+                            <button type="button" class="btn-project-details" data-open-project="siagd">
+                                <span data-i18n="btn_details">Ver Detalhes</span> <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <span class="tag-badge" style="color: var(--text-muted);">Enterprise</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 7. OuvirTexto -->
+                <article class="project-card" data-category="web">
+                    <div class="project-preview">
+                        <span class="project-category-badge">IA & Acessibilidade</span>
+                        <div class="project-preview-mockup">
+                            <div class="mockup-header">
+                                <span class="mockup-dot"></span>
+                                <span class="mockup-dot"></span>
+                                <span class="mockup-dot"></span>
+                            </div>
+                            <div class="mockup-body" style="background: linear-gradient(135deg, #25283b, #121422);">
+                                <div class="mockup-badge-center">
+                                    <i class="fas fa-headphones" style="color: #c084fc;"></i>
+                                    <span>OuvirTexto</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">OuvirTexto</h3>
+                        <p class="project-desc">
+                            Conversor acessível de texto para voz com inteligência artificial para promover a inclusão
+                            digital de pessoas com baixa visão.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag-badge">JavaScript</span>
+                            <span class="tag-badge">Web Speech API</span>
+                            <span class="tag-badge">IA Síntese</span>
+                        </div>
+                        <div class="project-footer-actions">
+                            <button type="button" class="btn-project-details" data-open-project="ouvir-texto">
+                                <span data-i18n="btn_details">Ver Detalhes</span> <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <span class="tag-badge" style="color: var(--text-muted);">Acessibilidade</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 8. AppStockP4y -->
+                <article class="project-card" data-category="mobile">
+                    <div class="project-preview">
+                        <span class="project-category-badge">Mobile & ERP</span>
+                        <div class="project-preview-mockup">
+                            <div class="mockup-header">
+                                <span class="mockup-dot"></span>
+                                <span class="mockup-dot"></span>
+                                <span class="mockup-dot"></span>
+                            </div>
+                            <div class="mockup-body" style="background: linear-gradient(135deg, #1b2638, #101826);">
+                                <div class="mockup-badge-center">
+                                    <i class="fas fa-boxes-stacked" style="color: #38bdf8;"></i>
+                                    <span>AppStockP4y</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">AppStockP4y</h3>
+                        <p class="project-desc">
+                            Aplicação de gestão de stock e inventário em tempo real para web e telemóveis com leitura de
+                            códigos de barra integrada.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag-badge">Flutter</span>
+                            <span class="tag-badge">Laravel</span>
+                            <span class="tag-badge">SQL Server</span>
+                        </div>
+                        <div class="project-footer-actions">
+                            <button type="button" class="btn-project-details" data-open-project="app-stock">
+                                <span data-i18n="btn_details">Ver Detalhes</span> <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <span class="tag-badge" style="color: var(--text-muted);">Mobile</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 9. Assinatura Digital -->
+                <article class="project-card" data-category="backend">
+                    <div class="project-preview">
+                        <span class="project-category-badge">Segurança & API</span>
+                        <div class="project-preview-mockup">
+                            <div class="mockup-header">
+                                <span class="mockup-dot"></span>
+                                <span class="mockup-dot"></span>
+                                <span class="mockup-dot"></span>
+                            </div>
+                            <div class="mockup-body" style="background: linear-gradient(135deg, #242436, #141420);">
+                                <div class="mockup-badge-center">
+                                    <i class="fas fa-file-signature" style="color: var(--accent-gold);"></i>
+                                    <span>Assinatura Digital</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Assinatura Digital</h3>
+                        <p class="project-desc">
+                            API e portal para aposição de assinaturas digitais com coordenadas precisas e certificação
+                            de integridade em PDFs.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag-badge">Laravel</span>
+                            <span class="tag-badge">SQL Server</span>
+                            <span class="tag-badge">PDF Security</span>
+                        </div>
+                        <div class="project-footer-actions">
+                            <button type="button" class="btn-project-details" data-open-project="assinatura-digital">
+                                <span data-i18n="btn_details">Ver Detalhes</span> <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <span class="tag-badge" style="color: var(--text-muted);">Segurança</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 10. MyWeeding -->
+                <article class="project-card" data-category="web">
+                    <div class="project-preview">
+                        <span class="project-category-badge">Web Ao Vivo</span>
+                        <div class="project-preview-mockup">
+                            <div class="mockup-header">
+                                <span class="mockup-dot"></span>
+                                <span class="mockup-dot"></span>
+                                <span class="mockup-dot"></span>
+                            </div>
+                            <div class="mockup-body" style="background: linear-gradient(135deg, #2e263d, #1a1526);">
+                                <div class="mockup-badge-center">
+                                    <i class="fas fa-heart" style="color: #f43f5e;"></i>
+                                    <span>MyWeeding</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">MyWeeding</h3>
+                        <p class="project-desc">
+                            Plataforma de casamento ao vivo com contagem regressiva em tempo real, reserva interactiva
+                            de presentes e mapa integrado.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag-badge">HTML5</span>
+                            <span class="tag-badge">CSS3</span>
+                            <span class="tag-badge">JavaScript</span>
+                            <span class="tag-badge">GitHub Pages</span>
+                        </div>
+                        <div class="project-footer-actions">
+                            <button type="button" class="btn-project-details" data-open-project="myweeding">
+                                <span data-i18n="btn_details">Ver Detalhes</span> <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <a href="https://johnjoshua-dev.github.io/JosueSitoe.github.io/myweeding/" target="_blank"
+                                rel="noopener noreferrer" class="btn-project-live-link">
+                                <i class="fas fa-arrow-up-right-from-square"></i> <span data-i18n="btn_live_demo">Demo Ao
+                                    Vivo</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 11. Gestão Académica Java -->
+                <article class="project-card" data-category="enterprise">
+                    <div class="project-preview">
+                        <span class="project-category-badge">Java Enterprise</span>
+                        <div class="project-preview-mockup">
+                            <div class="mockup-header">
+                                <span class="mockup-dot"></span>
+                                <span class="mockup-dot"></span>
+                                <span class="mockup-dot"></span>
+                            </div>
+                            <div class="mockup-body" style="background: linear-gradient(135deg, #1c2738, #101622);">
+                                <div class="mockup-badge-center">
+                                    <i class="fab fa-java" style="color: #ef4444;"></i>
+                                    <span>Gestão Universitária</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Gestão Académica Java</h3>
+                        <p class="project-desc">
+                            Aplicação Java Web corporativa para administração universitária: tesouraria, alocação de
+                            docentes e pautas de exames.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag-badge">Java</span>
+                            <span class="tag-badge">Java Web</span>
+                            <span class="tag-badge">MySQL</span>
+                            <span class="tag-badge">MVC</span>
+                        </div>
+                        <div class="project-footer-actions">
+                            <button type="button" class="btn-project-details"
+                                data-open-project="gestao-academica-java">
+                                <span data-i18n="btn_details">Ver Detalhes</span> <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <a href="https://github.com/JohnJoshua-Dev" target="_blank" rel="noopener noreferrer"
+                                class="btn-project-live-link">
+                                <i class="fab fa-github"></i> <span>Código</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 12. We Code -->
+                <article class="project-card" data-category="enterprise">
+                    <div class="project-preview">
+                        <span class="project-category-badge">Mentoria & Tech</span>
+                        <div class="project-preview-mockup">
+                            <div class="mockup-header">
+                                <span class="mockup-dot"></span>
+                                <span class="mockup-dot"></span>
+                                <span class="mockup-dot"></span>
+                            </div>
+                            <div class="mockup-body" style="background: linear-gradient(135deg, #24293a, #131722);">
+                                <div class="mockup-badge-center">
+                                    <i class="fas fa-users-gear" style="color: var(--accent-gold);"></i>
+                                    <span>Iniciativa We Code</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Iniciativa We Code</h3>
+                        <p class="project-desc">
+                            Programa prático de capacitação e mentoria em programação que criei para formar e integrar
+                            estudantes universitários no mercado.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag-badge">Java</span>
+                            <span class="tag-badge">Mentoria</span>
+                            <span class="tag-badge">Clean Architecture</span>
+                        </div>
+                        <div class="project-footer-actions">
+                            <button type="button" class="btn-project-details" data-open-project="we-code">
+                                <span data-i18n="btn_details">Ver Detalhes</span> <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <span class="tag-badge" style="color: var(--text-muted);">Comunidade</span>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Contact Section (Lendex Minimalist Editorial) ── -->
+    <section id="contacto" class="contact-section reveal-on-scroll">
+        <div class="container-custom">
+            <div class="contact-grid">
+
+                <!-- Left: Info & Direct Links -->
+                <div>
+                    <div class="section-tag">
+                        <span>||</span> <span data-i18n="contact_tag">Vamos Conversar</span>
+                    </div>
+                    <h2 class="section-title" data-i18n="contact_title">
+                        Tem um projecto em mente? Vamos falar.
+                    </h2>
+                    <p class="section-subtitle" data-i18n="contact_desc">
+                        Estou disponível para novos projectos de consultoria, contratos remotos para o exterior e
+                        colaborações estratégicas.
+                    </p>
+
+                    <div class="contact-info-list">
+
+                        <!-- Email -->
+                        <a href="mailto:josuerafaelsitoe@gmail.com" class="contact-info-card">
+                            <div class="ci-icon-wrap">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="ci-details">
+                                <span class="ci-label" data-i18n="contact_label_email">Correio Electrónico</span>
+                                <span class="ci-value">josuerafaelsitoe@gmail.com</span>
+                            </div>
+                        </a>
+
+                        <!-- WhatsApp -->
+                        <a href="https://wa.me/258842737483" target="_blank" rel="noopener noreferrer"
+                            class="contact-info-card">
+                            <div class="ci-icon-wrap">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div class="ci-details">
+                                <span class="ci-label" data-i18n="contact_label_whatsapp">WhatsApp Directo</span>
+                                <span class="ci-value">+258 842 737 483</span>
+                            </div>
+                        </a>
+
+                        <!-- Location -->
+                        <div class="contact-info-card">
+                            <div class="ci-icon-wrap">
+                                <i class="fas fa-location-dot"></i>
+                            </div>
+                            <div class="ci-details">
+                                <span class="ci-label" data-i18n="contact_label_location">Localização</span>
+                                <span class="ci-value">Maputo, Moçambique</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Social Icons Row -->
+                    <div class="contact-social-row">
+                        <a href="https://github.com/JohnJoshua-Dev" target="_blank" rel="noopener noreferrer"
+                            class="social-icon-btn" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="http://www.linkedin.com/in/josué-sitoe-programmer" target="_blank"
+                            rel="noopener noreferrer" class="social-icon-btn" title="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.upwork.com/freelancers/~016591da5a7b26dc12?viewMode=1" target="_blank"
+                            rel="noopener noreferrer" class="social-icon-btn" title="UpWork">
+                            <i class="fas fa-briefcase"></i>
+                        </a>
+                        <a href="cv/" target="_blank" class="social-icon-btn" title="Currículo Completo">
+                            <i class="fas fa-file-pdf"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: High-End Contact Form -->
+                <div>
+                    <div class="contact-form-card">
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <label for="form-name" class="form-label" data-i18n="form_label_name">O Seu Nome</label>
+                                <input type="text" id="form-name" class="form-control" placeholder="Ex: Joshua Sitoe"
+                                    data-i18n-placeholder="form_placeholder_name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="form-email" class="form-label" data-i18n="form_label_email">O Seu
+                                    Email</label>
+                                <input type="email" id="form-email" class="form-control"
+                                    placeholder="nome@empresa.com" data-i18n-placeholder="form_placeholder_email"
+                                    required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="form-subject" class="form-label" data-i18n="form_label_subject">Assunto /
+                                    Tipo de Projecto</label>
+                                <input type="text" id="form-subject" class="form-control"
+                                    placeholder="Ex: Desenvolvimento de Plataforma Web ou App"
+                                    data-i18n-placeholder="form_placeholder_subject">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="form-message" class="form-label"
+                                    data-i18n="form_label_msg">Mensagem</label>
+                                <textarea id="form-message" class="form-control"
+                                    placeholder="Descreva os objectivos do seu projecto ou proposta..."
+                                    data-i18n-placeholder="form_placeholder_msg" required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn-pill btn-pill-primary w-full"
+                                style="width: 100%; border: none;">
+                                <i class="fas fa-paper-plane"></i>
+                                <span data-i18n="btn_submit_msg">Enviar Mensagem</span>
                             </button>
                         </form>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Footer -->
-        <footer class="py-10 border-t border-[#FFD700]/15">
-            <div class="container mx-auto px-6">
-                <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-                    <div class="text-center md:text-left">
-                        <div class="footer-logo mb-1">Josué Sitoe</div>
-                        <p class="text-gray-600 text-xs tracking-wider" data-i18n="role_line">Desenvolvedor Fullstack · Maputo, MZ</p>
-                    </div>
-                    <div class="flex gap-5">
-                        <a href="https://github.com/JohnJoshua-Dev" target="_blank" class="social-link" title="GitHub">
-                            <i class="fab fa-github text-xl"></i>
-                        </a>
-                        <a href="http://www.linkedin.com/in/josué-sitoe-programmer" target="_blank" class="social-link" title="LinkedIn">
-                            <i class="fab fa-linkedin text-xl"></i>
-                        </a>
-                        <a href="https://www.upwork.com/freelancers/~016591da5a7b26dc12?viewMode=1" target="_blank" class="social-link" title="UpWork">
-                            <i class="fas fa-briefcase text-xl"></i>
-                        </a>
-                        <a href="https://twitter.com/josuejoshua" target="_blank" class="social-link" title="Twitter">
-                            <i class="fab fa-twitter text-xl"></i>
-                        </a>
-                        <a href="https://instagram.com/josuejoshua" target="_blank" class="social-link" title="Instagram">
-                            <i class="fab fa-instagram text-xl"></i>
-                        </a>
-                    </div>
-                    <p class="text-gray-600 text-xs" data-i18n="footer_rights">© 2025 Josué Sitoe. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Footer ── -->
+    <footer class="site-footer">
+        <div class="container-custom">
+            <div class="footer-row">
+                <div>
+                    <a href="#inicio" class="brand-logo">
+                        <div class="brand-logo-mark">JS</div>
+                        <span class="brand-logo-text">Josué Sitoe</span>
+                    </a>
+                    <p class="footer-copy" style="margin-top: 0.35rem;" data-i18n="footer_role">
+                        Desenvolvedor Fullstack · Maputo, Moçambique
+                    </p>
                 </div>
+
+                <p class="footer-copy" data-i18n="footer_rights">
+                    © 2026 Josué Sitoe. Todos os direitos reservados.
+                </p>
             </div>
-        </footer>
+        </div>
+    </footer>
 
-        <script src="script.js?v=3"></script>
-        <script>
-            window.PORTFOLIO_I18N = {
-                pt: {
-                    nav_inicio: "Início", nav_sobre: "Sobre", nav_habilidades: "Habilidades", nav_projetos: "Projetos", nav_curriculo: "Currículo", nav_contacto: "Contacto",
-                    avail_badge: "🟢 Disponível para Freelance", location_badge: "📍 Maputo, Moçambique",
-                    hero_greeting: "Olá, eu sou", hero_subtitle: "Desenvolvedor Fullstack apaixonado por tecnologia e inovação.",
-                    btn_ver_projetos: "Ver Projetos", btn_ver_cv: "Ver CV", btn_download_cv: "Download CV",
-                    stat_anos: "Anos de Exp.", stat_projetos: "Projetos", stat_idiomas: "Idiomas",
-                    sobre_title: "Sobre Mim", role_line: "Desenvolvedor Fullstack · Maputo, MZ",
-                    about_p1: "Sou um profissional dedicado, dinâmico e entusiasta, sempre em busca de progresso. Gosto de criar soluções tecnológicas inovadoras e funcionais que unem design e lógica.",
-                    about_p2: "Estudante de Engenharia Informática com experiência prática em projectos web, mobile e sistemas de gestão para empresas em Moçambique.",
-                    badge_inovador: "Inovador", badge_criativo: "Criativo", badge_dedicado: "Dedicado",
-                    habilidades_title: "Habilidades Técnicas",
-                    projetos_title: "Projetos", btn_ver_detalhes: "Ver Detalhes",
-                    proj_central_academica_desc: "Sistema de gestão escolar com integração online e OCR para digitalização automática de documentos académicos.",
-                    proj_portal_pedidos_desc: "Plataforma de gestão de fluxos entre equipas com geração automática de relatórios Excel e notificações em tempo real.",
-                    proj_ouvirtexto_desc: "Conversor de texto para voz com inteligência artificial para melhorar a acessibilidade digital.",
-                    proj_appstock_desc: "Aplicação de gestão de stock para web e mobile com sincronização de dados em tempo real.",
-                    proj_lavagem_desc: "Plataforma multi-tenant de gestão de lavagens de viaturas ao domicílio e em garagem, por marcação. Clientes registam o seu carro e escolhem pacotes de lavagem; operadores aceitam os pedidos, com uma taxa de manutenção do sistema descontada automaticamente. Backoffice web para administradores e apps móveis para clientes e operadores.",
-                    proj_lavagem_link1: "Web / Backoffice", proj_lavagem_link2: "App Móvel (PWA)",
-                    proj_propostas_desc: "Aplicação web que automatiza a criação de propostas comerciais, gerando a partir dos mesmos dados uma landing page e um PPTX. Permite rastrear se e quando a proposta foi aberta e por quanto tempo foi analisada, com formas rápidas de contacto integradas.",
-                    proj_siagd_desc: "Sistema Integrado de Análise e Gestão de Desempenho para acompanhar tarefas e metas de colaboradores e da organização, com avaliações desde a autoavaliação até à avaliação por superiores hierárquicos, além de gestão de férias, entre outras funcionalidades.",
-                    proj_credium_desc: "Desenvolvimento do backend e da API do Credium Smart, uma solução multi-tenant de gestão inteligente de microcrédito que cobre marketing, RH, gestão de empréstimos, follow-up e pagamento final.",
-                    btn_ver_site: "Ver Site",
-                    proj_assinatura_desc: "API e portal de gestão de assinatura digital de documentos, facilitando a digitalização de processos ao permitir definir o local exato da assinatura no documento. Implementada no Portal de Pedidos interno.",
-                    proj_gestao_academica_desc: "Aplicação Java Web para gestão de uma faculdade: finanças, atribuição de alunos a turmas e de docentes a disciplinas, e gestão de notas de frequência e de exames. Solução não hospedada, disponível como código-fonte no meu GitHub.",
-                    proj_wecode_desc: "Iniciativa de aulas de programação em Java que criei em 2025 para ajudar jovens universitários a ligar a teoria da faculdade à prática do mercado, guiando-os a transformar conhecimento em soluções funcionais de ponta a ponta. Durou 3 meses.",
-                    live_badge: "Ao Vivo",
-                    proj_myweeding_desc: "Site de casamento completo desenvolvido de raiz. Inclui contagem regressiva em tempo real, lista de presentes interactiva com sistema de reserva por checkbox, mapa integrado do local do evento e design elegante inspirado no convite. Hospedado no GitHub Pages.",
-                    btn_ver_ao_vivo: "Ver ao Vivo",
-                    contacto_title: "Contacto", contact_heading: "Vamos Trabalhar Juntos",
-                    contact_intro: "Estou disponível para projectos freelance, colaborações e oportunidades de trabalho. Não hesites em entrar em contacto!",
-                    label_localizacao: "Localização", location_value: "Maputo, Moçambique",
-                    form_label_nome: "Nome", placeholder_nome: "O seu nome completo",
-                    placeholder_email: "email@exemplo.com",
-                    form_label_mensagem: "Mensagem", placeholder_mensagem: "Descreva o seu projecto ou oportunidade...",
-                    btn_enviar: "Enviar Mensagem",
-                    footer_rights: "© 2025 Josué Sitoe. Todos os direitos reservados.",
-                    toast_fill_fields: "Por favor, preencha todos os campos.",
-                    toast_invalid_email: "Por favor, insira um email válido.",
-                    toast_success: "Mensagem enviada! Entrarei em contacto em breve 🙏"
-                },
-                en: {
-                    nav_inicio: "Home", nav_sobre: "About", nav_habilidades: "Skills", nav_projetos: "Projects", nav_curriculo: "Resume", nav_contacto: "Contact",
-                    avail_badge: "🟢 Available for Freelance", location_badge: "📍 Maputo, Mozambique",
-                    hero_greeting: "Hi, I'm", hero_subtitle: "Fullstack Developer passionate about technology and innovation.",
-                    btn_ver_projetos: "View Projects", btn_ver_cv: "View CV", btn_download_cv: "Download CV",
-                    stat_anos: "Years Exp.", stat_projetos: "Projects", stat_idiomas: "Languages",
-                    sobre_title: "About Me", role_line: "Fullstack Developer · Maputo, MZ",
-                    about_p1: "I'm a dedicated, dynamic and enthusiastic professional, always striving for progress. I enjoy creating innovative, functional tech solutions that combine design and logic.",
-                    about_p2: "Computer Engineering student with hands-on experience in web, mobile and management-system projects for companies in Mozambique.",
-                    badge_inovador: "Innovative", badge_criativo: "Creative", badge_dedicado: "Dedicated",
-                    habilidades_title: "Technical Skills",
-                    projetos_title: "Projects", btn_ver_detalhes: "View Details",
-                    proj_central_academica_desc: "School management system with online integration and OCR for automatic digitization of academic documents.",
-                    proj_portal_pedidos_desc: "Cross-team workflow management platform with automatic Excel report generation and real-time notifications.",
-                    proj_ouvirtexto_desc: "AI-powered text-to-speech converter to improve digital accessibility.",
-                    proj_appstock_desc: "Web and mobile stock management application with real-time data synchronization.",
-                    proj_lavagem_desc: "Multi-tenant platform for booking home and garage car washes. Customers register their car and choose a wash package; operators accept requests, with a system maintenance fee deducted automatically. Web backoffice for administrators and mobile apps for customers and operators.",
-                    proj_lavagem_link1: "Web / Backoffice", proj_lavagem_link2: "Mobile App (PWA)",
-                    proj_propostas_desc: "Web app that automates the creation of business proposals, generating a landing page and a PPTX from the same data. Tracks whether and when the proposal was opened and how long it was reviewed, with quick contact options built in.",
-                    proj_siagd_desc: "Integrated Performance Analysis & Management System for tracking employee and organizational tasks and goals, with evaluations ranging from self-assessment to manager review, plus leave management and more.",
-                    proj_credium_desc: "Backend and API development for Credium Smart, a multi-tenant smart microcredit management solution covering marketing, HR, loan management, follow-up and final payment.",
-                    btn_ver_site: "View Site",
-                    proj_assinatura_desc: "API and management portal for digital document signing, streamlining process digitization by letting users set the exact signature position on the document. Deployed in the internal Portal de Pedidos.",
-                    proj_gestao_academica_desc: "Java web application for managing a university: finances, assigning students to classes and teachers to courses, and managing attendance and exam grades. Not hosted — available as source code on my GitHub.",
-                    proj_wecode_desc: "Java programming class initiative I started in 2025 to help young university students connect academic theory with real-world practice, guiding them to turn knowledge into fully working solutions. Ran for 3 months.",
-                    live_badge: "Live",
-                    proj_myweeding_desc: "Complete wedding website built from scratch. Includes a real-time countdown, an interactive gift registry with checkbox-based reservations, an embedded event location map, and an elegant design inspired by the invitation. Hosted on GitHub Pages.",
-                    btn_ver_ao_vivo: "View Live",
-                    contacto_title: "Contact", contact_heading: "Let's Work Together",
-                    contact_intro: "I'm available for freelance projects, collaborations and job opportunities. Feel free to reach out!",
-                    label_localizacao: "Location", location_value: "Maputo, Mozambique",
-                    form_label_nome: "Name", placeholder_nome: "Your full name",
-                    placeholder_email: "email@example.com",
-                    form_label_mensagem: "Message", placeholder_mensagem: "Describe your project or opportunity...",
-                    btn_enviar: "Send Message",
-                    footer_rights: "© 2025 Josué Sitoe. All rights reserved.",
-                    toast_fill_fields: "Please fill in all fields.",
-                    toast_invalid_email: "Please enter a valid email address.",
-                    toast_success: "Message sent! I'll get back to you soon 🙏"
-                }
-            };
+    <!-- ── Floating Back-to-Top Button (Lendex Corner Arrow) ── -->
+    <button id="back-to-top" class="back-to-top" aria-label="Subir ao Topo">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 
-            function applySiteLang(lang) {
-                if (!window.PORTFOLIO_I18N[lang]) lang = 'pt';
-                document.querySelectorAll('[data-i18n]').forEach(function (el) {
-                    var key = el.getAttribute('data-i18n');
-                    if (window.PORTFOLIO_I18N[lang][key] !== undefined) el.innerHTML = window.PORTFOLIO_I18N[lang][key];
-                });
-                document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
-                    var key = el.getAttribute('data-i18n-placeholder');
-                    if (window.PORTFOLIO_I18N[lang][key] !== undefined) el.setAttribute('placeholder', window.PORTFOLIO_I18N[lang][key]);
-                });
-                document.documentElement.setAttribute('lang', lang);
-                document.querySelectorAll('.lang-btn-nav').forEach(function (btn) {
-                    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
-                });
+    <!-- ── Interactive Case Study Modal ── -->
+    <div id="project-modal-overlay" class="modal-overlay" role="dialog" aria-modal="true">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <div>
+                    <h3 id="modal-project-title" class="section-title" style="font-size: 1.85rem; margin-bottom: 0;">
+                        Título do Projecto
+                    </h3>
+                </div>
+                <button type="button" id="modal-close-btn" class="modal-close-btn" aria-label="Fechar Modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
 
-                var cvLink = document.getElementById('hero-cv-link');
-                if (cvLink) cvLink.setAttribute('href', lang === 'en' ? 'cv/?lang=en' : 'cv/');
+            <div class="modal-body">
+                <div class="modal-meta-row">
+                    <div class="modal-meta-item">
+                        <span class="modal-meta-label">Cliente / Sector</span>
+                        <span id="modal-project-client" class="modal-meta-val">-</span>
+                    </div>
+                    <div class="modal-meta-item">
+                        <span class="modal-meta-label">Ano / Período</span>
+                        <span id="modal-project-period" class="modal-meta-val">-</span>
+                    </div>
+                </div>
 
-                var dlLink = document.getElementById('hero-download-link');
-                if (dlLink) {
-                    var file = lang === 'en' ? 'cv/cv-Josué-EN.pdf' : 'cv/cv-Josué.pdf';
-                    dlLink.setAttribute('href', file + '?v=5');
-                    dlLink.setAttribute('download', lang === 'en' ? 'cv-Josué-EN.pdf' : 'cv-Josué.pdf');
-                }
+                <div class="modal-section-title" data-i18n="modal_title_arch">Arquitectura & Tecnologias</div>
+                <div id="modal-project-tags" class="project-tags"></div>
 
-                try { localStorage.setItem('siteLang', lang); } catch (e) {}
-            }
+                <div class="modal-section-title" data-i18n="modal_title_overview">Visão Geral do Projecto</div>
+                <p id="modal-project-overview" class="modal-text"></p>
 
-            document.querySelectorAll('.lang-btn-nav').forEach(function (btn) {
-                btn.addEventListener('click', function () { applySiteLang(btn.getAttribute('data-lang')); });
-            });
+                <div class="modal-section-title" data-i18n="modal_title_features">Principais Funcionalidades & Desafios
+                </div>
+                <ul id="modal-project-features" class="modal-feature-list"></ul>
+            </div>
 
-            (function initSiteLang() {
-                var urlLang = new URLSearchParams(window.location.search).get('lang');
-                var stored = null;
-                try { stored = localStorage.getItem('siteLang'); } catch (e) {}
-                applySiteLang(urlLang || stored || 'pt');
-            })();
-        </script>
+            <div class="modal-footer">
+                <a href="#" id="modal-live-btn" target="_blank" rel="noopener noreferrer"
+                    class="btn-pill btn-pill-primary">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                    <span data-i18n="modal_btn_visit">Aceder à Aplicação</span>
+                </a>
+            </div>
+        </div>
     </div>
+
+    <!-- Notification Toast -->
+    <div id="toast-notification" class="toast-msg"></div>
+
+    <!-- Application Script -->
+    <script src="script.js?v=4"></script>
 </body>
 
 </html>
