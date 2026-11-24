@@ -52,7 +52,7 @@ window.PORTFOLIO_I18N = {
     // Skills
     skills_tag: "Domínio Técnico",
     skills_title: "Especialidades & Competências",
-    skills_desc: "Com formação em Engenharia Informática e vasta experiência prática em sistemas corporativos e plataformas digitais em Moçambique, aplico boas práticas de arquitectura de software para criar produtos fiáveis, performantes e prontos para escalar globalmente.",
+    skills_desc: "A cursar Engenharia de Software e com mais de 4 anos de experiência prática em sistemas corporativos e plataformas digitais em Moçambique, aplico boas práticas de arquitectura de software para criar produtos fiáveis, performantes e prontos para escalar globalmente.",
     skills_btn_cv: "Ver Currículo Completo",
 
     skill_backend: "Arquitectura Backend & APIs",
@@ -157,7 +157,7 @@ window.PORTFOLIO_I18N = {
     // Skills
     skills_tag: "Special Skills",
     skills_title: "My Special Skill Field Here",
-    skills_desc: "Backed by Computer Engineering training and extensive production experience delivering enterprise systems in Mozambique, I unite architectural rigor with great UX to deliver robust, scalable software.",
+    skills_desc: "Pursuing a Software Engineering degree, with 4+ years of hands-on experience delivering enterprise systems in Mozambique, I unite architectural rigor with great UX to deliver robust, scalable software.",
     skills_btn_cv: "View Full Resume",
 
     skill_backend: "Backend & System Architecture",
@@ -881,7 +881,7 @@ function initLanguageSwitcher() {
     const downloadLink = document.getElementById("hero-download-link");
     if (downloadLink) {
       const file = lang === "en" ? "cv/cv-Josué-EN.pdf" : "cv/cv-Josué.pdf";
-      downloadLink.href = file + "?v=6";
+      downloadLink.href = file + "?v=7";
       downloadLink.setAttribute("download", lang === "en" ? "cv-Josue-EN.pdf" : "cv-Josue.pdf");
     }
 

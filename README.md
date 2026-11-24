@@ -151,3 +151,27 @@ As alterações ficam visíveis em 1–2 minutos.
 ---
 
 *© 2025 Josué Rafael Sitoe — Maputo, Moçambique*
+
+---
+
+## Área de Candidaturas (`/vagas/`)
+
+Ferramenta pessoal (não ligada ao menu público, `noindex`) para procurar vagas, adaptar o CV e não perder prazos.
+
+| Peça | O que faz |
+|------|-----------|
+| `tools/fetch-jobs.mjs` | Recolhe vagas (emprego.co.mz — TI e Redes; Himalayas só vagas abertas a Moçambique; Remotive; Jobicy; Remote OK) e pontua-as contra o CV |
+| `vagas/match.mjs` | Perfil de competências e cálculo do match — **edite aqui** para mudar a "minha área" |
+| `.github/workflows/vagas.yml` | Corre às 07h e 17h (Maputo), publica `jobs.json` no branch `vagas-data` e abre uma *issue* (→ email) com vagas novas ≥ 60% e prazos a terminar |
+| `vagas/index.html` | Lista de vagas com filtros, estado de cada candidatura, lembrete `.ics`, notificações do browser e vagas adicionadas à mão |
+| `vagas/cv-tailor.mjs` | `cv/?vaga=<id>` destaca e coloca primeiro as competências pedidas, ajusta o subtítulo e o nome do PDF |
+
+O estado das candidaturas fica no `localStorage` do browser — use **Exportar backup**.
+Teste local: `node tools/fetch-jobs.mjs` e depois `python -m http.server` na raiz → `http://localhost:8000/vagas/`.
+
+### Versões do CV (`cv/?perfil=`)
+
+O CV está em coluna única, preto e branco, sem foto, ícones nem referências, para passar nos filtros ATS. Pode ser gerado em cinco versões: `geral` (por omissão), `fullstack`, `backend`, `frontend` e `dba`. Escolhe-se no seletor do topo ou pelo URL (ex.: `cv/?perfil=backend&lang=en`).
+- Cada competência, bullet, projecto ou curso tem `data-cv="..."` com as versões onde aparece.
+- Os textos ficam na tabela `I18N`, onde `chave__versao` substitui `chave` nessa versão.
+- `cv/cv-Josué.pdf` e `cv/cv-Josué-EN.pdf` (botão "Baixar CV" do portfólio) são a versão Geral impressa a partir desta página. Regenere-os sempre que mudar o CV.

@@ -5,703 +5,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV - Josué Sitoe</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!--
+        ATS-friendly layout: one column, read top-to-bottom, black text on white, no photo, icons,
+        tables or text boxes. Skills are plain text separated by commas. Print (Ctrl+P / "Gerar PDF")
+        produces a text PDF that applicant tracking systems can parse.
+    -->
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
+        [hidden] { display: none !important; }
 
         body {
-            background: #e6e9f0;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 30px;
+            margin: 0;
+            background: #eef1f5;
+            color: #111;
+            font-family: Calibri, Carlito, 'Segoe UI', Arial, Helvetica, sans-serif;
+            font-size: 15px;
+            line-height: 1.45;
+            padding: 24px 16px 48px;
         }
 
+        /* ---------- screen-only toolbar ---------- */
         .cv-actions {
-            max-width: 1100px;
-            width: 100%;
+            max-width: 850px;
+            margin: 0 auto 14px;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
             flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-
-        .cv-actions a {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: 0.2s;
-        }
-
-        .cv-actions .back-link {
-            color: #1a2a3a;
-            background: #eef2f7;
-        }
-
-        .cv-actions .back-link:hover {
-            background: #dde4ec;
-        }
-
-        .cv-actions .download-link {
-            color: #fff;
-            background: #5b9bd5;
-            border: none;
-            font-family: inherit;
-            font-size: 14px;
-            cursor: pointer;
-        }
-
-        .cv-actions .download-link:hover {
-            background: #4a89c2;
-        }
-
-        .cv-actions-right {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .lang-switch {
-            display: inline-flex;
-            background: #eef2f7;
-            border-radius: 8px;
-            padding: 3px;
-            gap: 2px;
-        }
-
-        .lang-btn {
-            border: none;
-            background: transparent;
-            color: #5d6f7f;
-            font-size: 13px;
-            font-weight: 700;
-            padding: 6px 14px;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .lang-btn.active {
-            background: #5b9bd5;
-            color: #fff;
-        }
-
-        .lang-btn:hover:not(.active) {
-            background: #dde4ec;
-        }
-
-        @media print {
-            .cv-actions {
-                display: none;
-            }
-            body {
-                display: block;
-            }
-        }
-
-        .cv-container {
-            max-width: 1100px;
-            width: 100%;
-            background: #ffffff;
-            border-radius: 16px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-            display: grid;
-            grid-template-columns: 34% 66%;
-            overflow: hidden;
-            transition: 0.3s;
-        }
-
-        .sidebar {
-            background: #1a2a3a;
-            color: #eaeef3;
-            padding: 40px 28px;
-        }
-
-        .avatar {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .avatar i {
-            font-size: 80px;
-            color: #5b9bd5;
-            background: rgba(255, 255, 255, 0.08);
-            padding: 20px;
-            border-radius: 50%;
-            border: 3px solid #5b9bd5;
-        }
-
-        .avatar img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 3px solid #5b9bd5;
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .sidebar h1 {
-            font-size: 28px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-align: center;
-            margin-top: 10px;
-            color: #fff;
-        }
-
-        .sidebar .subtitle {
-            text-align: center;
-            font-size: 14px;
-            color: #9bb7d4;
-            margin-bottom: 30px;
-            border-bottom: 1px solid #2f4052;
-            padding-bottom: 20px;
-        }
-
-        .sidebar-section {
-            margin-bottom: 28px;
-        }
-
-        .sidebar-section h3 {
-            font-size: 16px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #5b9bd5;
-            border-bottom: 2px solid #2f4052;
-            padding-bottom: 8px;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
-            font-size: 14px;
-            color: #cfdce8;
-        }
-
-        .contact-item i {
-            width: 20px;
-            color: #5b9bd5;
-            font-size: 16px;
-        }
-
-        .contact-item a {
-            color: #cfdce8;
-            text-decoration: none;
-        }
-
-        .contact-item a:hover {
-            color: #5b9bd5;
-        }
-
-        .skill-tag {
-            display: inline-block;
-            background: #2f4052;
-            color: #eaeef3;
-            padding: 5px 14px;
-            border-radius: 20px;
-            font-size: 12px;
-            margin: 3px 4px 3px 0;
-            border: 1px solid #3e5266;
-        }
-
-        .skill-tag.highlight {
-            background: #5b9bd5;
-            color: #fff;
-            border-color: #5b9bd5;
-        }
-
-        .skill-tag.powerbi {
-            background: #f2c811;
-            color: #1a2a3a;
-            border-color: #f2c811;
-            font-weight: 600;
-        }
-
-        .skill-tag.copilot {
-            background: #7b3fe4;
-            color: #fff;
-            border-color: #7b3fe4;
-            font-weight: 600;
-        }
-
-        .lang-item {
-            display: flex;
+            gap: 10px;
             justify-content: space-between;
-            font-size: 14px;
-            padding: 5px 0;
-            border-bottom: 1px solid #2a3a4a;
+            align-items: center;
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
         }
-
-        .lang-item span:last-child {
-            color: #9bb7d4;
-            font-size: 13px;
+        .cv-actions-right { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+        .cv-actions .back-link, .download-link, .profile-select {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 8px 14px; border-radius: 8px; font: inherit; font-size: 14px; font-weight: 600;
+            text-decoration: none; cursor: pointer; border: 1px solid #cfd8e3; background: #fff; color: #1a2a3a;
         }
+        .download-link { background: #1a2a3a; color: #fff; border-color: #1a2a3a; }
+        .lang-switch { display: inline-flex; background: #fff; border: 1px solid #cfd8e3; border-radius: 8px; padding: 3px; gap: 2px; }
+        .lang-btn { border: none; background: transparent; color: #5d6f7f; font-size: 13px; font-weight: 700; padding: 5px 12px; border-radius: 6px; cursor: pointer; }
+        .lang-btn.active { background: #1a2a3a; color: #fff; }
 
-        .ref-item {
-            margin-bottom: 14px;
-            padding: 10px 12px;
-            background: #2f4052;
-            border-radius: 8px;
-            border-left: 3px solid #5b9bd5;
+        /* ---------- the CV page ---------- */
+        .cv {
+            max-width: 850px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 44px 52px;
+            box-shadow: 0 2px 14px rgba(20, 30, 50, 0.08);
         }
+        .cv h1 { margin: 0; font-size: 28px; letter-spacing: 0.04em; }
+        .cv .headline { margin: 2px 0 6px; font-size: 16.5px; font-weight: 700; }
+        .cv .contact { margin: 0; font-size: 14px; }
+        .cv .contact a { color: inherit; text-decoration: none; }
 
-        .ref-item .ref-name {
-            font-weight: 700;
-            font-size: 14px;
-            color: #fff;
-        }
-
-        .ref-item .ref-role {
-            font-size: 13px;
-            color: #9bb7d4;
-            margin-bottom: 4px;
-        }
-
-        .ref-item .ref-contact {
-            font-size: 12px;
-            color: #cfdce8;
-            line-height: 1.6;
-        }
-
-        .ref-item .ref-contact i {
-            color: #5b9bd5;
-            width: 16px;
-            margin-right: 4px;
-        }
-
-        .main {
-            padding: 40px 35px;
-            background: #ffffff;
-        }
-
-        .main h2 {
-            font-size: 18px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #1a2a3a;
-            border-bottom: 3px solid #5b9bd5;
-            padding-bottom: 8px;
-            margin-bottom: 18px;
-            font-weight: 700;
-        }
-
-        .profile-text {
-            font-size: 14px;
-            line-height: 1.7;
-            color: #2d3f4f;
-            margin-bottom: 28px;
-            text-align: justify;
-        }
-
-        .exp-item {
-            margin-bottom: 24px;
-        }
-
-        .exp-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            flex-wrap: wrap;
-            margin-bottom: 4px;
-        }
-
-        .exp-header h3 {
-            font-size: 17px;
-            color: #1a2a3a;
-            font-weight: 700;
-        }
-
-        .exp-header .company {
-            font-weight: 600;
-            color: #5b9bd5;
+        .cv h2 {
+            margin: 22px 0 8px;
+            padding-bottom: 3px;
+            border-bottom: 1.5px solid #111;
             font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+        .cv p { margin: 0 0 6px; }
+        .cv ul { margin: 4px 0 0; padding-left: 18px; }
+        .cv li { margin-bottom: 3px; }
+
+        .item { margin-bottom: 12px; break-inside: avoid; }
+        .item-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 12px; }
+        .item-head h3, .item > h3 { margin: 0 0 2px; font-size: 15px; }
+        .item-head .when { white-space: nowrap; }
+        .item .sub { font-style: italic; }
+
+        .skill-line { margin: 0 0 4px; }
+        .skill-line > strong::after { content: ': '; }
+        /* Commas between the skills that are shown in the current CV version */
+        .skill:not([hidden]) ~ .skill:not([hidden])::before { content: ', '; }
+
+        @media (max-width: 640px) {
+            body { padding: 12px 0 32px; }
+            .cv-actions { padding: 0 16px; }
+            .cv { padding: 24px 16px; }
         }
 
-        .exp-header .period {
-            font-size: 13px;
-            color: #7a8a9a;
-            background: #eef2f7;
-            padding: 2px 14px;
-            border-radius: 12px;
-            font-weight: 500;
-        }
-
-        .exp-desc {
-            list-style: none;
-            margin-top: 8px;
-            padding-left: 4px;
-        }
-
-        .exp-desc li {
-            font-size: 14px;
-            color: #2d3f4f;
-            padding: 4px 0 4px 22px;
-            position: relative;
-            line-height: 1.6;
-        }
-
-        .exp-desc li::before {
-            content: "▸";
-            color: #5b9bd5;
-            font-weight: bold;
-            position: absolute;
-            left: 2px;
-        }
-
-        .edu-item {
-            margin-bottom: 14px;
-            padding: 12px 16px;
-            background: #f5f7fa;
-            border-radius: 10px;
-            border-left: 4px solid #5b9bd5;
-        }
-
-        .edu-item .edu-title {
-            font-weight: 700;
-            color: #1a2a3a;
-            font-size: 15px;
-        }
-
-        .edu-item .edu-school {
-            color: #5b9bd5;
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .edu-item .edu-year {
-            font-size: 13px;
-            color: #7a8a9a;
-            background: #eef2f7;
-            padding: 1px 12px;
-            border-radius: 10px;
-            display: inline-block;
-            margin-left: 6px;
-        }
-
-        .edu-item .edu-status {
-            font-size: 13px;
-            color: #e67e22;
-            background: #fef5e7;
-            padding: 1px 12px;
-            border-radius: 10px;
-            display: inline-block;
-            margin-left: 6px;
-            font-weight: 600;
-        }
-
-        .edu-item .edu-status.interrompido {
-            color: #c0392b;
-            background: #fdedec;
-        }
-
-        .edu-item .edu-status.concluido {
-            color: #27ae60;
-            background: #eafaf1;
-        }
-
-        .edu-item .edu-desc {
-            font-size: 14px;
-            color: #3d4f5f;
-            margin-top: 4px;
-        }
-
-        .course-item {
-            margin-bottom: 10px;
-            padding: 10px 16px;
-            background: #f8f9fb;
-            border-radius: 8px;
-            border-left: 3px solid #27ae60;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .course-item .course-text {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .course-item .course-badge {
-            flex-shrink: 0;
-        }
-
-        .course-item .course-name {
-            font-weight: 600;
-            color: #1a2a3a;
-            font-size: 14px;
-        }
-
-        .course-item .course-name i {
-            color: #27ae60;
-            margin-right: 8px;
-        }
-
-        .course-item .course-info {
-            font-size: 13px;
-            color: #5d6f7f;
-        }
-
-        .course-item .course-badge {
-            font-size: 12px;
-            background: #27ae60;
-            color: #fff;
-            padding: 2px 14px;
-            border-radius: 12px;
-            font-weight: 600;
-        }
-
-        .proj-item {
-            margin-bottom: 10px;
-            padding: 10px 16px;
-            background: #f8f9fb;
-            border-radius: 8px;
-            border-left: 3px solid #5b9bd5;
-        }
-
-        .proj-item .proj-name {
-            font-weight: 600;
-            color: #1a2a3a;
-            font-size: 14px;
-        }
-
-        .proj-item .proj-name i {
-            color: #5b9bd5;
-            margin-right: 8px;
-        }
-
-        .proj-item .proj-desc {
-            font-size: 13px;
-            color: #5d6f7f;
-            margin-top: 2px;
-        }
-
-        .proj-item .proj-desc {
-            font-size: 13px;
-            color: #5d6f7f;
-            margin-top: 3px;
-            line-height: 1.5;
-        }
-
-        .proj-item .proj-stack {
-            font-size: 12px;
-            color: #5b9bd5;
-            font-weight: 600;
-            margin-top: 4px;
-        }
-
-        .tech-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px 10px;
-            margin-top: 6px;
-        }
-
-        .tech-grid .tag {
-            background: #eef2f7;
-            color: #1a2a3a;
-            padding: 4px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 500;
-        }
-
-        .tech-grid .tag.blue {
-            background: #5b9bd5;
-            color: #fff;
-        }
-
-        .tech-grid .tag.powerbi {
-            background: #f2c811;
-            color: #1a2a3a;
-            font-weight: 600;
-        }
-
-        .tech-grid .tag.copilot {
-            background: #7b3fe4;
-            color: #fff;
-            font-weight: 600;
-        }
-
-        .two-col {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 8px;
-        }
-
-        .lang-main {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px 30px;
-            margin-top: 6px;
-        }
-
-        .lang-main .lang-item-main {
-            font-size: 14px;
-            background: #eef2f7;
-            padding: 6px 18px;
-            border-radius: 20px;
-            font-weight: 500;
-            color: #1a2a3a;
-        }
-
-        .lang-main .lang-item-main i {
-            color: #5b9bd5;
-            margin-right: 8px;
-        }
-
-        .lang-main .lang-item-main .level {
-            font-weight: 400;
-            color: #7a8a9a;
-            font-size: 13px;
-            margin-left: 6px;
-        }
-
-        @media (max-width: 768px) {
-            .cv-container {
-                grid-template-columns: 1fr;
-            }
-            .two-col {
-                grid-template-columns: 1fr;
-            }
-            .exp-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 4px;
-            }
-            .course-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 6px;
-            }
-            .ref-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 4px;
-            }
-        }
-
+        @page { size: A4; margin: 14mm 15mm; }
         @media print {
-            body {
-                background: #fff;
-                padding: 0;
-                display: block;
-                min-height: auto;
-            }
-            .cv-container {
-                box-shadow: none;
-                border-radius: 0;
-                max-width: 100%;
-                grid-template-columns: 34% 66% !important;
-                zoom: 0.75;
-            }
-            .two-col {
-                grid-template-columns: 1fr 1fr !important;
-            }
-            .exp-header {
-                flex-direction: row !important;
-                align-items: baseline !important;
-                gap: 0 !important;
-            }
-            .course-item {
-                flex-direction: row !important;
-                align-items: center !important;
-                gap: 12px !important;
-            }
-            .ref-item {
-                flex-direction: column !important;
-                align-items: flex-start !important;
-            }
-            .sidebar {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-            .ref-item,
-            .exp-item,
-            .edu-item,
-            .course-item,
-            .proj-item {
-                break-inside: avoid;
-                page-break-inside: avoid;
-            }
-            .main h2 {
-                break-after: avoid;
-                page-break-after: avoid;
-            }
-            .skill-tag.highlight {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-            .skill-tag.powerbi {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-            .skill-tag.copilot {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-            .tech-grid .tag.blue {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-            .tech-grid .tag.powerbi {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-            .tech-grid .tag.copilot {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-            .exp-header .period {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-            .edu-item {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-            .edu-item .edu-status {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-            .course-item {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-            .course-item .course-badge {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-            .proj-item {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-            .ref-item {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-            .lang-main .lang-item-main {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
+            body { background: #fff; padding: 0; font-size: 11pt; }
+            .cv-actions { display: none !important; }
+            .cv { max-width: none; padding: 0; box-shadow: none; }
+            .cv h2 { margin-top: 14px; }
+            a { color: inherit; text-decoration: none; }
         }
     </style>
 </head>
@@ -710,6 +103,13 @@
 <div class="cv-actions">
     <a href="../index.html" class="back-link"><i class="fas fa-arrow-left"></i> <span data-i18n="back_link">Voltar ao Portfólio</span></a>
     <div class="cv-actions-right">
+        <select class="profile-select" id="profile-select" aria-label="Versão do CV">
+            <option value="geral">Geral</option>
+            <option value="fullstack">Full-Stack</option>
+            <option value="backend">Backend</option>
+            <option value="frontend">Frontend</option>
+            <option value="dba">DBA</option>
+        </select>
         <div class="lang-switch">
             <button type="button" class="lang-btn" data-lang="pt">PT</button>
             <button type="button" class="lang-btn" data-lang="en">EN</button>
@@ -718,369 +118,200 @@
     </div>
 </div>
 
-<div class="cv-container">
+<main class="cv">
 
-    <!-- SIDEBAR -->
-    <div class="sidebar">
-        <div class="avatar">
-            <img src="FotoJS.png" alt="Josué Sitoe">
-        </div>
+    <!--
+        data-cv = CV versions where an item appears (no attribute = all versions).
+        Texts are in the I18N table at the end; "key__version" overrides "key" in that version.
+    -->
+    <header>
         <h1>JOSUÉ SITOE</h1>
-        <div class="subtitle" data-i18n="subtitle">
-            Software Developer | Full-Stack · .NET & Web APIs · SQL Server · Sistemas Empresariais
-        </div>
+        <p class="headline" data-i18n="subtitle">Software Developer | Full-Stack · .NET & Web APIs · SQL Server · Sistemas Empresariais</p>
+        <p class="contact">
+            <span data-i18n="location">Maputo, Moçambique</span> |
+            +258 87 273 7483 / +258 84 273 7483 |
+            <a href="mailto:josuerafaelsitoe@gmail.com">josuerafaelsitoe@gmail.com</a> |
+            <a href="https://www.linkedin.com/in/josue-sitoe-programmer/">linkedin.com/in/josue-sitoe-programmer</a> |
+            <a href="https://johnjoshua-dev.github.io/JosueSitoe.github.io/">johnjoshua-dev.github.io/JosueSitoe.github.io</a>
+        </p>
+    </header>
 
-        <div class="sidebar-section">
-            <h3><i class="fas fa-address-card" style="margin-right: 10px;"></i> <span data-i18n="contacto_h">Contacto</span></h3>
-            <div class="contact-item"><i class="fas fa-phone"></i> 872737483 / 842737483</div>
-            <div class="contact-item"><i class="fas fa-envelope"></i> josuerafaelisito@gmail.com</div>
-            <div class="contact-item"><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/josue-sitoe-programmer/" target="_blank">linkedin.com/in/josue-sitoe-programmer</a></div>
-            <div class="contact-item"><i class="fas fa-globe"></i> <a href="https://johnjoshua-dev.github.io/JosueSitoe.github.io/" target="_blank">johnjoshua-dev.github.io/JosueSitoe</a></div>
-            <div class="contact-item"><i class="fas fa-map-marker-alt"></i> Maputo, Marracuene</div>
-        </div>
+    <section>
+        <h2 data-i18n="perfil_h">Perfil Profissional</h2>
+        <p data-i18n="perfil_text"></p>
+    </section>
 
-        <div class="sidebar-section">
-            <h3><i class="fas fa-cogs"></i> <span data-i18n="competencias_h">Competências</span></h3>
-            <span class="skill-tag highlight">C# / .NET</span>
-            <span class="skill-tag highlight">ASP.NET / Web APIs</span>
-            <span class="skill-tag highlight">SQL Server</span>
-            <span class="skill-tag highlight">PostgreSQL</span>
-            <span class="skill-tag highlight">MySQL</span>
-            <span class="skill-tag highlight">PHP / Laravel</span>
-            <span class="skill-tag highlight">Java / Python</span>
-            <span class="skill-tag highlight" data-i18n="skill_enterprise">Sistemas Empresariais</span>
-            <span class="skill-tag">T-SQL & Triggers</span>
-            <span class="skill-tag" data-i18n="skill_modelling">Modelação de Dados</span>
-            <span class="skill-tag">APIs RESTful</span>
-            <span class="skill-tag">Fullstack Dev</span>
-            <span class="skill-tag">DBA</span>
-            <span class="skill-tag">Git / GitHub</span>
-            <span class="skill-tag">Docker</span>
-            <span class="skill-tag">Postman</span>
-            <span class="skill-tag">Bootstrap</span>
-            <span class="skill-tag powerbi">Power BI</span>
-            <span class="skill-tag copilot">Copilot Studio</span>
-            <span class="skill-tag">Microsoft 365</span>
-        </div>
+    <section>
+        <h2 data-i18n="competencias_h">Competências Técnicas</h2>
+        <p class="skill-line" data-group="backend"><strong data-i18n="skg_backend">Backend e APIs</strong><span class="skill" data-cv="geral fullstack backend dba">C# / .NET</span><span class="skill" data-cv="geral fullstack backend">ASP.NET / Web APIs</span><span class="skill" data-cv="geral fullstack backend">PHP / Laravel</span><span class="skill" data-cv="geral backend">Java</span><span class="skill" data-cv="geral backend">Python</span><span class="skill" data-cv="geral fullstack backend">Node.js</span><span class="skill">APIs RESTful</span><span class="skill" data-cv="geral fullstack backend">JWT</span><span class="skill" data-cv="geral fullstack backend">TDD / Unit Testing</span><span class="skill" data-cv="fullstack backend">OCR</span></p>
+        <p class="skill-line" data-group="data"><strong data-i18n="skg_data">Bases de Dados e BI</strong><span class="skill">SQL Server</span><span class="skill" data-cv="geral fullstack backend dba">T-SQL / Stored Procedures / Triggers</span><span class="skill" data-cv="geral fullstack backend dba">PostgreSQL</span><span class="skill">MySQL</span><span class="skill" data-cv="geral fullstack backend dba" data-i18n="tag_data_modelling">Modelação de Dados</span><span class="skill" data-cv="dba">Query Tuning</span><span class="skill" data-cv="backend dba">RBAC</span><span class="skill" data-cv="geral dba">Power BI</span></p>
+        <p class="skill-line" data-group="frontend"><strong data-i18n="skg_frontend">Frontend</strong><span class="skill" data-cv="geral fullstack frontend">JavaScript</span><span class="skill" data-cv="geral fullstack frontend">React</span><span class="skill" data-cv="geral fullstack frontend">Next.js</span><span class="skill" data-cv="geral fullstack frontend">HTML5 / CSS3</span><span class="skill" data-cv="geral fullstack frontend">Bootstrap</span><span class="skill" data-cv="geral fullstack frontend">Tailwind CSS</span><span class="skill" data-cv="geral fullstack frontend">Flutter</span><span class="skill" data-cv="frontend">Responsive Design</span><span class="skill" data-cv="fullstack frontend" data-i18n="skill_ai_api">Integração de APIs de IA</span></p>
+        <p class="skill-line" data-group="tools"><strong data-i18n="skg_tools">Ferramentas</strong><span class="skill">Git / GitHub</span><span class="skill" data-cv="geral fullstack backend">Docker</span><span class="skill" data-cv="geral fullstack backend frontend">Postman</span></p>
+        <p class="skill-line" data-group="systems"><strong data-i18n="skg_systems">Sistemas e Suporte</strong><span class="skill" data-cv="geral dba">Windows Server</span><span class="skill" data-cv="geral dba">Linux</span><span class="skill" data-cv="geral dba">Microsoft 365</span><span class="skill" data-cv="geral dba">SharePoint</span><span class="skill" data-cv="geral">Exchange</span><span class="skill" data-cv="geral dba">Power Automate</span><span class="skill" data-cv="geral">Copilot Studio</span><span class="skill" data-cv="geral" data-i18n="tag_tcp_ip">Redes TCP/IP</span><span class="skill" data-cv="geral">Firewall/VPN</span><span class="skill" data-cv="geral">Helpdesk</span><span class="skill" data-cv="geral" data-i18n="tag_incident_mgmt">Gestão de Incidentes</span></p>
+    </section>
 
-        <div class="sidebar-section">
-            <h3><i class="fas fa-globe"></i> <span data-i18n="idiomas_h">Idiomas</span></h3>
-            <div class="lang-item"><span data-i18n="lang_pt">Português</span> <span data-i18n="lang_native">Nativo</span></div>
-            <div class="lang-item"><span data-i18n="lang_en">Inglês</span> <span data-i18n="lang_en_level">Técnico / Interm.</span></div>
-            <div class="lang-item"><span>Tsonga</span> <span data-i18n="lang_fluent">Fluente</span></div>
-        </div>
+    <section>
+        <h2 data-i18n="experiencia_h">Experiência Profissional</h2>
 
-        <div class="sidebar-section">
-            <h3><i class="fas fa-truck"></i> <span data-i18n="disponibilidade_h">Disponibilidade</span></h3>
-            <div style="font-size:14px; color:#cfdce8; line-height:1.7;">
-                <i class="fas fa-map-marker-alt" style="color:#5b9bd5; margin-right:8px;"></i> <span data-i18n="disponibilidade_text">Disponível para deslocações e trabalho de campo</span>
+        <div class="item">
+            <div class="item-head">
+                <h3><span data-i18n="exp1_role">Software Developer · DBA · Sistemas Empresariais</span> | Print4you</h3>
+                <span class="when" data-i18n="exp1_period">2024 – Atual</span>
             </div>
-        </div>
-
-        <div class="sidebar-section">
-            <h3><i class="fas fa-users"></i> <span data-i18n="referencias_h">Referências</span></h3>
-
-            <div class="ref-item">
-                <div class="ref-name">Faquir da Gloria</div>
-                <div class="ref-role">MPDC · IT Support Application & Database</div>
-                <div class="ref-contact">
-                    <i class="fas fa-phone"></i> +258 844060906<br>
-                    <i class="fas fa-envelope"></i> faquirdagloria@gmail.com
-                </div>
-            </div>
-
-            <div class="ref-item">
-                <div class="ref-name">Silvestre Khalau</div>
-                <div class="ref-role">Print4you · IT</div>
-                <div class="ref-contact">
-                    <i class="fas fa-phone"></i> +258 846306341<br>
-                    <i class="fas fa-envelope"></i> silkhalaup@gmail.com
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- MAIN -->
-    <div class="main">
-
-        <h2><i class="fas fa-user" style="margin-right:12px; color:#5b9bd5;"></i> <span data-i18n="perfil_h">Perfil Profissional</span></h2>
-        <div class="profile-text" data-i18n="perfil_text">
-            Desenvolvedor de Software com mais de 5 anos de experiência prática no desenvolvimento de sistemas corporativos, plataformas Web e APIs REST. Forte domínio em bases de dados relacionais e administração de dados (<strong>SQL Server</strong>, <strong>PostgreSQL</strong>, <strong>MySQL</strong>), garantindo integridade transacional, modelação robusta e otimização de queries em ambientes críticos. Experiência sólida em arquiteturas backend (<strong>C# / .NET</strong>, <strong>PHP</strong>, <strong>Python</strong>, <strong>Java</strong>), integração de microsserviços e consumo de APIs REST. Perfil autónomo, analítico e focado em resolver problemas complexos com código limpo, seguro e escalável. Certificado como <strong>DBA (IFRS)</strong> e cursando <strong>Engenharia de Software</strong> na Universidade Pedagógica.
-        </div>
-
-        <h2><i class="fas fa-briefcase" style="margin-right:12px; color:#5b9bd5;"></i> <span data-i18n="experiencia_h">Experiência Profissional</span></h2>
-
-        <div class="exp-item">
-            <div class="exp-header">
-                <div>
-                    <span class="company">Print4you</span>
-                    <h3 style="display:inline-block; margin-left:6px;" data-i18n="exp1_role">Software Developer · DBA · Sistemas Empresariais</h3>
-                </div>
-                <span class="period" data-i18n="exp1_period">2024 – Atual</span>
-            </div>
-            <ul class="exp-desc">
-                <li data-i18n="exp1_b1">Desenvolvimento de aplicações corporativas e APIs Web com <strong>C# / .NET</strong>, <strong>PHP/Laravel</strong>, <strong>Java</strong> e <strong>Python</strong> — Portal de Pedidos, módulos de gestão e integrações transacionais</li>
-                <li data-i18n="exp1_b2">Administração e otimização avançada de bases de dados (<strong>SQL Server</strong>, <strong>PostgreSQL</strong>, <strong>MySQL</strong>) com foco em <strong>integridade transacional</strong>, indexação e alta performance em operações críticas</li>
-                <li data-i18n="exp1_b3">Modelação de dados relacional e implementação de regras de negócio com <strong>T-SQL, Stored Procedures e Triggers</strong> para <strong>controlo de fluxos financeiros</strong> e <strong>auditoria de dados</strong></li>
-                <li data-i18n="exp1_b4">Arquitetura e consumo de <strong>APIs RESTful</strong> entre módulos e serviços externos, garantindo consistência, segurança e rastreabilidade transacional</li>
-                <li data-i18n="exp1_b5">Geração de relatórios operacionais em tempo real e dashboards de auditoria e financeiro em <strong>Power BI</strong></li>
-                <li data-i18n="exp1_b6">Configuração e manutenção de servidores Windows/Linux e gestão de plataformas <strong>Microsoft 365</strong></li>
-                <li data-i18n="exp1_b7">Automação de fluxos de trabalho e processos operacionais com <strong>Power Automate</strong> e <strong>Copilot Studio</strong></li>
+            <ul>
+                <li data-i18n="exp1_r1"></li>
+                <li data-cv="geral fullstack backend dba" data-i18n="exp1_r2"></li>
+                <li data-cv="geral fullstack dba" data-i18n="exp1_r3"></li>
+                <li data-cv="fullstack backend frontend" data-i18n="exp1_r4"></li>
+                <li data-i18n="exp1_r5"></li>
+                <li data-cv="geral dba" data-i18n="exp1_r6"></li>
             </ul>
         </div>
 
-        <div class="exp-item">
-            <div class="exp-header">
-                <div>
-                    <span class="company">CodeForge Dev</span>
-                    <h3 style="display:inline-block; margin-left:6px;" data-i18n="exp3_role">Backend Developer</h3>
-                </div>
-                <span class="period" data-i18n="exp3_period">2024 – Atual</span>
+        <div class="item">
+            <div class="item-head">
+                <h3><span data-i18n="exp3_role">Backend Developer</span> | CodeForge Dev</h3>
+                <span class="when" data-i18n="exp3_period">2024 – Atual</span>
             </div>
-            <ul class="exp-desc">
-                <li data-i18n="exp3_b1">Módulo de Gestão Académica — desenvolvimento de regras de negócio e integrações em Python e APIs de microsserviços</li>
-                <li data-i18n="exp3_b2">Credium Smart — desenvolvimento do backend para plataforma de Gestão de Microcrédito em PHP/Laravel e MySQL/PostgreSQL, com foco em integridade de cálculos e histórico financeiro</li>
+            <ul>
+                <li data-i18n="exp3_c1"></li>
+                <li data-cv="geral fullstack backend" data-i18n="exp3_b1"></li>
             </ul>
         </div>
 
-        <div class="exp-item">
-            <div class="exp-header">
-                <div>
-                    <span class="company">Joshua Solution Development</span>
-                    <h3 style="display:inline-block; margin-left:6px;" data-i18n="exp4_role">Founder · Fullstack Developer</h3>
-                </div>
-                <span class="period" data-i18n="exp4_period">2021 – Atual</span>
+        <div class="item">
+            <div class="item-head">
+                <h3><span data-i18n="exp4_role">Founder · Fullstack Developer</span> | Joshua Solution Development</h3>
+                <span class="when" data-i18n="exp4_period">2021 – Atual</span>
             </div>
-            <ul class="exp-desc">
-                <li data-i18n="exp4_b1">Desenvolvimento de soluções web e sistemas sob medida em C#, PHP, JavaScript, Bootstrap e SQL Server / MySQL</li>
-                <li data-i18n="exp4_b2">Ouvir Texto — aplicação de conversão de texto para áudio via integração de APIs de Inteligência Artificial</li>
-                <li data-i18n="exp4_b3">Lavagem Auto — plataforma SaaS multi-tenant para agendamento e controlo operacional com relatórios gerenciais</li>
+            <ul>
+                <li data-cv="geral fullstack frontend" data-i18n="exp4_sw"></li>
+                <li data-cv="geral fullstack frontend" data-i18n="exp4_ot"></li>
+                <li data-i18n="exp4_b3"></li>
+                <li data-cv="geral backend dba" data-i18n="exp4_b1"></li>
             </ul>
         </div>
 
-        <div class="exp-item">
-            <div class="exp-header">
-                <div>
-                    <span class="company">Cipsv Serviços</span>
-                    <h3 style="display:inline-block; margin-left:6px;" data-i18n="exp2_role">Técnico de Campo · Redes</h3>
-                </div>
-                <span class="period">2015 – 2024</span>
+        <div class="item">
+            <div class="item-head">
+                <h3><span data-i18n="exp2_role">Técnico de Campo · Redes</span> | Cipsv Serviços</h3>
+                <span class="when">2015 – 2024</span>
             </div>
-            <ul class="exp-desc">
-                <li data-i18n="exp2_b1">Instalação, configuração e manutenção de redes de dados e telecomunicações</li>
-                <li data-i18n="exp2_b2">Suporte técnico externo a clientes empresariais</li>
-                <li data-i18n="exp2_b3">Diagnóstico e resolução de problemas de conectividade e infraestrutura</li>
-                <li data-i18n="exp2_b4">Gestão de trabalhos de campo e equipas técnicas</li>
-                <li data-i18n="exp2_b5">Intervenções em projetos de redes e sistemas</li>
+            <ul>
+                <li data-cv="fullstack backend frontend" data-i18n="exp2_sum"></li>
+                <li data-cv="geral dba" data-i18n="exp2_b1"></li>
+                <li data-cv="geral dba" data-i18n="exp2_b2"></li>
+                <li data-cv="geral dba" data-i18n="exp2_b3"></li>
+                <li data-cv="geral" data-i18n="exp2_b4"></li>
+                <li data-cv="geral" data-i18n="exp2_b5"></li>
             </ul>
         </div>
+    </section>
 
-        <h2 style="margin-top:10px;"><i class="fas fa-diagram-project" style="margin-right:12px; color:#5b9bd5;"></i> <span data-i18n="projetos_h">Projetos em Destaque</span></h2>
+    <section>
+        <h2 data-i18n="projetos_h">Projetos em Destaque</h2>
 
-        <div class="proj-item">
-            <div class="proj-name"><i class="fas fa-tasks"></i> <span data-i18n="proj2_name">Portal de Pedidos & Workflow — controlo corporativo, integridade transacional e relatórios em tempo real</span></div>
-            <div class="proj-desc" data-i18n="proj2_desc">Controlo de fluxo entre equipas com triggers e stored procedures em SQL Server, rastreabilidade completa de auditoria e notificações em tempo real.</div>
-            <div class="proj-stack">C# / .NET · SQL Server · PHP / Laravel · APIs REST · Bootstrap</div>
+        <div class="item">
+            <h3 data-i18n="proj2_name"></h3>
+            <p data-i18n="proj2_desc"></p>
+            <p class="sub">C# / .NET · SQL Server · PHP / Laravel · APIs REST · Bootstrap</p>
         </div>
 
-        <div class="proj-item">
-            <div class="proj-name"><i class="fas fa-network-wired"></i> <span data-i18n="proj5_name">Enterprise Web APIs & Módulo de Serviços — arquitetura em camadas e persistência relacional</span></div>
-            <div class="proj-desc" data-i18n="proj5_desc">Construção de APIs RESTful robustas em ASP.NET Core e C# com validação de regras de negócio, persistência transacional em SQL Server e integração de microsserviços.</div>
-            <div class="proj-stack">C# · ASP.NET Core · SQL Server · T-SQL · RESTful APIs</div>
+        <div class="item" data-cv="geral fullstack backend">
+            <h3 data-i18n="proj5_name"></h3>
+            <p data-i18n="proj5_desc"></p>
+            <p class="sub">C# · ASP.NET Core · SQL Server · T-SQL · RESTful APIs</p>
         </div>
 
-        <div class="proj-item">
-            <div class="proj-name"><i class="fas fa-boxes"></i> <span data-i18n="proj1_name">APPStock — sistema de gestão e auditoria de stock com dashboard em tempo real e API REST</span></div>
-            <div class="proj-desc" data-i18n="proj1_desc">Módulo de entradas/saídas com histórico auditado, alertas de stock mínimo, relatórios de movimentação e integração via API REST.</div>
-            <div class="proj-stack">C# / .NET · SQL Server · MySQL · Bootstrap · APIs REST</div>
+        <div class="item" data-cv="geral fullstack backend frontend">
+            <h3 data-i18n="proj1_name"></h3>
+            <p data-i18n="proj1_desc"></p>
+            <p class="sub">C# / .NET · SQL Server · MySQL · Bootstrap · APIs REST</p>
         </div>
 
-        <div class="proj-item">
-            <div class="proj-name"><i class="fas fa-file-invoice-dollar"></i> <span data-i18n="proj3_name">Credium Smart — plataforma SaaS para microcrédito e controlo de fluxos financeiros</span></div>
-            <div class="proj-desc" data-i18n="proj3_desc">Backend com cálculo rigoroso de parcelamentos, taxas e amortizações, assegurando integridade financeira e auditoria de transações.</div>
-            <div class="proj-stack">PHP / Laravel · PostgreSQL · MySQL · REST APIs</div>
+        <div class="item" data-cv="geral fullstack backend dba">
+            <h3 data-i18n="proj3_name"></h3>
+            <p data-i18n="proj3_desc"></p>
+            <p class="sub">PHP / Laravel · PostgreSQL · MySQL · REST APIs</p>
         </div>
 
-        <h2 style="margin-top:10px;"><i class="fas fa-graduation-cap" style="margin-right:12px; color:#5b9bd5;"></i> <span data-i18n="formacao_h">Formação Académica</span></h2>
-
-        <div class="edu-item">
-            <div class="edu-title"><span data-i18n="edu1_title">Informática Aplicada (Eng. Software)</span> <span class="edu-year">2026 – 2030</span></div>
-            <div class="edu-school">Universidade Pedagógica de Maputo</div>
-            <div class="edu-desc"><i class="fas fa-clock" style="color:#27ae60; margin-right:6px;"></i> <span data-i18n="edu1_desc">Em curso – previsão de conclusão em 2030</span></div>
+        <div class="item" data-cv="fullstack frontend">
+            <h3 data-i18n="proj6_name"></h3>
+            <p data-i18n="proj6_desc"></p>
+            <p class="sub" data-i18n="proj6_stack"></p>
         </div>
+    </section>
 
-        <div class="edu-item">
-            <div class="edu-title"><span data-i18n="edu2_title">Eng. Tecnologias e Sistemas de Informação</span> <span class="edu-year">2019 – 2020</span></div>
-            <div class="edu-school">Universidade Joaquim Chissano</div>
-            <div class="edu-desc"><span class="edu-status interrompido"><i class="fas fa-pause-circle"></i> <span data-i18n="edu2_status">Interrompido no 2º ano</span></span></div>
-            <div class="edu-desc" data-i18n="edu2_proj" style="margin-top:4px; font-size:13px;">C#, Java e PHP · Algoritmos e Estruturas de Dados · Gestão Académica · Sistema de Gestão de Farmácia</div>
-        </div>
+    <section>
+        <h2 data-i18n="formacao_h">Formação Académica</h2>
 
-        <div class="edu-item">
-            <div class="edu-title"><span data-i18n="edu3_title">Electricidade Industrial</span> <span class="edu-year">2014 – 2016</span></div>
-            <div class="edu-school">Instituto Industrial de Maputo</div>
-            <div class="edu-desc"><span class="edu-status concluido"><i class="fas fa-check-circle"></i> <span data-i18n="concluido_badge">Concluído</span></span></div>
-        </div>
-
-        <h2 style="margin-top:14px;"><i class="fas fa-certificate" style="margin-right:12px; color:#27ae60;"></i> <span data-i18n="cursos_h">Cursos & Certificações</span></h2>
-
-        <div class="course-item">
-            <div class="course-text">
-                <div class="course-name"><i class="fas fa-microchip"></i> Electronics and Arduino Programming</div>
-                <div class="course-info">TME Education · Universidade Joaquim Chissano | 2021</div>
+        <div class="item">
+            <div class="item-head">
+                <h3><span data-i18n="edu1_title">Informática Aplicada (Eng. Software)</span> | Universidade Pedagógica de Maputo</h3>
+                <span class="when">2026 – 2030</span>
             </div>
-            <span class="course-badge"><i class="fas fa-check"></i> <span data-i18n="concluido_badge">Concluído</span></span>
+            <p data-i18n="edu1_desc">Em curso – previsão de conclusão em 2030</p>
         </div>
 
-        <div class="course-item">
-            <div class="course-text">
-                <div class="course-name"><i class="fas fa-laptop-code"></i> <span data-i18n="course2_name">Informática Avançada e Programação Web</span></div>
-                <div class="course-info"><span data-i18n="course2_info">Unitec Academy – 3 meses | 2024</span></div>
+        <div class="item">
+            <div class="item-head">
+                <h3><span data-i18n="edu2_title">Eng. Tecnologias e Sistemas de Informação</span> | Universidade Joaquim Chissano</h3>
+                <span class="when">2019 – 2020</span>
             </div>
-            <span class="course-badge"><i class="fas fa-check"></i> <span data-i18n="concluido_badge">Concluído</span></span>
+            <p><span data-i18n="edu2_status">Interrompido no 2º ano</span> — <span data-i18n="edu2_proj"></span></p>
         </div>
 
-        <div class="course-item">
-            <div class="course-text">
-                <div class="course-name"><i class="fas fa-database"></i> <span data-i18n="course3_name">Administrador de Banco de Dados</span></div>
-                <div class="course-info">IFRS – 200h | 2025</div>
+        <div class="item">
+            <div class="item-head">
+                <h3><span data-i18n="edu3_title">Electricidade Industrial</span> | Instituto Industrial de Maputo</h3>
+                <span class="when">2014 – 2016</span>
             </div>
-            <span class="course-badge"><i class="fas fa-check"></i> <span data-i18n="concluido_badge">Concluído</span></span>
+            <p data-i18n="concluido_badge">Concluído</p>
         </div>
+    </section>
 
-        <div class="course-item">
-            <div class="course-text">
-                <div class="course-name"><i class="fas fa-robot"></i> <span data-i18n="course4_name">Automação de Sistemas</span></div>
-                <div class="course-info">IFRS – 30h | 2026</div>
-            </div>
-            <span class="course-badge"><i class="fas fa-check"></i> <span data-i18n="concluido_badge">Concluído</span></span>
-        </div>
+    <section>
+        <h2 data-i18n="cursos_h">Cursos e Certificações</h2>
+        <ul>
+            <li data-cv="geral fullstack backend dba"><strong data-i18n="course3_name">Administrador de Banco de Dados</strong> — IFRS, 200h (2025)</li>
+            <li data-cv="geral fullstack backend frontend"><strong data-i18n="course2_name">Informática Avançada e Programação Web</strong> — <span data-i18n="course2_info">Unitec Academy, 3 meses (2024)</span></li>
+            <li data-cv="geral fullstack frontend backend"><strong>AI Fluency: Framework &amp; Foundations</strong> — Anthropic (2026)</li>
+            <li data-cv="geral dba"><strong data-i18n="course4_name">Automação de Sistemas</strong> — IFRS, 30h (2026)</li>
+            <li data-cv="geral dba"><strong>Copilot Studio, Planner e Power Automate</strong> — Microsoft (2026)</li>
+            <li data-cv="geral"><strong>Electronics and Arduino Programming</strong> — TME Education · Universidade Joaquim Chissano (2021)</li>
+        </ul>
+    </section>
 
-        <div class="course-item">
-            <div class="course-text">
-                <div class="course-name"><i class="fas fa-brain"></i> AI Fluency: Framework & Foundations</div>
-                <div class="course-info">Anthropic | 2026</div>
-            </div>
-            <span class="course-badge"><i class="fas fa-check"></i> <span data-i18n="concluido_badge">Concluído</span></span>
-        </div>
+    <section>
+        <h2 data-i18n="idiomas_h">Idiomas</h2>
+        <p data-i18n="idiomas_line">Português (nativo) · Inglês (técnico / intermédio) · Tsonga (fluente)</p>
+    </section>
 
-        <div class="course-item">
-            <div class="course-text">
-                <div class="course-name"><i class="fas fa-comment-dots"></i> Copilot Studio · Planner · Power Automate</div>
-                <div class="course-info">Microsoft | 2026</div>
-            </div>
-            <span class="course-badge"><i class="fas fa-check"></i> <span data-i18n="concluido_badge">Concluído</span></span>
-        </div>
-
-        <h2 style="margin-top:14px;"><i class="fas fa-language" style="margin-right:12px; color:#5b9bd5;"></i> <span data-i18n="idiomas_h">Idiomas</span></h2>
-        <div class="lang-main">
-            <span class="lang-item-main"><i class="fas fa-check-circle" style="color:#27ae60;"></i> <span data-i18n="lang_pt">Português</span> <span class="level" data-i18n="lang_native_paren">(Nativo)</span></span>
-            <span class="lang-item-main"><i class="fas fa-circle" style="color:#f39c12;"></i> <span data-i18n="lang_en">Inglês</span> <span class="level" data-i18n="lang_en_level_paren">(Técnico / Interm.)</span></span>
-            <span class="lang-item-main"><i class="fas fa-check-circle" style="color:#27ae60;"></i> Tsonga <span class="level" data-i18n="lang_fluent_paren">(Fluente)</span></span>
-        </div>
-
-        <h2 style="margin-top:18px;"><i class="fas fa-code" style="margin-right:12px; color:#5b9bd5;"></i> <span data-i18n="habilidades_h">Habilidades Técnicas</span></h2>
-
-        <div class="two-col">
-            <div>
-                <div style="font-weight:700; font-size:14px; color:#1a2a3a; margin-bottom:5px;" data-i18n="dev_dados_h">💻 Desenvolvimento & Dados</div>
-                <div class="tech-grid">
-                    <span class="tag blue">C# / .NET</span>
-                    <span class="tag blue">ASP.NET / Web APIs</span>
-                    <span class="tag blue">SQL Server</span>
-                    <span class="tag blue">T-SQL / Stored Procedures</span>
-                    <span class="tag blue">PostgreSQL</span>
-                    <span class="tag blue">MySQL</span>
-                    <span class="tag blue" data-i18n="tag_data_modelling">Modelação de Dados</span>
-                    <span class="tag blue">PHP / Laravel</span>
-                    <span class="tag blue">Java</span>
-                    <span class="tag blue">Python</span>
-                    <span class="tag blue">APIs RESTful</span>
-                    <span class="tag">Git / GitHub</span>
-                    <span class="tag">Docker</span>
-                    <span class="tag">Postman</span>
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">HTML5 / CSS3</span>
-                    <span class="tag">Bootstrap</span>
-                    <span class="tag">Node.js</span>
-                    <span class="tag">React</span>
-                    <span class="tag powerbi">Power BI</span>
-                    <span class="tag">TDD / Unit Testing</span>
-                </div>
-            </div>
-            <div>
-                <div style="font-weight:700; font-size:14px; color:#1a2a3a; margin-bottom:5px;" data-i18n="sistemas_suporte_h">🖥️ Sistemas & Suporte</div>
-                <div class="tech-grid">
-                    <span class="tag">Windows Server</span>
-                    <span class="tag">Linux</span>
-                    <span class="tag blue">Microsoft 365</span>
-                    <span class="tag blue">SharePoint</span>
-                    <span class="tag blue">Exchange</span>
-                    <span class="tag">Teams</span>
-                    <span class="tag copilot">Copilot Studio</span>
-                    <span class="tag">Power Automate</span>
-                    <span class="tag">Planner</span>
-                    <span class="tag" data-i18n="tag_tcp_ip">Redes TCP/IP</span>
-                    <span class="tag">Firewall/VPN</span>
-                    <span class="tag">Helpdesk</span>
-                    <span class="tag" data-i18n="tag_incident_mgmt">Gestão de Incidentes</span>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
+</main>
 
 <script>
     var I18N = {
         pt: {
-            contacto_h: "Contacto",
-            competencias_h: "Competências",
+            competencias_h: "Competências Técnicas",
             idiomas_h: "Idiomas",
-            disponibilidade_h: "Disponibilidade",
-            referencias_h: "Referências",
-            skill_platform_mgmt: "Gestão de Plataformas",
-            skill_enterprise: "Sistemas Empresariais",
-            skill_modelling: "Modelação de Dados",
-            skill_networks: "Redes",
-            skill_field_support: "Suporte de Campo",
-            skill_tech_sales: "Vendas Técnicas",
-            lang_pt: "Português",
-            lang_native: "Nativo",
-            lang_en: "Inglês",
-            lang_en_level: "Técnico / Interm.",
-            lang_fluent: "Fluente",
-            lang_native_paren: "(Nativo)",
-            lang_en_level_paren: "(Técnico / Interm.)",
-            lang_fluent_paren: "(Fluente)",
-            disponibilidade_text: "Disponível para deslocações e trabalho de campo",
             perfil_h: "Perfil Profissional",
-            perfil_text: "Desenvolvedor de Software com mais de 5 anos de experiência prática no desenvolvimento de sistemas corporativos, plataformas Web e APIs REST. Forte domínio em bases de dados relacionais e administração de dados (<strong>SQL Server</strong>, <strong>PostgreSQL</strong>, <strong>MySQL</strong>), garantindo <strong>integridade transacional</strong>, modelação de dados e otimização de queries em ambientes críticos. Experiência sólida em arquiteturas backend (<strong>C# / .NET</strong>, <strong>PHP</strong>, <strong>Python</strong>, <strong>Java</strong>), integração de microsserviços e consumo de APIs REST. Perfil autónomo, analítico e focado em resolver problemas complexos com código limpo, seguro e funcional. Certificado como <strong>DBA (IFRS)</strong> e cursando <strong>Engenharia de Software</strong> na Universidade Pedagógica.",
+            perfil_text: "Desenvolvedor de Software com mais de 4 anos de experiência em sistemas corporativos, plataformas web e APIs REST (<strong>C# / .NET</strong>, <strong>PHP / Laravel</strong>, <strong>Python</strong>, <strong>Java</strong>) e bases de dados relacionais (<strong>SQL Server</strong>, <strong>PostgreSQL</strong>, <strong>MySQL</strong>). Na Print4you, o Portal de Pedidos reduziu o tempo de aprovação de <strong>40 para 7 minutos</strong>, eliminei esperas de <strong>até 3 dias</strong> por extrações de dados e pus os relatórios de gestão em <strong>tempo real</strong> com Power BI. Certificado <strong>DBA (IFRS)</strong> e a cursar <strong>Engenharia de Software</strong> na Universidade Pedagógica.",
             experiencia_h: "Experiência Profissional",
             exp1_role: "Software Developer · DBA · Sistemas Empresariais",
             exp1_period: "2024 – Atual",
-            exp1_b1: "Desenvolvimento de aplicações corporativas e APIs Web com <strong>C# / .NET</strong>, <strong>PHP/Laravel</strong>, <strong>Java</strong> e <strong>Python</strong> — Portal de Pedidos, módulos de gestão e integrações transacionais",
-            exp1_b2: "Administração e otimização avançada de bases de dados (<strong>SQL Server</strong>, <strong>PostgreSQL</strong>, <strong>MySQL</strong>) com foco em <strong>integridade transacional</strong>, indexação e alta performance em operações críticas",
-            exp1_b3: "Modelação de dados relacional e implementação de regras de negócio com <strong>T-SQL, Stored Procedures e Triggers</strong> para <strong>controlo de fluxos financeiros</strong> e <strong>auditoria de dados</strong>",
-            exp1_b4: "Arquitetura e consumo de <strong>APIs RESTful</strong> entre módulos e serviços externos, garantindo consistência, segurança e rastreabilidade transacional",
-            exp1_b5: "Geração de relatórios operacionais em tempo real e dashboards de auditoria e financeiro em <strong>Power BI</strong>",
-            exp1_b6: "Configuração e manutenção de servidores Windows/Linux e gestão de plataformas <strong>Microsoft 365</strong>",
-            exp1_b7: "Automação de fluxos de trabalho e processos operacionais com <strong>Power Automate</strong> e <strong>Copilot Studio</strong>",
             exp2_role: "Técnico de Campo · Redes",
-            exp2_b1: "Instalação, configuração e manutenção de redes de dados e telecomunicações",
-            exp2_b2: "Suporte técnico externo a clientes empresariais",
-            exp2_b3: "Diagnóstico e resolução de problemas de conectividade e infraestrutura",
-            exp2_b4: "Gestão de trabalhos de campo e equipas técnicas",
-            exp2_b5: "Intervenções em projetos de redes e sistemas",
+            exp2_b1: "Instalei, configurei e mantive redes de dados e telecomunicações",
+            exp2_b2: "Prestei suporte técnico externo a clientes empresariais",
+            exp2_b3: "Diagnostiquei e resolvi problemas de conectividade e infraestrutura",
+            exp2_b4: "Coordenei trabalhos de campo e equipas técnicas",
+            exp2_b5: "Participei em projetos de redes e sistemas",
             exp3_role: "Backend Developer",
             exp3_period: "2024 – Atual",
-            exp3_b1: "Módulo de Gestão Académica — desenvolvimento de regras de negócio e integrações em Python e APIs de microsserviços",
-            exp3_b2: "Credium Smart — desenvolvimento do backend para plataforma de Gestão de Microcrédito em PHP/Laravel e MySQL/PostgreSQL, com foco em integridade de cálculos e histórico financeiro",
+            exp3_b1: "Desenvolvi regras de negócio e integrações em Python e APIs de microsserviços para o Módulo de Gestão Académica",
             exp4_role: "Founder · Fullstack Developer",
             exp4_period: "2021 – Atual",
-            exp4_b1: "Desenvolvimento de soluções web e sistemas sob medida em C#, PHP, JavaScript, Bootstrap e SQL Server / MySQL",
-            exp4_b2: "Ouvir Texto — aplicação de conversão de texto para áudio via integração de APIs de Inteligência Artificial",
-            exp4_b3: "Lavagem Auto — plataforma SaaS multi-tenant para agendamento e controlo operacional com relatórios gerenciais",
+            exp4_b1: "Desenvolvi soluções web e sistemas à medida em C#, PHP, JavaScript, Bootstrap e SQL Server / MySQL",
+            exp4_b3: "Desenvolvi a <strong>Lavagem Auto</strong>, plataforma SaaS multi-tenant para agendamento e controlo operacional de lavagens, com relatórios de gestão",
             edu2_proj: "C#, Java e PHP · Algoritmos e Estruturas de Dados · Gestão Académica · Sistema de Gestão de Farmácia",
             projetos_h: "Projetos em Destaque",
             proj1_name: "APPStock — sistema de gestão e auditoria de stock com dashboard em tempo real e API REST",
@@ -1098,70 +329,72 @@
             edu2_status: "Interrompido no 2º ano",
             edu3_title: "Electricidade Industrial",
             concluido_badge: "Concluído",
-            cursos_h: "Cursos & Certificações",
+            cursos_h: "Cursos e Certificações",
             course2_name: "Informática Avançada e Programação Web",
-            course2_info: "Unitec Academy – 3 meses | 2024",
+            course2_info: "Unitec Academy, 3 meses (2024)",
             course3_name: "Administrador de Banco de Dados",
             course4_name: "Automação de Sistemas",
-            habilidades_h: "Habilidades Técnicas",
-            dev_dados_h: "💻 Desenvolvimento & Dados",
-            sistemas_suporte_h: "🖥️ Sistemas & Suporte",
             tag_tcp_ip: "Redes TCP/IP",
             tag_incident_mgmt: "Gestão de Incidentes",
             tag_data_modelling: "Modelação de Dados",
             subtitle: "Software Developer | Full-Stack · .NET & Web APIs · SQL Server · Sistemas Empresariais",
             back_link: "Voltar ao Portfólio",
             download_btn: "Baixar CV (PDF)",
-            ats_btn: "Adaptar para Vaga (ATS)"
+            // ---- Resultados (Print4you, CodeForge, Joshua Solution) ----
+            exp1_r1: "Desenvolvi o <strong>Portal de Pedidos</strong> (<strong>C# / .NET</strong>, <strong>SQL Server</strong>) com aprovação digital pelos aprovadores num clique — o tempo médio de protocolo para saída de artigos e assistência APV caiu de <strong>40 para 7 minutos</strong> (−80%)",
+            exp1_r2: "Eliminei a dependência de um fornecedor externo para extrações de dados (esperas de <strong>até 3 dias</strong>) com consultas diretas à base de dados do ERP em <strong>T-SQL</strong>, e substituí o acesso partilhado pelo utilizador <strong>sa</strong> por perfis e permissões por função",
+            exp1_r3: "Liguei o <strong>Power BI</strong> diretamente à base de dados do ERP, substituindo relatórios em SharePoint atualizados à mão por <strong>dashboards em tempo real</strong>",
+            exp1_r4: "Criei o <strong>AppStock</strong>, gestão centralizada de stock (o que foi consumido, onde e o que existe), permitindo prever novas encomendas",
+            exp1_r5: "Digitalizei os processos da área técnica com o <strong>Toolkit</strong>: as folhas de serviço passaram a ser acompanhadas em tempo real até à conclusão (antes demoravam <strong>2–3 semanas</strong> a ser digitalizadas ou perdiam-se em papel) e o consumo de papel desceu de <strong>1–2 resmas/dia</strong> para menos de 1 resma em 2 dias",
+            exp1_r6: "Administrei servidores Windows/Linux e <strong>Microsoft 365</strong> e automatizei processos com <strong>Power Automate</strong> e <strong>Copilot Studio</strong>",
+            exp3_c1: "<strong>Credium Smart</strong> (plataforma de microcrédito, em lançamento) — desenvolvi <strong>100% da API e da base de dados</strong> em <strong>PHP / Laravel</strong> e MySQL / PostgreSQL: gestão de acessos, cálculo de empréstimos e juros e simulação de limites para aprovação de crédito",
+            exp4_sw: "<strong>StepWise</strong> — plataforma de estudo com IA que organiza matérias, gera exercícios e videoaulas e lê os livros em voz alta; em demonstração com os primeiros utilizadores piloto em Portugal",
+            exp4_ot: "<strong>Ouvir Texto</strong> — aplicação texto-para-voz com APIs de IA; projeto final do curso na Unitec, usado por colegas, e base da leitura em voz alta do StepWise",
+            exp2_sum: "Instalei e mantive redes de dados e prestei suporte técnico a clientes empresariais, diagnosticando e resolvendo incidentes de conectividade e infraestrutura",
+            proj6_name: "StepWise — plataforma de estudo com IA: matérias organizadas, exercícios, videoaulas e leitura em voz alta",
+            proj6_desc: "Produto próprio da Joshua Solution Development, em fase de demonstração com utilizadores piloto em Portugal. Reutiliza a integração texto-para-voz criada no Ouvir Texto.",
+            proj6_stack: "Integração de APIs de IA · Texto-para-voz · Aplicação Web",
+            skill_ai_api: "Integração de APIs de IA",
+            // ---- Versões do CV: chave__versão substitui a chave base ----
+            subtitle__fullstack: "Full-Stack Developer | C# / .NET · PHP / Laravel · JavaScript / React · SQL Server",
+            subtitle__backend: "Backend Developer | C# / .NET · ASP.NET Web APIs · PHP / Laravel · SQL Server",
+            subtitle__frontend: "Frontend / Web Developer | JavaScript · React · Next.js · Tailwind CSS · Flutter",
+            subtitle__dba: "Administrador de Bases de Dados (DBA) | SQL Server · T-SQL · PostgreSQL · MySQL · Power BI",
+            exp1_role__dba: "DBA · Software Developer · Sistemas Empresariais",
+            perfil_text__fullstack: "<strong>Desenvolvedor Full-Stack</strong> com mais de 4 anos a construir sistemas corporativos e plataformas web de ponta a ponta — da base de dados (<strong>SQL Server</strong>, <strong>MySQL</strong>, <strong>PostgreSQL</strong>) às APIs (<strong>C# / .NET</strong>, <strong>PHP / Laravel</strong>) e interfaces (<strong>JavaScript</strong>, <strong>React</strong>, <strong>Bootstrap</strong>). Na Print4you, o Portal de Pedidos reduziu o tempo de aprovação de <strong>40 para 7 minutos</strong> e o Toolkit digitalizou os processos da área técnica. Certificado <strong>DBA (IFRS)</strong> e a cursar <strong>Engenharia de Software</strong>.",
+            perfil_text__backend: "<strong>Backend Developer</strong> com mais de 4 anos em APIs REST e sistemas transacionais com <strong>C# / .NET</strong>, <strong>ASP.NET</strong> e <strong>PHP / Laravel</strong>, sobre <strong>SQL Server</strong>, <strong>PostgreSQL</strong> e <strong>MySQL</strong>. Desenvolvi <strong>100% da API e da base de dados</strong> da plataforma de microcrédito Credium Smart (juros, limites de crédito, gestão de acessos) e, na Print4you, o Portal de Pedidos que reduziu o tempo de aprovação de <strong>40 para 7 minutos</strong>. Foco em integridade transacional, segurança de acessos e código testável (TDD). Certificado <strong>DBA (IFRS)</strong>.",
+            perfil_text__frontend: "<strong>Desenvolvedor Web</strong> com mais de 4 anos a criar aplicações completas com foco no utilizador: interfaces em <strong>JavaScript</strong>, <strong>React</strong>, <strong>HTML5 / CSS3</strong> e <strong>Bootstrap</strong>, ligadas a APIs REST. Construí o Portal de Pedidos da Print4you (aprovação num clique, de <strong>40 para 7 minutos</strong>), o AppStock e a plataforma de estudo com IA <strong>StepWise</strong>. A base sólida em backend e bases de dados facilita o trabalho com equipas de API. A cursar <strong>Engenharia de Software</strong>.",
+            perfil_text__dba: "<strong>Administrador de Bases de Dados</strong> e desenvolvedor com mais de 4 anos em <strong>SQL Server</strong>, <strong>PostgreSQL</strong> e <strong>MySQL</strong>: modelação relacional, <strong>T-SQL</strong>, stored procedures e triggers, otimização de queries e segurança de acessos. Na Print4you eliminei esperas de <strong>até 3 dias</strong> por extrações de dados, substituí o acesso partilhado pelo utilizador <strong>sa</strong> por permissões por função e liguei o <strong>Power BI</strong> diretamente à base de dados do ERP. Certificado <strong>DBA (IFRS, 200h)</strong>.",
+            profile_names: { geral: "Geral", fullstack: "Full-Stack", backend: "Backend", frontend: "Frontend", dba: "DBA" },
+            location: "Maputo, Moçambique",
+            skg_backend: "Backend e APIs",
+            skg_data: "Bases de Dados e BI",
+            skg_frontend: "Frontend",
+            skg_tools: "Ferramentas",
+            skg_systems: "Sistemas e Suporte",
+            idiomas_line: "Português (nativo) · Inglês (técnico / intermédio) · Tsonga (fluente)",
         },
         en: {
-            contacto_h: "Contact",
-            competencias_h: "Skills",
+            competencias_h: "Technical Skills",
             idiomas_h: "Languages",
-            disponibilidade_h: "Availability",
-            referencias_h: "References",
-            skill_platform_mgmt: "Platform Management",
-            skill_enterprise: "Enterprise Systems",
-            skill_modelling: "Data Modelling",
-            skill_networks: "Networks",
-            skill_field_support: "Field Support",
-            skill_tech_sales: "Technical Sales",
-            lang_pt: "Portuguese",
-            lang_native: "Native",
-            lang_en: "English",
-            lang_en_level: "Technical / Interm.",
-            lang_fluent: "Fluent",
-            lang_native_paren: "(Native)",
-            lang_en_level_paren: "(Technical / Interm.)",
-            lang_fluent_paren: "(Fluent)",
-            disponibilidade_text: "Available for travel and field work",
             perfil_h: "Professional Profile",
-            perfil_text: "<strong>Software Developer</strong> with 5+ years of hands-on experience developing enterprise systems, web platforms, and RESTful APIs. Strong expertise in relational databases and database administration (<strong>SQL Server</strong>, <strong>PostgreSQL</strong>, <strong>MySQL</strong>), ensuring <strong>transactional integrity</strong>, advanced data modelling, and query optimization in mission-critical environments. Solid experience in backend architectures (<strong>C# / .NET</strong>, <strong>PHP</strong>, <strong>Python</strong>, <strong>Java</strong>), microservices integration, and RESTful API consumption. Analytical and self-driven profile focused on solving complex business problems with clean, secure, and scalable code. Certified <strong>DBA (IFRS)</strong> and currently pursuing a degree in <strong>Software Engineering</strong>.",
+            perfil_text: "Software Developer with 4+ years of experience in enterprise systems, web platforms and REST APIs (<strong>C# / .NET</strong>, <strong>PHP / Laravel</strong>, <strong>Python</strong>, <strong>Java</strong>) and relational databases (<strong>SQL Server</strong>, <strong>PostgreSQL</strong>, <strong>MySQL</strong>). At Print4you, the Orders Portal cut approval time from <strong>40 to 7 minutes</strong>, I removed waits of <strong>up to 3 days</strong> for data extracts, and moved management reporting to <strong>real time</strong> with Power BI. Certified <strong>DBA (IFRS)</strong>, pursuing a degree in <strong>Software Engineering</strong> at Universidade Pedagógica.",
             experiencia_h: "Professional Experience",
             exp1_role: "Software Developer · DBA · Enterprise Systems",
             exp1_period: "2024 – Present",
-            exp1_b1: "Development of enterprise applications and Web APIs with <strong>C# / .NET</strong>, <strong>PHP/Laravel</strong>, <strong>Java</strong>, and <strong>Python</strong> — Orders Portal, management modules, and transactional integrations",
-            exp1_b2: "Advanced database administration and optimization (<strong>SQL Server</strong>, <strong>PostgreSQL</strong>, <strong>MySQL</strong>) focused on <strong>transactional integrity</strong>, indexing, and high performance in critical operations",
-            exp1_b3: "Relational data modelling and business rules implementation using <strong>T-SQL, Stored Procedures, and Triggers</strong> for <strong>financial flow control</strong> and <strong>data auditing</strong>",
-            exp1_b4: "Architecture and consumption of <strong>RESTful APIs</strong> across modules and external services, ensuring consistency, security, and transactional traceability",
-            exp1_b5: "Real-time operational report generation and financial/audit dashboards in <strong>Power BI</strong>",
-            exp1_b6: "Configuration and maintenance of Windows/Linux servers and administration of <strong>Microsoft 365</strong> infrastructure",
-            exp1_b7: "Automation of workflows and operational processes using <strong>Power Automate</strong> and <strong>Copilot Studio</strong>",
             exp2_role: "Field Technician · Networks",
-            exp2_b1: "Installation, configuration and maintenance of data and telecommunications networks",
-            exp2_b2: "External technical support for corporate clients",
-            exp2_b3: "Diagnosis and resolution of connectivity and infrastructure issues",
-            exp2_b4: "Management of field work and technical teams",
-            exp2_b5: "Involvement in network and systems projects",
+            exp2_b1: "Installed, configured and maintained data and telecom networks",
+            exp2_b2: "Provided on-site technical support to business clients",
+            exp2_b3: "Diagnosed and resolved connectivity and infrastructure issues",
+            exp2_b4: "Coordinated field work and technical teams",
+            exp2_b5: "Took part in network and systems projects",
             exp3_role: "Backend Developer",
             exp3_period: "2024 – Present",
-            exp3_b1: "Academic Management module — business logic and integrations in Python and microservice APIs",
-            exp3_b2: "Credium Smart — backend development for Microcredit SaaS platform in PHP/Laravel and MySQL/PostgreSQL, focused on calculation integrity and financial transaction history",
+            exp3_b1: "Developed business rules and integrations in Python and microservice APIs for the Academic Management module",
             exp4_role: "Founder · Fullstack Developer",
             exp4_period: "2021 – Present",
-            exp4_b1: "Development of web solutions and custom software using C#, PHP, JavaScript, Bootstrap, and SQL Server / MySQL",
-            exp4_b2: "Ouvir Texto — text-to-speech web application integrating Artificial Intelligence APIs",
-            exp4_b3: "Lavagem Auto — multi-tenant SaaS platform for vehicle wash scheduling and operational monitoring with management reports",
+            exp4_b1: "Built custom web solutions and systems in C#, PHP, JavaScript, Bootstrap and SQL Server / MySQL",
+            exp4_b3: "Built <strong>Lavagem Auto</strong>, a multi-tenant SaaS platform for car-wash scheduling and operations, with management reports",
             edu2_proj: "C#, Java and PHP · Data Structures & Algorithms · Academic Management · Pharmacy Management System",
             projetos_h: "Featured Projects",
             proj1_name: "APPStock — stock management and audit system with real-time dashboard and REST API",
@@ -1181,50 +414,160 @@
             concluido_badge: "Completed",
             cursos_h: "Courses & Certifications",
             course2_name: "Advanced IT & Web Programming",
-            course2_info: "Unitec Academy – 3 months | 2024",
+            course2_info: "Unitec Academy, 3 months (2024)",
             course3_name: "Database Administrator",
             course4_name: "Systems Automation",
-            habilidades_h: "Technical Skills",
-            dev_dados_h: "💻 Development & Data",
-            sistemas_suporte_h: "🖥️ Systems & Support",
             tag_tcp_ip: "TCP/IP Networking",
             tag_incident_mgmt: "Incident Management",
             tag_data_modelling: "Data Modelling",
             subtitle: "Software Developer | Full-Stack · .NET & Web APIs · SQL Server · Enterprise Systems",
             back_link: "Back to Portfolio",
             download_btn: "Download CV (PDF)",
-            ats_btn: "Tailor for Job (ATS)"
+            // ---- Results ----
+            exp1_r1: "Built the <strong>Orders Portal</strong> (<strong>C# / .NET</strong>, <strong>SQL Server</strong>) with one-click digital sign-off by approvers — average processing time for stock release and after-sales (APV) requests dropped from <strong>40 to 7 minutes</strong> (−80%)",
+            exp1_r2: "Removed the dependency on an external vendor for data extracts (waits of <strong>up to 3 days</strong>) with direct <strong>T-SQL</strong> queries on the ERP database, and replaced shared <strong>sa</strong> logins with role-based users and permissions",
+            exp1_r3: "Connected <strong>Power BI</strong> directly to the ERP database, replacing manually updated SharePoint reports with <strong>real-time dashboards</strong>",
+            exp1_r4: "Built <strong>AppStock</strong>, a centralised stock management app (what was consumed, where, and what is on hand) that enables reorder forecasting",
+            exp1_r5: "Digitised field-service processes with <strong>Toolkit</strong>: service sheets are now tracked in real time through completion (previously <strong>2–3 weeks</strong> to be scanned, or lost on paper), and paper use fell from <strong>1–2 reams/day</strong> to under 1 ream every 2 days",
+            exp1_r6: "Administered Windows/Linux servers and <strong>Microsoft 365</strong>, and automated processes with <strong>Power Automate</strong> and <strong>Copilot Studio</strong>",
+            exp3_c1: "<strong>Credium Smart</strong> (microcredit platform, pre-launch) — built <strong>100% of the API and database</strong> in <strong>PHP / Laravel</strong> and MySQL / PostgreSQL: access management, loan and interest calculation, and credit-limit simulation for approvals",
+            exp4_sw: "<strong>StepWise</strong> — AI study platform that organises subjects, generates exercises and video lessons, and reads books aloud; in demo with its first pilot users in Portugal",
+            exp4_ot: "<strong>Ouvir Texto</strong> — text-to-speech app using AI APIs; final project at Unitec, used by classmates, and the basis of StepWise's read-aloud feature",
+            exp2_sum: "Installed and maintained data networks and supported business clients, diagnosing and resolving connectivity and infrastructure incidents",
+            proj6_name: "StepWise — AI study platform: organised subjects, exercises, video lessons and read-aloud",
+            proj6_desc: "Own product at Joshua Solution Development, in demo with pilot users in Portugal. Reuses the text-to-speech integration built for Ouvir Texto.",
+            proj6_stack: "AI API Integration · Text-to-Speech · Web App",
+            skill_ai_api: "AI API Integration",
+            // ---- CV versions ----
+            subtitle__fullstack: "Full-Stack Developer | C# / .NET · PHP / Laravel · JavaScript / React · SQL Server",
+            subtitle__backend: "Backend Developer | C# / .NET · ASP.NET Web APIs · PHP / Laravel · SQL Server",
+            subtitle__frontend: "Frontend / Web Developer | JavaScript · React · Next.js · Tailwind CSS · Flutter",
+            subtitle__dba: "Database Administrator (DBA) | SQL Server · T-SQL · PostgreSQL · MySQL · Power BI",
+            exp1_role__dba: "DBA · Software Developer · Enterprise Systems",
+            perfil_text__fullstack: "<strong>Full-Stack Developer</strong> with 4+ years building enterprise systems and web platforms end to end — from the database (<strong>SQL Server</strong>, <strong>MySQL</strong>, <strong>PostgreSQL</strong>) to APIs (<strong>C# / .NET</strong>, <strong>PHP / Laravel</strong>) and user interfaces (<strong>JavaScript</strong>, <strong>React</strong>, <strong>Bootstrap</strong>). At Print4you, the Orders Portal cut approval time from <strong>40 to 7 minutes</strong> and Toolkit digitised field-service processes. Certified <strong>DBA (IFRS)</strong>, pursuing a degree in <strong>Software Engineering</strong>.",
+            perfil_text__backend: "<strong>Backend Developer</strong> with 4+ years of REST APIs and transactional systems in <strong>C# / .NET</strong>, <strong>ASP.NET</strong> and <strong>PHP / Laravel</strong>, on <strong>SQL Server</strong>, <strong>PostgreSQL</strong> and <strong>MySQL</strong>. Built <strong>100% of the API and database</strong> for the Credium Smart microcredit platform (interest, credit limits, access management) and, at Print4you, the Orders Portal that cut approval time from <strong>40 to 7 minutes</strong>. Focused on transactional integrity, access security and testable code (TDD). Certified <strong>DBA (IFRS)</strong>.",
+            perfil_text__frontend: "<strong>Web Developer</strong> with 4+ years building complete, user-focused applications: interfaces in <strong>JavaScript</strong>, <strong>React</strong>, <strong>HTML5 / CSS3</strong> and <strong>Bootstrap</strong>, connected to REST APIs. Built Print4you's Orders Portal (one-click approval, <strong>40 to 7 minutes</strong>), AppStock, and the AI study platform <strong>StepWise</strong>. A solid backend and database background makes working with API teams easy. Pursuing a degree in <strong>Software Engineering</strong>.",
+            perfil_text__dba: "<strong>Database Administrator</strong> and developer with 4+ years in <strong>SQL Server</strong>, <strong>PostgreSQL</strong> and <strong>MySQL</strong>: relational modelling, <strong>T-SQL</strong>, stored procedures and triggers, query tuning and access security. At Print4you, removed waits of <strong>up to 3 days</strong> for data extracts, replaced shared <strong>sa</strong> logins with role-based permissions, and connected <strong>Power BI</strong> directly to the ERP database. Certified <strong>DBA (IFRS, 200h)</strong>.",
+            profile_names: { geral: "General", fullstack: "Full-Stack", backend: "Backend", frontend: "Frontend", dba: "DBA" },
+            location: "Maputo, Mozambique",
+            skg_backend: "Backend & APIs",
+            skg_data: "Databases & BI",
+            skg_frontend: "Frontend",
+            skg_tools: "Tools",
+            skg_systems: "Systems & Support",
+            idiomas_line: "Portuguese (native) · English (technical / intermediate) · Tsonga (fluent)",
         }
     };
 
+    // CV versions. Items with data-cv="..." only show in the listed versions; text keys "key__version"
+    // override "key" for that version. Default (no ?perfil=) is the general CV linked from the portfolio.
+    var CV_PROFILES = ['geral', 'fullstack', 'backend', 'frontend', 'dba'];
+    // Skills to list first in each version (exact tag text; the rest keep their order).
+    var CV_ORDER = {
+        fullstack: ['C# / .NET', 'PHP / Laravel', 'ASP.NET / Web APIs', 'JavaScript', 'React', 'Next.js', 'SQL Server'],
+        backend: ['C# / .NET', 'ASP.NET / Web APIs', 'PHP / Laravel', 'APIs RESTful', 'SQL Server', 'T-SQL / Stored Procedures / Triggers'],
+        frontend: ['JavaScript', 'React', 'Next.js', 'HTML5 / CSS3', 'Tailwind CSS', 'Bootstrap', 'Flutter', 'Responsive Design'],
+        dba: ['SQL Server', 'T-SQL / Stored Procedures / Triggers', 'PostgreSQL', 'MySQL', 'Query Tuning', 'RBAC', 'Power BI']
+    };
+    // Order of the skill lines (data-group) per version; others keep the page order.
+    var CV_GROUPS = {
+        frontend: ['frontend', 'backend', 'tools', 'data'],
+        dba: ['data', 'backend', 'systems', 'tools']
+    };
+    var cvProfile = 'geral';
+    var cvLang = 'pt';
+
+    function text(lang, key) {
+        var v = I18N[lang][key + '__' + cvProfile];
+        return v !== undefined ? v : I18N[lang][key];
+    }
+
     function applyLang(lang) {
         if (!I18N[lang]) lang = 'pt';
+        cvLang = lang;
         document.querySelectorAll('[data-i18n]').forEach(function (el) {
-            var key = el.getAttribute('data-i18n');
-            if (I18N[lang][key] !== undefined) el.innerHTML = I18N[lang][key];
+            var v = text(lang, el.getAttribute('data-i18n'));
+            if (v !== undefined) el.innerHTML = v;
         });
         document.documentElement.setAttribute('lang', lang);
         document.querySelectorAll('.lang-btn').forEach(function (btn) {
             btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
         });
+        var names = I18N[lang].profile_names;
+        document.querySelectorAll('#profile-select option').forEach(function (o) { o.textContent = names[o.value]; });
         // PDF is generated from the current HTML via window.print()
         try { localStorage.setItem('cvLang', lang); } catch (e) {}
     }
 
+    function orderTags(container, selector) {
+        var first = CV_ORDER[cvProfile] || [];
+        var tags = Array.prototype.slice.call(container.querySelectorAll(selector));
+        if (!tags.length) return;
+        tags.forEach(function (el, i) { if (el.dataset.pos === undefined) el.dataset.pos = i; });
+        var rank = function (el) {
+            var i = first.indexOf(el.textContent.trim());
+            return i < 0 ? 1000 + Number(el.dataset.pos) : i;
+        };
+        var anchor = tags[0].previousSibling;
+        tags.sort(function (a, b) { return rank(a) - rank(b); });
+        var ref = anchor;
+        tags.forEach(function (el) { container.insertBefore(el, ref ? ref.nextSibling : container.firstChild); ref = el; });
+    }
+
+    function applyProfile(profile) {
+        if (CV_PROFILES.indexOf(profile) < 0) profile = 'geral';
+        cvProfile = profile;
+        document.querySelectorAll('[data-cv]').forEach(function (el) {
+            el.hidden = el.getAttribute('data-cv').split(/\s+/).indexOf(profile) < 0;
+        });
+        document.querySelectorAll('.skill-line').forEach(function (line) { orderTags(line, ':scope > .skill'); });
+        var groups = CV_GROUPS[profile] || [];
+        var lines = Array.prototype.slice.call(document.querySelectorAll('.skill-line'));
+        lines.forEach(function (l, i) { if (l.dataset.pos === undefined) l.dataset.pos = i; });
+        lines.sort(function (a, b) {
+            var ra = groups.indexOf(a.dataset.group), rb = groups.indexOf(b.dataset.group);
+            return (ra < 0 ? 100 + Number(a.dataset.pos) : ra) - (rb < 0 ? 100 + Number(b.dataset.pos) : rb);
+        });
+        lines.forEach(function (l) { l.parentNode.appendChild(l); });
+        syncSkillLines();
+        document.getElementById('profile-select').value = profile;
+        document.title = profile === 'geral' ? 'CV - Josué Sitoe' : 'CV Josue Sitoe - ' + I18N.en.profile_names[profile];
+        applyLang(cvLang);
+        document.dispatchEvent(new CustomEvent('cv:profile', { detail: profile }));
+    }
+    window.applyCvProfile = applyProfile;
+
+    // A skill line with no skill shown in this version is hidden too.
+    function syncSkillLines() {
+        document.querySelectorAll('.skill-line').forEach(function (line) {
+            line.hidden = !line.querySelector('.skill:not([hidden])');
+        });
+    }
+    window.syncCvSkillLines = syncSkillLines;
+
     document.querySelectorAll('.lang-btn').forEach(function (btn) {
         btn.addEventListener('click', function () { applyLang(btn.getAttribute('data-lang')); });
     });
+    document.getElementById('profile-select').addEventListener('change', function (e) {
+        applyProfile(e.target.value);
+        var url = new URL(window.location.href);
+        if (e.target.value === 'geral') url.searchParams.delete('perfil'); else url.searchParams.set('perfil', e.target.value);
+        history.replaceState(null, '', url);
+    });
 
-    (function initLang() {
-        var urlLang = new URLSearchParams(window.location.search).get('lang');
+    (function init() {
+        var params = new URLSearchParams(window.location.search);
         var stored = null;
         try { stored = localStorage.getItem('cvLang'); } catch (e) {}
-        applyLang(urlLang || stored || 'pt');
+        cvLang = params.get('lang') || stored || 'pt';
+        applyProfile(params.get('perfil') || 'geral');
     })();
 </script>
 
 <!-- ATS Resume Tailorer & International Application Suite -->
 <script src="ats-gate.js?v=1"></script>
+<!-- Job-specific tailoring when opened from the Candidaturas page (cv/?vaga=<id>) -->
+<script type="module" src="../vagas/cv-tailor.mjs"></script>
 
 </body>
 </html>
