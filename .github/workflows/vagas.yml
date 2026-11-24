@@ -1,0 +1,81 @@
+name: Vagas
+
+# Twice a day: collect jobs in my area and publish them as jobs.json on the `vagas-data` branch
+# (read by vagas/index.html; kept off main so the portfolio history stays clean).
+# Opens an issue — which GitHub emails to me — when there are new strong matches or deadlines closing in ≤ 3 days.
+on:
+  schedule:
+    - cron: '0 5 * * *'   # 07:00 Maputo
+    - cron: '0 15 * * *'  # 17:00 Maputo
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: vagas
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # Previous run's data, so jobs already seen are not alerted again.
+      - name: Dados anteriores
+        run: |
+          if git fetch --depth=1 origin vagas-data 2>/dev/null; then
+            git show FETCH_HEAD:jobs.json > vagas/jobs.json
+          else
+            echo "Primeira execução."
+          fi
+
+      - name: Recolher vagas
+        env:
+          DIGEST_FILE: ${{ runner.temp }}/digest.md
+        run: node tools/fetch-jobs.mjs
+
+      # Single-commit data branch, replaced on every run.
+      - name: Publicar no branch vagas-data
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/data"
+          cp vagas/jobs.json "$RUNNER_TEMP/data/jobs.json"
+          cd "$RUNNER_TEMP/data"
+          git init -q -b vagas-data
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add jobs.json
+          git commit -qm "dados: vagas $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push -qf "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git" vagas-data
+
+      - name: Alerta por issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DIGEST: ${{ runner.temp }}/digest.md
+          OWNER: ${{ github.repository_owner }}
+          PORTAL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/vagas/
+        run: |
+          [ -f "$DIGEST" ] || { echo "Nada a alertar."; exit 0; }
+          gh label create vagas --color E5B958 --description "Alertas de vagas" 2>/dev/null || true
+          {
+            echo "@$OWNER — novas vagas / prazos na sua área."
+            echo
+            echo "👉 Abrir a área de candidaturas: $PORTAL"
+            echo
+            cat "$DIGEST"
+          } > body.md
+          # Close the previous alert so only the latest one stays open.
+          for n in $(gh issue list --label vagas --state open --json number --jq '.[].number'); do
+            gh issue close "$n" --comment "Substituído por um alerta mais recente." >/dev/null
+          done
+          gh issue create --title "🔔 Vagas $(TZ=Africa/Maputo date +%d/%m/%Y\ %Hh)" --label vagas --body-file body.md

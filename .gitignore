@@ -33,3 +33,6 @@ next-env.d.ts
 /img/joshua-clean.png
 /img/joshua-new-cutout.png
 /img/josue-hero.png
+
+# Job feed — published to the vagas-data branch by .github/workflows/vagas.yml
+/vagas/jobs.json
