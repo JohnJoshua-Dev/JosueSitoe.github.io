@@ -169,6 +169,25 @@ Ferramenta pessoal (não ligada ao menu público, `noindex`) para procurar vagas
 O estado das candidaturas fica no `localStorage` do browser — use **Exportar backup**.
 Teste local: `node tools/fetch-jobs.mjs` e depois `python -m http.server` na raiz → `http://localhost:8000/vagas/`.
 
+Vagas com o prazo terminado ficam visíveis (esbatidas, filtro **Prazo terminado**) durante 30 dias.
+Em *Minhas candidaturas* cada vaga submetida mostra há quantos dias espera resposta; o portal lembra o follow-up aos 7, 14 e 30 dias e calcula a taxa de resposta.
+
+#### App no telemóvel (PWA)
+
+`/vagas/` é instalável (`vagas/manifest.webmanifest` + `vagas/sw.js`, âmbito só `/vagas/` — o portfólio não é afetado):
+- **Android (Chrome)**: abrir `…/vagas/` → botão **Instalar app** (ou menu ⋮ → *Instalar app*). Depois, numa vaga do LinkedIn: **Partilhar → Vagas** abre o formulário *Adicionar vaga* já com o link.
+- **iPhone (Safari)**: Partilhar → **Adicionar ao ecrã principal**. Notificações só funcionam com a app instalada (iOS 16.4+). A app instalada tem armazenamento próprio, separado do Safari — use *Exportar/Importar backup* para passar as candidaturas.
+- Abre sem rede com as últimas vagas guardadas. Ao mudar ficheiros da app, não é preciso mexer no `sw.js` (rede primeiro, cache só offline).
+
+#### Alertas por Telegram (bot próprio, API oficial e gratuita)
+
+1. No Telegram, abrir **@BotFather** → `/newbot` → nome + username terminado em `bot` → copiar o **token**.
+2. Abrir o bot novo e tocar em **Iniciar**.
+3. **Candidatura submetida e follow-ups**: no portal, botão **Telegram** → colar o token → **Ligar**. O portal encontra o seu chat, envia uma mensagem de teste e mostra o **Chat ID**. (Fica só nesse browser; os lembretes de follow-up são enviados quando o portal é aberto.)
+4. **Vagas com match 100%** (recolha diária): no GitHub, *Settings → Secrets and variables → Actions* → segredos `TELEGRAM_BOT_TOKEN` (o token) e `TELEGRAM_CHAT_ID` (o número mostrado no passo 3). Opcional: variável `TELEGRAM_MIN_SCORE` (padrão `100`), p. ex. `90`.
+
+Cada mensagem traz botões **Adaptar CV** / **Abrir vaga** / **Minhas candidaturas**.
+
 ### Versões do CV (`cv/?perfil=`)
 
 O CV está em coluna única, preto e branco, sem foto, ícones nem referências, para passar nos filtros ATS. Pode ser gerado em cinco versões: `geral` (por omissão), `fullstack`, `backend`, `frontend` e `dba`. Escolhe-se no seletor do topo ou pelo URL (ex.: `cv/?perfil=backend&lang=en`).

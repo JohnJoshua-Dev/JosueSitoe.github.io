@@ -2,8 +2,17 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="robots" content="noindex, nofollow">
+    <!-- Installable app (PWA): manifest + sw.js, scope /vagas/ -->
+    <link rel="manifest" href="manifest.webmanifest">
+    <meta name="theme-color" content="#12141d">
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Vagas">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Candidaturas — Josué Sitoe</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,7 +33,9 @@
         a { color: var(--cyan); text-decoration: none; }
         a:hover { text-decoration: underline; }
         button, input, select, textarea { font: inherit; color: inherit; }
-        .wrap { max-width: 1120px; margin: 0 auto; padding: 24px 16px 80px; }
+        .wrap { max-width: 1120px; margin: 0 auto; padding: 24px 16px 80px;
+            padding: max(24px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(80px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left)); }
+        .offline { background: var(--amber-bg); color: var(--amber); border: 1px solid rgba(251,191,36,0.3); border-radius: 10px; padding: 8px 12px; font-size: 0.82rem; margin-bottom: 12px; }
 
         header.top { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: flex-end; justify-content: space-between; margin-bottom: 20px; }
         header.top h1 { font-family: var(--serif); color: var(--text); font-size: clamp(1.8rem, 4vw, 2.4rem); margin: 6px 0 2px; }
@@ -57,7 +68,8 @@
         .stat.hot b { color: var(--gold); }
         .stat.danger b { color: var(--red); }
 
-        .tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--border); margin-bottom: 18px; overflow-x: auto; }
+        .tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--border); margin-bottom: 18px; overflow-x: auto; scrollbar-width: none; }
+        .tabs::-webkit-scrollbar { display: none; }
         .tab { background: none; border: none; padding: 10px 14px; cursor: pointer; color: var(--muted); font-weight: 600; border-bottom: 2px solid transparent; white-space: nowrap; }
         .tab.active { color: var(--text); border-bottom-color: var(--gold); }
         .tab .count { font-family: var(--mono); font-size: 0.75rem; background: var(--bg-2); border-radius: 99px; padding: 1px 7px; margin-left: 4px; }
@@ -118,6 +130,20 @@
         form.add textarea { min-height: 160px; resize: vertical; }
         .live-match { grid-column: 1 / -1; display: flex; gap: 14px; align-items: center; }
 
+        .btn.tg { border-color: rgba(41,169,235,0.5); color: #29a9eb; }
+        .feedback { font-size: 0.8rem; color: var(--muted); margin: -2px 0 10px; display: flex; flex-wrap: wrap; gap: 4px 12px; }
+        .feedback .late { color: var(--amber); }
+        .feedback .ok { color: var(--green); }
+        dialog.tg-dialog { background: var(--card); color: var(--text-2); border: 1px solid var(--border); border-radius: 16px; padding: 22px; width: min(480px, calc(100vw - 32px)); }
+        dialog.tg-dialog::backdrop { background: rgba(0,0,0,0.6); }
+        dialog.tg-dialog h2 { margin: 0 0 6px; color: var(--text); font-size: 1.15rem; }
+        dialog.tg-dialog ol { padding-left: 18px; font-size: 0.85rem; color: var(--muted); }
+        dialog.tg-dialog label { display: grid; gap: 5px; font-size: 0.82rem; color: var(--muted); margin-bottom: 10px; }
+        dialog.tg-dialog input { background: var(--bg-2); border: 1px solid var(--border); border-radius: 10px; padding: 9px 12px; width: 100%; }
+        dialog.tg-dialog .row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+        dialog.tg-dialog .msg { font-size: 0.82rem; min-height: 1.2em; margin-top: 8px; color: var(--green); }
+        dialog.tg-dialog .msg code { font-family: var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 6px; color: var(--text); user-select: all; }
+
         .help { color: var(--muted); font-size: 0.82rem; margin-top: 30px; border-top: 1px solid var(--border); padding-top: 16px; }
         .help code { font-family: var(--mono); color: var(--text-2); }
 
@@ -126,6 +152,11 @@
             .job { grid-template-columns: 1fr; }
             .score { width: 46px; height: 46px; font-size: 0.85rem; }
             form.add { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 480px) {
+            .tab .long { display: none; }
+            .tab { padding: 10px 10px; }
+            header.top .actions .btn { padding: 8px 11px; }
         }
     </style>
 </head>
@@ -141,18 +172,42 @@
             <div class="updated" id="updated">A carregar vagas…</div>
         </div>
         <div class="actions">
+            <button class="btn" id="install-btn" type="button" hidden><i class="fas fa-mobile-screen-button"></i> Instalar app</button>
+            <button class="btn tg" id="tg-btn" type="button"><i class="fab fa-telegram"></i> <span>Telegram</span></button>
             <button class="btn cyan" id="notify-btn" type="button"><i class="fas fa-bell"></i> <span>Ativar alertas</span></button>
         </div>
     </header>
 
+    <dialog class="tg-dialog" id="tg-dialog">
+        <form method="dialog" id="tg-form" autocomplete="off">
+            <h2><i class="fab fa-telegram" style="color:#29a9eb"></i> Alertas por Telegram</h2>
+            <p style="margin:0 0 8px; font-size:0.88rem;">Recebe no Telegram a confirmação de cada candidatura submetida e os lembretes de follow-up (7, 14 e 30 dias sem resposta), através de um bot só seu. Gratuito, API oficial do Telegram.</p>
+            <ol>
+                <li>No Telegram, abra <a href="https://t.me/BotFather" target="_blank" rel="noopener noreferrer">@BotFather</a> → envie <code>/newbot</code> → escolha um nome (ex.: <em>Vagas Josué</em>) e um username terminado em <em>bot</em>.</li>
+                <li>Copie o <em>token</em> que ele lhe dá e cole-o aqui.</li>
+                <li>Abra o seu bot novo e toque em <strong>Iniciar</strong> (Start). Depois clique em <strong>Ligar</strong>.</li>
+            </ol>
+            <label>Token do bot<input name="token" required placeholder="123456789:AA…" spellcheck="false" autocapitalize="off"></label>
+            <p style="margin:0; font-size:0.78rem; color:var(--dim);">Fica guardado só neste browser. As vagas com 100% de match vêm da recolha diária no GitHub — ver README.</p>
+            <div class="msg" id="tg-msg" aria-live="polite"></div>
+            <div class="row">
+                <button class="btn primary small" id="tg-connect" type="button"><i class="fas fa-link"></i> Ligar</button>
+                <button class="btn small" id="tg-test" type="button"><i class="fas fa-paper-plane"></i> Enviar teste</button>
+                <button class="btn small" id="tg-remove" type="button">Desligar</button>
+                <button class="btn small" value="cancel" formnovalidate type="submit" style="margin-left:auto">Fechar</button>
+            </div>
+        </form>
+    </dialog>
+
+    <div class="offline" id="offline" hidden><i class="fas fa-wifi"></i> Sem ligação — a mostrar as últimas vagas guardadas.</div>
     <div class="alerts" id="alerts"></div>
 
     <div class="stats" id="stats"></div>
 
     <nav class="tabs" role="tablist">
-        <button class="tab active" data-tab="vagas" role="tab">Vagas na minha área <span class="count" id="count-vagas">0</span></button>
-        <button class="tab" data-tab="minhas" role="tab">Minhas candidaturas <span class="count" id="count-minhas">0</span></button>
-        <button class="tab" data-tab="adicionar" role="tab"><i class="fas fa-plus"></i> Adicionar vaga</button>
+        <button class="tab active" data-tab="vagas" role="tab">Vagas<span class="long"> na minha área</span> <span class="count" id="count-vagas">0</span></button>
+        <button class="tab" data-tab="minhas" role="tab">Minhas<span class="long"> candidaturas</span> <span class="count" id="count-minhas">0</span></button>
+        <button class="tab" data-tab="adicionar" role="tab"><i class="fas fa-plus"></i> Adicionar<span class="long"> vaga</span></button>
     </nav>
 
     <section class="panel" id="panel-vagas">
@@ -212,9 +267,11 @@
 
 <script type="module">
     import { matchJob, guessLang } from './match.mjs';
-    import { STATUSES, isPending, load, save, setStatus, untrack, daysLeft, loadFeed } from './store.mjs';
+    import { STATUSES, RESPONDED, SENT, isPending, load, save, setStatus, untrack, daysLeft, loadFeed } from './store.mjs';
+    import { getConfig, setConfig, connect, sendTelegram, notifySubmitted, notifyFollowUp, TOKEN_RE } from './telegram.mjs';
 
     const SOON_DAYS = 3;
+    const FOLLOW_UP_DAYS = [7, 14, 30];
     const PAGE = 30;
     let feed = { jobs: [], updatedAt: null, sources: {} };
     let state = load();
@@ -247,6 +304,32 @@
         if (d <= SOON_DAYS) return `<span class="badge due"><i class="fas fa-hourglass-end"></i> ${d === 0 ? 'Termina hoje' : `Faltam ${d} dia${d > 1 ? 's' : ''}`}</span>`;
         if (d <= 7) return `<span class="badge soon">Faltam ${d} dias</span>`;
         return '';
+    }
+
+    const daysSince = (d) => Math.floor((Date.now() - Date.parse(d)) / 86400000);
+
+    /** "Submetida a … · há N dias sem resposta" / "Resposta em N dias" for applications already sent. */
+    function feedbackLine(t) {
+        if (!t?.submittedAt || !SENT.includes(t.status)) return '';
+        const since = daysSince(t.submittedAt);
+        let info;
+        if (t.respondedAt) {
+            const took = Math.max(0, Math.floor((Date.parse(t.respondedAt) - Date.parse(t.submittedAt)) / 86400000));
+            info = `<span class="ok"><i class="fas fa-reply"></i> Resposta ${took === 0 ? 'no mesmo dia' : `em ${took} dia${took > 1 ? 's' : ''}`} (${fmtDate(t.respondedAt)})</span>`;
+        } else if (t.status === 'sem-resposta') {
+            info = `<span>Encerrada sem resposta</span>`;
+        } else {
+            info = `<span class="${since >= FOLLOW_UP_DAYS[0] ? 'late' : ''}"><i class="far fa-hourglass-half"></i> ${since === 0 ? 'Aguarda resposta' : `Há ${since} dia${since > 1 ? 's' : ''} sem resposta`}</span>`;
+        }
+        return `<div class="feedback"><span><i class="fas fa-paper-plane"></i> Submetida a ${fmtDate(t.submittedAt)}</span>${info}</div>`;
+    }
+
+    /** Sent applications still waiting, with the highest follow-up mark (7/14/30 days) they reached. */
+    function followUps() {
+        return trackedJobs()
+            .filter(({ t }) => t.status === 'submetida' && t.submittedAt && !t.respondedAt)
+            .map(x => ({ ...x, days: daysSince(x.t.submittedAt), mark: [...FOLLOW_UP_DAYS].reverse().find(n => daysSince(x.t.submittedAt) >= n) }))
+            .filter(x => x.mark);
     }
 
     function cvLink(job) {
@@ -285,6 +368,7 @@
                     ${status ? `<span class="badge status"><i class="fas ${status.icon}"></i> ${status.label}</span>` : ''}
                     ${deadlineBadge(job.deadline)}
                 </div>
+                ${feedbackLine(t)}
                 <div class="chips">
                     ${(job.matched || []).map(m => `<span class="chip ok">${esc(m)}</span>`).join('')}
                     ${(job.missing || []).map(m => `<span class="chip gap" title="Pedido na vaga, não está no CV">${esc(m)}</span>`).join('')}
@@ -381,6 +465,11 @@
             <strong>Submeta já: ${due.length} candidatura${due.length > 1 ? 's' : ''} com prazo a terminar.</strong>
             <ul>${due.map(({ job, t }) => `<li>${esc(job.title)} — ${esc(job.company)} · ${deadlineBadge(job.deadline)} ${t.status === 'guardada' ? `· <a href="${cvLink(job)}" target="_blank">adaptar CV</a>` : `· <a href="${esc(safeUrl(job.url))}" target="_blank" rel="noopener noreferrer">submeter</a>`}</li>`).join('')}</ul></div></div>`);
         else if (pending.length) parts.push(`<div class="alert warn"><i class="fas fa-paper-plane"></i><div class="alert-body"><strong>${pending.length} candidatura${pending.length > 1 ? 's' : ''} por submeter.</strong> Veja em “Minhas candidaturas”.</div></div>`);
+        const fu = followUps();
+        if (fu.length) parts.push(`<div class="alert info"><i class="fas fa-reply-all"></i><div class="alert-body">
+            <strong>${fu.length} candidatura${fu.length > 1 ? 's' : ''} sem feedback:</strong>
+            <ul>${fu.map(({ job, days }) => `<li>${esc(job.title)} — ${esc(job.company)} · há ${days} dias${days >= 30 ? ' · provavelmente sem resposta' : ' · fazer follow-up'}</li>`).join('')}</ul>
+            Quando receber resposta, mude o estado para <em>Entrevista</em>, <em>Oferta</em> ou <em>Sem sucesso</em>; se desistir, para <em>Sem resposta</em>.</div></div>`);
         if (closingFeed.length) parts.push(`<div class="alert warn"><i class="fas fa-hourglass-half"></i><div class="alert-body"><strong>${closingFeed.length} vaga${closingFeed.length > 1 ? 's' : ''} com bom match fecha${closingFeed.length > 1 ? 'm' : ''} em ≤ ${SOON_DAYS} dias:</strong>
             <ul>${closingFeed.slice(0, 5).map(j => `<li>${esc(j.title)} — ${esc(j.company)} (${j.score}%)</li>`).join('')}</ul></div></div>`);
         if (fresh.length) parts.push(`<div class="alert info"><i class="fas fa-star"></i><div class="alert-body"><strong>${fresh.length} vaga${fresh.length > 1 ? 's' : ''} nova${fresh.length > 1 ? 's' : ''} com match ≥ 60% desde a última visita.</strong> Estão marcadas com “Nova”.</div></div>`);
@@ -392,13 +481,15 @@
         const eligible = feed.jobs.filter(j => !isClosed(j) && j.eligible && (j.local || j.score >= 50)).length;
         const fresh = previousVisit ? feed.jobs.filter(j => !isClosed(j) && j.firstSeen > previousVisit && j.eligible).length : 0;
         const pending = trackedJobs().filter(x => isPending(x.t.status)).length;
-        const submitted = trackedJobs().filter(x => !isPending(x.t.status) && x.t.status !== 'rejeitada').length;
+        const sent = trackedJobs().filter(x => SENT.includes(x.t.status));
+        const answered = sent.filter(x => RESPONDED.includes(x.t.status)).length;
+        const rate = sent.length ? Math.round(answered / sent.length * 100) : 0;
         const due = pendingDue().length;
         $('#stats').innerHTML = `
             <div class="stat"><b>${eligible}</b><span>Vagas abertas a MZ (≥50%)</span></div>
             <div class="stat hot"><b>${fresh}</b><span>Novas desde a última visita</span></div>
             <div class="stat ${due ? 'danger' : ''}"><b>${pending}</b><span>Por submeter${due ? ` · ${due} urgente${due > 1 ? 's' : ''}` : ''}</span></div>
-            <div class="stat"><b>${submitted}</b><span>Submetidas / em processo</span></div>`;
+            <div class="stat"><b>${sent.length}</b><span>Submetidas${sent.length ? ` · ${answered} com resposta (${rate}%)` : ''}</span></div>`;
     }
 
     function renderAll() {
@@ -440,22 +531,54 @@
         btn.disabled = on || Notification.permission === 'denied';
     }
 
+    /**
+     * Shows a notification. Through the service worker when there is one — Chrome on Android (and the
+     * installed app on iPhone) does not allow `new Notification()`; clicks are handled in sw.js.
+     */
+    async function showNote(title, options = {}) {
+        if (!canNotify()) return;
+        const opts = { icon: 'icons/icon-192.png', badge: 'icons/icon-192.png', ...options };
+        try {
+            const reg = await navigator.serviceWorker?.getRegistration();
+            if (reg) return await reg.showNotification(title, opts);
+        } catch (_) { /* fall back below */ }
+        try {
+            const n = new Notification(title, opts);
+            n.onclick = () => { window.focus(); if (opts.data?.url) window.open(opts.data.url, '_blank', 'noopener'); };
+        } catch (_) { /* not supported here */ }
+    }
+
+    /** Follow-up reminders (Telegram + browser), once per application per 7/14/30-day mark. */
+    function notifyFollowUps() {
+        let changed = false;
+        for (const { job, t, mark } of followUps()) {
+            const key = `fu-${job.id}`;
+            if ((state.notified[key] || 0) >= mark) continue;
+            notifyFollowUp({ ...job, submittedAt: t.submittedAt }, mark);
+            showNote(`${mark} dias sem resposta: ${job.title}`, { body: `${job.company || ''} — ${mark >= 30 ? 'marque como “Sem resposta”?' : 'faça um follow-up.'}`, tag: key, data: { url: './?tab=minhas' } });
+            state.notified[key] = mark;
+            changed = true;
+        }
+        if (changed) save(state);
+    }
+
     function notifyDue() {
+        notifyFollowUps();
         if (!canNotify()) return;
         const today = new Date().toISOString().slice(0, 10);
         for (const { job } of pendingDue()) {
             if (state.notified[job.id] === today) continue;
             const d = daysLeft(job.deadline);
-            const n = new Notification(`Submeter candidatura: ${job.title}`, {
+            showNote(`Submeter candidatura: ${job.title}`, {
                 body: `${job.company || ''} — ${d === 0 ? 'o prazo termina hoje' : `faltam ${d} dia(s)`}.`,
                 tag: `vaga-${job.id}`,
+                data: { url: safeUrl(job.url) === '#' ? './?tab=minhas' : job.url },
             });
-            n.onclick = () => { window.focus(); window.open(safeUrl(job.url), '_blank', 'noopener'); };
             state.notified[job.id] = today;
         }
         const freshCount = feed.jobs.filter(j => previousVisit && j.firstSeen > previousVisit && !isClosed(j) && j.eligible && j.score >= 60).length;
         if (freshCount && state.notified._fresh !== feed.updatedAt) {
-            new Notification('Novas vagas na sua área', { body: `${freshCount} vaga(s) com match ≥ 60%.`, tag: 'vagas-novas' });
+            showNote('Novas vagas na sua área', { body: `${freshCount} vaga(s) com match ≥ 60%.`, tag: 'vagas-novas', data: { url: './' } });
             state.notified._fresh = feed.updatedAt;
         }
         save(state);
@@ -486,8 +609,11 @@
         if (!el) return;
         const job = allJobs().find(j => j.id === el.dataset.id) || state.tracked[el.dataset.id]?.job;
         if (!job) return;
-        if (el.value) setStatus(state, job, el.value);
-        else if (confirm('Remover esta vaga das suas candidaturas?')) untrack(state, job.id);
+        const was = state.tracked[job.id]?.status;
+        if (el.value) {
+            setStatus(state, job, el.value);
+            if (el.value === 'submetida' && was !== 'submetida') notifySubmitted(job);
+        } else if (confirm('Remover esta vaga das suas candidaturas?')) untrack(state, job.id);
         persist();
     });
 
@@ -505,6 +631,50 @@
         if (!el) return;
         const job = allJobs().find(j => j.id === el.dataset.id) || state.tracked[el.dataset.id]?.job;
         if (job) downloadIcs(job);
+    });
+
+    // ---------- Telegram settings ----------
+    const tgDialog = $('#tg-dialog');
+    const tgForm = $('#tg-form');
+    const tgMsg = (html, ok = true) => { $('#tg-msg').innerHTML = html; $('#tg-msg').style.color = ok ? 'var(--green)' : 'var(--red)'; };
+    function updateTgBtn() {
+        $('#tg-btn span').textContent = getConfig() ? 'Telegram ativo' : 'Telegram';
+        $('#tg-test').disabled = !getConfig();
+    }
+    $('#tg-btn').addEventListener('click', () => {
+        const c = getConfig();
+        tgForm.token.value = c?.token || '';
+        tgMsg(c ? `Ligado a <strong>@${esc(c.bot)}</strong>. Chat ID (para o segredo <code>TELEGRAM_CHAT_ID</code>): <code>${esc(c.chatId)}</code>` : '');
+        updateTgBtn();
+        tgDialog.showModal();
+    });
+    $('#tg-connect').addEventListener('click', async () => {
+        const token = tgForm.token.value.trim();
+        if (!TOKEN_RE.test(token)) { tgMsg('Token inválido — copie a linha completa que o @BotFather enviou (números:letras).', false); return; }
+        tgMsg('A ligar…');
+        try {
+            const { bot, chatId, name } = await connect(token);
+            if (!chatId) {
+                tgMsg(`Token certo. Agora abra <a href="https://t.me/${encodeURIComponent(bot)}" target="_blank" rel="noopener noreferrer">@${esc(bot)}</a>, toque em <strong>Iniciar</strong> e clique em <strong>Ligar</strong> outra vez.`, false);
+                return;
+            }
+            setConfig({ token, chatId, bot });
+            updateTgBtn();
+            const ok = await sendTelegram(`🔔 Olá${name ? ` ${name.replace(/[&<>]/g, '')}` : ''}! A <b>Área de Candidaturas</b> está ligada a este chat.`);
+            tgMsg(`${ok ? '✓ Ligado — enviei-lhe uma mensagem de teste.' : 'Ligado, mas o envio de teste falhou.'} Chat ID (para o segredo <code>TELEGRAM_CHAT_ID</code>): <code>${esc(chatId)}</code>`, ok);
+        } catch (err) {
+            tgMsg(/unauthorized|not found/i.test(err.message) ? 'O Telegram recusou este token — copie de novo o token completo do @BotFather.' : `Não consegui ligar: ${esc(err.message)}`, false);
+        }
+    });
+    $('#tg-test').addEventListener('click', async () => {
+        const ok = await sendTelegram('🔔 Teste da <b>Área de Candidaturas</b> — os alertas estão a funcionar.');
+        tgMsg(ok ? '✓ Mensagem entregue ao Telegram.' : 'O Telegram recusou a mensagem — clique em Ligar outra vez.', ok);
+    });
+    $('#tg-remove').addEventListener('click', () => {
+        setConfig(null);
+        tgForm.reset();
+        updateTgBtn();
+        tgMsg('Alertas por Telegram desligados neste browser.');
     });
 
     // Manual job
@@ -563,6 +733,35 @@
         e.target.value = '';
     });
 
+    // ---------- installable app (PWA) ----------
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js').catch(() => { /* app still works without it */ });
+    }
+    const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+    const isIos = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    let installPrompt = null;
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        installPrompt = e;
+        $('#install-btn').hidden = false;
+    });
+    window.addEventListener('appinstalled', () => { $('#install-btn').hidden = true; installPrompt = null; });
+    if (isIos && !standalone) $('#install-btn').hidden = false; // Safari has no install prompt — show how to.
+    $('#install-btn').addEventListener('click', async () => {
+        if (installPrompt) {
+            installPrompt.prompt();
+            await installPrompt.userChoice;
+            installPrompt = null;
+            $('#install-btn').hidden = true;
+        } else {
+            alert('Para instalar no iPhone/iPad (Safari):\n\n1. Toque em Partilhar (o quadrado com a seta para cima).\n2. Escolha “Adicionar ao ecrã principal”.\n3. Toque em “Adicionar”.');
+        }
+    });
+    const updateOnline = () => { $('#offline').hidden = navigator.onLine; };
+    window.addEventListener('online', updateOnline);
+    window.addEventListener('offline', updateOnline);
+    updateOnline();
+
     // ---------- init ----------
     (async function init() {
         try {
@@ -572,11 +771,26 @@
         } catch (_) {
             $('#updated').textContent = 'Ainda sem dados de vagas — corra o workflow “Vagas” no GitHub (Actions → Vagas → Run workflow).';
         }
-        try {
-            const tab = sessionStorage.getItem('vagas.tab');
-            if (tab) document.querySelector(`.tab[data-tab="${tab}"]`)?.click();
-        } catch (_) { /* ignore */ }
+        // Tab: from an app shortcut (?tab=) or the last one used.
+        const params = new URLSearchParams(location.search);
+        let tab = params.get('tab');
+        try { tab = tab || sessionStorage.getItem('vagas.tab'); } catch (_) { /* ignore */ }
+        if (['vagas', 'minhas', 'adicionar'].includes(tab)) document.querySelector(`.tab[data-tab="${tab}"]`)?.click();
+        // A job shared to the installed app from another app (e.g. LinkedIn → Partilhar → Vagas).
+        if (params.has('url') || params.has('text') || params.has('title')) {
+            const text = params.get('text') || '';
+            const link = params.get('url') || text.match(/https?:\/\/\S+/)?.[0] || '';
+            const rest = text.replace(link, '').replace(/\s+/g, ' ').trim();
+            form.url.value = /^https?:\/\//i.test(link) ? link : '';
+            form.title.value = (params.get('title') || rest).slice(0, 200);
+            form.description.value = rest;
+            form.dispatchEvent(new Event('input'));
+            document.querySelector('.tab[data-tab="adicionar"]').click();
+            form.title.focus();
+        }
+        if (location.search) history.replaceState(null, '', location.pathname);
         updateNotifyBtn();
+        updateTgBtn();
         renderAll();
         notifyDue();
         state.lastVisit = feed.updatedAt || new Date().toISOString();

@@ -1,5 +1,6 @@
 /**
- * My applications, kept in this browser's localStorage (never sent anywhere).
+ * My applications, kept in this browser's localStorage (only sent anywhere as messages from my own
+ * Telegram bot to me, when I turn them on — see telegram.mjs).
  * Shared by vagas/index.html and vagas/cv-tailor.mjs (same origin, so the CV page sees the same data).
  * Use "Exportar" in the portal to keep a backup / move to another device.
  */
@@ -33,8 +34,13 @@ export const STATUSES = [
     { id: 'entrevista', label: 'Entrevista', icon: 'fa-comments' },
     { id: 'oferta', label: 'Oferta', icon: 'fa-trophy' },
     { id: 'rejeitada', label: 'Sem sucesso', icon: 'fa-circle-xmark' },
+    { id: 'sem-resposta', label: 'Sem resposta', icon: 'fa-hourglass-end' },
 ];
 export const isPending = (status) => !!STATUSES.find(s => s.id === status)?.pending;
+/** Statuses that mean the company answered (feedback received). */
+export const RESPONDED = ['entrevista', 'oferta', 'rejeitada'];
+/** Statuses that mean the application was sent. */
+export const SENT = ['submetida', 'sem-resposta', ...RESPONDED];
 
 const empty = () => ({ tracked: {}, manual: [], lastVisit: null, notified: {} });
 
@@ -59,7 +65,8 @@ export function setStatus(state, job, status) {
         ...prev,
         status,
         savedAt: prev.savedAt || now,
-        submittedAt: status === 'submetida' ? (prev.submittedAt || now) : prev.submittedAt,
+        submittedAt: SENT.includes(status) ? (prev.submittedAt || now) : prev.submittedAt,
+        respondedAt: RESPONDED.includes(status) ? (prev.respondedAt || now) : undefined,
         job: snapshot(job),
     };
     return state;

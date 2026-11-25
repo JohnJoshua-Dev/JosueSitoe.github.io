@@ -253,3 +253,33 @@ if (process.env.DIGEST_FILE) {
         console.log(`→ alerta: ${fresh.length} novas, ${closing.length} com prazo a terminar`);
     }
 }
+
+// ---------- Telegram: new open jobs with a top match ----------
+// Writes a JSON array of sendMessage payloads (one per job, chat_id added by the workflow),
+// which the workflow sends with my bot when the TELEGRAM_* secrets are set.
+if (process.env.TELEGRAM_FILE) {
+    const min = +(process.env.TELEGRAM_MIN_SCORE || 100);
+    const portal = (process.env.PORTAL_URL || '').replace(/\/?$/, '/');
+    const top = jobs.filter(j => !firstSeenById.has(j.id) && !isClosed(j) && j.eligible && j.score >= min);
+    if (top.length) {
+        const h = (s) => String(s ?? '').replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+        const fmt = (d) => new Date(d).toLocaleDateString('pt-PT', { timeZone: 'Africa/Maputo' });
+        const label = min >= 100 ? 'match 100%' : `match ${'≥'} ${min}%`;
+        const message = (text, buttons) => {
+            const row = buttons.filter(b => /^https:\/\//.test(b.url));
+            return { text, parse_mode: 'HTML', link_preview_options: { is_disabled: true }, ...(row.length ? { reply_markup: { inline_keyboard: [row] } } : {}) };
+        };
+        const messages = top.slice(0, 5).map(j => message([
+            `🎯 <b>Vaga com ${label}</b>`,
+            `<b>${h(j.title)}</b> — ${h(j.company || '—')} (${j.score}%)`,
+            `📍 ${h(j.location)}${j.deadline ? ` · ⏰ prazo ${fmt(j.deadline)}` : ''}`,
+            j.matched?.length ? `✔️ ${h(j.matched.join(', '))}` : '',
+        ].filter(Boolean).join('\n'), [
+            { text: '📝 Adaptar CV', url: portal ? `${portal}cv/?vaga=${encodeURIComponent(j.id)}&lang=${j.lang || 'en'}` : '' },
+            { text: '🔗 Abrir vaga', url: j.url },
+        ]));
+        if (top.length > 5) messages.push(message(`+${top.length - 5} outra(s) vaga(s) com ${label}.`, [{ text: 'Ver todas', url: `${portal}vagas/` }]));
+        await writeFile(process.env.TELEGRAM_FILE, JSON.stringify(messages));
+        console.log(`→ Telegram: ${top.length} vaga(s) com match ≥ ${min}%`);
+    }
+}

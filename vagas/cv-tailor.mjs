@@ -9,6 +9,7 @@
  */
 import { cvTagsFor, pickProfile } from './match.mjs';
 import { load, save, setStatus, findJob, loadFeed } from './store.mjs';
+import { notifySubmitted } from './telegram.mjs';
 
 const params = new URLSearchParams(location.search);
 const id = params.get('vaga');
@@ -112,9 +113,11 @@ function showBar(job, state) {
             window.print();
             return;
         }
+        const was = status();
         setStatus(state, job, a);
         save(state);
         render();
+        if (a === 'submetida' && was !== 'submetida') notifySubmitted({ ...job, score: state.tracked[job.id]?.job?.score });
     });
     render();
     document.body.prepend(bar);

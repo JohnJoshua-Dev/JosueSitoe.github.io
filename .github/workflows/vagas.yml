@@ -40,6 +40,9 @@ jobs:
       - name: Recolher vagas
         env:
           DIGEST_FILE: ${{ runner.temp }}/digest.md
+          TELEGRAM_FILE: ${{ runner.temp }}/telegram.json
+          TELEGRAM_MIN_SCORE: ${{ vars.TELEGRAM_MIN_SCORE || '100' }}
+          PORTAL_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
         run: node tools/fetch-jobs.mjs
 
       # Single-commit data branch, replaced on every run.
@@ -57,6 +60,22 @@ jobs:
           git add jobs.json
           git commit -qm "dados: vagas $(date -u +%Y-%m-%dT%H:%MZ)"
           git push -qf "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git" vagas-data
+
+      # Needs repository secrets TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID (shown by the portal's
+      # Telegram button after "Ligar") — see README. Skipped when absent.
+      - name: Alerta por Telegram
+        env:
+          TG_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TG_CHAT: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TG_FILE: ${{ runner.temp }}/telegram.json
+        run: |
+          [ -f "$TG_FILE" ] || { echo "Nenhuma vaga nova com match máximo."; exit 0; }
+          [ -n "$TG_TOKEN" ] && [ -n "$TG_CHAT" ] || { echo "Segredos TELEGRAM_* não definidos — Telegram ignorado."; exit 0; }
+          jq -c --arg chat "$TG_CHAT" '.[] | .chat_id = $chat' "$TG_FILE" | while read -r msg; do
+            curl -fsS -o /dev/null --max-time 30 -H 'Content-Type: application/json' -d "$msg" \
+              "https://api.telegram.org/bot${TG_TOKEN}/sendMessage" \
+              && echo "Telegram: mensagem enviada." || echo "::warning::Falha ao enviar mensagem para o Telegram."
+          done
 
       - name: Alerta por issue
         env:
