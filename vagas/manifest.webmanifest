@@ -1,0 +1,27 @@
+{
+    "id": "./",
+    "name": "Candidaturas — Josué Sitoe",
+    "short_name": "Vagas",
+    "description": "Vagas na minha área, CV adaptado a cada vaga, prazos e follow-ups.",
+    "lang": "pt",
+    "start_url": "./",
+    "scope": "./",
+    "display": "standalone",
+    "background_color": "#12141d",
+    "theme_color": "#12141d",
+    "icons": [
+        { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+        { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+        { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    ],
+    "shortcuts": [
+        { "name": "Minhas candidaturas", "url": "./?tab=minhas", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
+        { "name": "Adicionar vaga", "url": "./?tab=adicionar", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] }
+    ],
+    "share_target": {
+        "action": "./",
+        "method": "GET",
+        "enctype": "application/x-www-form-urlencoded",
+        "params": { "title": "title", "text": "text", "url": "url" }
+    }
+}

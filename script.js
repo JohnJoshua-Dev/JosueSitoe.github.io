@@ -675,6 +675,7 @@ function initPortfolioFilters() {
           card.style.display = "none";
         }
       });
+      document.querySelector(".portfolio-grid")?.scrollTo({ left: 0 });
     });
   });
 
@@ -684,12 +685,19 @@ function initPortfolioFilters() {
   const grid = document.querySelector(".portfolio-grid");
 
   if (prevBtn && nextBtn && grid) {
-    prevBtn.addEventListener("click", () => {
-      grid.scrollIntoView({ behavior: "smooth", block: "nearest" });
-    });
-    nextBtn.addEventListener("click", () => {
-      grid.scrollIntoView({ behavior: "smooth", block: "nearest" });
-    });
+    // On phones the grid is a horizontal swipe carousel: the arrows move one card.
+    // On wider screens (grid layout) they just bring the grid into view.
+    const step = (dir) => {
+      if (grid.scrollWidth > grid.clientWidth + 1) {
+        const card = [...grid.children].find(c => c.offsetParent !== null);
+        const gap = parseFloat(getComputedStyle(grid).columnGap) || 16;
+        grid.scrollBy({ left: dir * ((card ? card.offsetWidth : grid.clientWidth * 0.86) + gap), behavior: "smooth" });
+      } else {
+        grid.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+    };
+    prevBtn.addEventListener("click", () => step(-1));
+    nextBtn.addEventListener("click", () => step(1));
   }
 }
 
