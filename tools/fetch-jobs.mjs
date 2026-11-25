@@ -25,6 +25,8 @@ const MAX_AGE_DAYS = 30;       // remote jobs older than this are dropped
 const MAX_JOBS = 200;
 const ALERT_SCORE = 60;        // a new job at or above this goes in the alert
 const DEADLINE_ALERT_DAYS = 3;
+const EXPIRED_KEEP_DAYS = 30;  // closed jobs stay listed (as "prazo terminou") this long after the deadline
+const MAX_EXPIRED = 100;
 
 // ---------- helpers ----------
 async function get(url, type = 'json') {
@@ -186,7 +188,7 @@ const byKey = new Map();
 for (const job of collected) {
     const ageDays = job.posted ? (now - Date.parse(job.posted)) / DAY : 0;
     if (!job.local && ageDays > MAX_AGE_DAYS) continue;
-    if (job.deadline && Date.parse(job.deadline) < now - DAY) continue;
+    if (job.deadline && Date.parse(job.deadline) < now - EXPIRED_KEEP_DAYS * DAY) continue;
 
     const m = matchJob(job);
     if (m.score < (job.local ? MIN_SCORE_LOCAL : MIN_SCORE)) continue;
@@ -206,18 +208,31 @@ for (const job of collected) {
     if (!prev || prev.score < out.score) byKey.set(key, out);
 }
 
-const jobs = [...byKey.values()]
-    .sort((a, b) => (b.local - a.local) || (b.eligible - a.eligible) || (b.score - a.score) || String(b.posted).localeCompare(String(a.posted)))
-    .slice(0, MAX_JOBS);
+// Jobs whose deadline passed disappear from the boards (emprego.co.mz lists them as "Expirado"):
+// carry them over from the previous run so they stay visible, marked as closed, for EXPIRED_KEEP_DAYS.
+const isClosed = (j) => !!j.deadline && Date.parse(j.deadline) < now;
+const collectedIds = new Set([...byKey.values()].map(j => j.id));
+for (const j of previous.jobs) {
+    if (collectedIds.has(j.id) || !isClosed(j) || Date.parse(j.deadline) < now - EXPIRED_KEEP_DAYS * DAY) continue;
+    const key = `${j.title}|${j.company}`.toLowerCase().replace(/[^a-z0-9|]+/g, '');
+    if (!byKey.has(key)) byKey.set(key, j);
+}
+
+const ranked = [...byKey.values()]
+    .sort((a, b) => (b.local - a.local) || (b.eligible - a.eligible) || (b.score - a.score) || String(b.posted).localeCompare(String(a.posted)));
+const jobs = [
+    ...ranked.filter(j => !isClosed(j)).slice(0, MAX_JOBS),
+    ...ranked.filter(isClosed).slice(0, MAX_EXPIRED),
+];
 
 const data = { updatedAt: nowIso, sources: sourceStatus, jobs };
 await writeFile(OUTPUT, JSON.stringify(data, null, 1) + '\n');
-console.log(`→ vagas/jobs.json: ${jobs.length} vagas (${jobs.filter(j => j.local).length} em Moçambique)`);
+console.log(`→ vagas/jobs.json: ${jobs.length} vagas (${jobs.filter(j => j.local).length} em Moçambique, ${jobs.filter(isClosed).length} com prazo terminado)`);
 
 // ---------- alert digest ----------
 if (process.env.DIGEST_FILE) {
     const isNew = (j) => !firstSeenById.has(j.id);
-    const fresh = jobs.filter(j => isNew(j) && j.eligible && (j.local || j.score >= ALERT_SCORE));
+    const fresh = jobs.filter(j => isNew(j) && !isClosed(j) && j.eligible && (j.local || j.score >= ALERT_SCORE));
     // Alert a deadline when it crosses the 3-day mark and again on the last day — not on every run.
     const prevRun = previous.updatedAt ? Date.parse(previous.updatedAt) : 0;
     const crossed = (deadline, days) => deadline - now <= days * DAY && deadline - prevRun > days * DAY;
